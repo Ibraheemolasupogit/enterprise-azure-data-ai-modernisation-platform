@@ -1,0 +1,258 @@
+from __future__ import annotations
+
+# ruff: noqa: E501
+from target_architecture.model import (
+    ArchitectureComponent,
+    Assumption,
+    EnvironmentDefinition,
+    RecoveryStrategy,
+    SecurityControl,
+    Traceability,
+    WorkloadTarget,
+)
+
+COMPONENTS = [
+    ArchitectureComponent(
+        "cmp-sqlmi-transport",
+        "Transport operational database",
+        "Operational data plane",
+        "Azure SQL Managed Instance",
+        "Host the SQL Server-style legacy_tms workload with reduced compatibility risk.",
+        "planned",
+        "derived evidence",
+        "ADR-0001",
+        "Azure SQL Database deferred until compatibility risks reduce; SQL Server on Azure VM rejected unless unsupported instance dependencies appear.",
+    ),
+    ArchitectureComponent(
+        "cmp-postgres-billing",
+        "Billing and service relational database",
+        "Operational data plane",
+        "Azure Database for PostgreSQL Flexible Server",
+        "Host PostgreSQL-like billing, payment, and service-case workloads.",
+        "planned",
+        "derived evidence",
+        "ADR-0006",
+        "Azure SQL rejected unless later evidence justifies engine conversion.",
+    ),
+    ArchitectureComponent(
+        "cmp-adls",
+        "Enterprise lake storage",
+        "Data engineering / analytical plane",
+        "ADLS Gen2",
+        "Store landing, bronze, silver, gold, quarantine, checkpoints, schemas, and audit evidence.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0009",
+        "Database-only analytical storage rejected due to replay, scale, and medallion needs.",
+    ),
+    ArchitectureComponent(
+        "cmp-databricks",
+        "Lakehouse engineering workspace",
+        "Data engineering / analytical plane",
+        "Azure Databricks",
+        "Run batch, CDC, streaming, data-quality, and medallion processing with Unity Catalog governance.",
+        "planned",
+        "derived evidence",
+        "ADR-0002",
+        "Synapse-only or database-only processing rejected for this lakehouse engineering scope.",
+    ),
+    ArchitectureComponent(
+        "cmp-unity-catalog",
+        "Lakehouse governance catalog",
+        "Data engineering / analytical plane",
+        "Unity Catalog",
+        "Govern Databricks catalogs, schemas, permissions, lineage, and managed/external table boundaries.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0010",
+        "Ad hoc workspace ACLs rejected for production governance.",
+    ),
+    ArchitectureComponent(
+        "cmp-ai-boundary",
+        "Future AI-enabled data services",
+        "AI-enabled data plane",
+        "Azure SQL AI capabilities; Azure AI Search; Azure OpenAI",
+        "Define future SQL-native vector/search and governed RAG boundary without implementing it yet.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0003",
+        "Cosmos DB not selected without proven document-serving requirement.",
+    ),
+    ArchitectureComponent(
+        "cmp-identity",
+        "Platform identity and access",
+        "Control / security / operations plane",
+        "Microsoft Entra ID and managed identities",
+        "Provide human, workload, database, Databricks, storage, and CI/CD identity boundaries.",
+        "planned",
+        "derived evidence",
+        "ADR-0004",
+        "Static shared secrets rejected for target production design.",
+    ),
+    ArchitectureComponent(
+        "cmp-keyvault",
+        "Secrets and key boundary",
+        "Control / security / operations plane",
+        "Azure Key Vault",
+        "Store unavoidable secrets, customer-managed keys if later justified, and integration credentials.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0004",
+        "Committed secrets or local configuration secrets rejected.",
+    ),
+    ArchitectureComponent(
+        "cmp-private-network",
+        "Private production connectivity",
+        "Control / security / operations plane",
+        "Azure VNet, Private Link, private endpoints, Private DNS",
+        "Provide segmented private connectivity for SQL MI, PostgreSQL, storage, Key Vault, Databricks, and administration.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0011",
+        "Public production data-plane exposure rejected; dev may use controlled simplifications.",
+    ),
+    ArchitectureComponent(
+        "cmp-observability",
+        "Monitoring and audit platform",
+        "Control / security / operations plane",
+        "Azure Monitor, Log Analytics, Application Insights",
+        "Collect platform logs, audit evidence, workload telemetry, freshness, and operational alerts.",
+        "planned",
+        "estimated design assumption",
+        "ADR-0012",
+        "Uncentralised local logs rejected for production operations.",
+    ),
+    ArchitectureComponent(
+        "cmp-iac-cicd",
+        "Deployment control plane",
+        "Control / security / operations plane",
+        "Bicep and GitHub Actions",
+        "Provide repeatable IaC, validation, promotion, and federated deployment identity.",
+        "planned",
+        "derived evidence",
+        "ADR-0005",
+        "Portal-only deployment rejected.",
+    ),
+]
+
+
+WORKLOAD_TARGETS = [
+    WorkloadTarget(
+        "legacy_tms",
+        "Legacy Transport Management System",
+        "cmp-sqlmi-transport",
+        "Azure SQL Managed Instance",
+        "replatform",
+        "SQL Server compatibility, stored procedures, history growth, and instance-risk uncertainty justify MI as the first target.",
+        "Azure SQL Database deferred; SQL Server on Azure VM rejected unless hard unsupported dependencies are discovered.",
+        "ADR-0001",
+        "Milestone 5+ migration implementation",
+    ),
+    WorkloadTarget(
+        "billing_ops",
+        "Billing and Service Operations",
+        "cmp-postgres-billing",
+        "Azure Database for PostgreSQL Flexible Server",
+        "replatform",
+        "Preserves PostgreSQL-like relational semantics and reduces operational ownership.",
+        "Azure SQL rejected unless engine conversion becomes justified by live evidence.",
+        "ADR-0006",
+        "Milestone 5+ migration implementation",
+    ),
+    WorkloadTarget(
+        "depot_partner_feeds",
+        "Depot and Carrier File Feeds",
+        "cmp-databricks",
+        "Azure Databricks + ADLS Gen2",
+        "refactor",
+        "Schema-drifted CSV/JSON feeds require landing, quarantine, replay, and medallion processing.",
+        "Direct Azure SQL landing rejected for raw drifted feeds; Cosmos DB not justified.",
+        "ADR-0009",
+        "Databricks ingestion milestone",
+    ),
+    WorkloadTarget(
+        "shipment_event_stream",
+        "Shipment Operational Event Fixtures",
+        "cmp-databricks",
+        "Azure Databricks Structured Streaming/Lakeflow + ADLS Gen2",
+        "refactor",
+        "Duplicate and out-of-order events require idempotent streaming ingestion and Delta checkpoints.",
+        "Raw event storage in OLTP rejected; Cosmos DB only reconsidered for future serving.",
+        "ADR-0010",
+        "Databricks streaming milestone",
+    ),
+    WorkloadTarget(
+        "operational_reporting",
+        "Operational reporting offload",
+        "cmp-databricks",
+        "Azure Databricks + Gold data products",
+        "refactor",
+        "Reporting contention should move from OLTP tables to governed analytical products.",
+        "Retain on OLTP rejected for target state due to performance contention.",
+        "ADR-0002",
+        "Operational analytics milestone",
+    ),
+    WorkloadTarget(
+        "customer_service_search",
+        "Customer service search and future RAG",
+        "cmp-ai-boundary",
+        "Retain temporarily; future Azure SQL AI/Search/OpenAI boundary",
+        "retain",
+        "Search/RAG should wait until governed data products, security trimming, and evaluation controls exist.",
+        "Immediate AI Search, Cosmos DB, or RAG implementation rejected for Milestone 4.",
+        "ADR-0003",
+        "AI-enabled data milestone",
+    ),
+]
+
+
+SECURITY_CONTROLS = [
+    SecurityControl("sec-001", "Entra-first human access", "identity", "SQL MI; PostgreSQL; Databricks; Azure portal", "Entra groups mapped to least-privilege database/platform roles", "planned", "derived evidence", "security/governance milestone"),
+    SecurityControl("sec-002", "Managed workload identity", "identity", "applications; ingestion; CI/CD", "Managed identities and federated GitHub deployment identity", "planned", "derived evidence", "IaC/CI-CD milestone"),
+    SecurityControl("sec-003", "Private data-plane access", "network", "SQL MI; PostgreSQL; ADLS; Key Vault; Databricks", "Private Link/private endpoints and Private DNS in production", "planned", "estimated design assumption", "network/IaC milestone"),
+    SecurityControl("sec-004", "Encryption at rest", "data protection", "SQL MI; PostgreSQL; ADLS; Key Vault", "Service-managed encryption by default; CMK only if policy requires", "planned", "estimated design assumption", "security milestone"),
+    SecurityControl("sec-005", "TLS in transit", "data protection", "applications; databases; storage; APIs", "Enforce TLS and private connectivity in production", "planned", "estimated design assumption", "implementation milestones"),
+    SecurityControl("sec-006", "SQL TDE and audit", "database security", "transport operational database", "TDE, SQL auditing, threat detection/Defender posture", "planned", "estimated design assumption", "Azure SQL operations milestone"),
+    SecurityControl("sec-007", "Masking and row-level controls", "database security", "customer/contact/service data", "Dynamic Data Masking and Row-Level Security where business rules require", "planned", "derived evidence", "security/governance milestone"),
+    SecurityControl("sec-008", "Unity Catalog permissions", "lakehouse governance", "bronze/silver/gold data products", "Catalog/schema/table grants and lineage", "planned", "estimated design assumption", "Databricks implementation milestone"),
+    SecurityControl("sec-009", "Secret isolation", "secrets", "integration credentials; optional keys", "Key Vault references; no committed secrets", "planned", "derived evidence", "IaC/security milestone"),
+    SecurityControl("sec-010", "Audit retention", "operations", "database, Databricks, storage, Key Vault, CI/CD", "Log Analytics retention policy with archive where justified", "planned", "estimated design assumption", "observability milestone"),
+]
+
+
+RECOVERY_STRATEGIES = [
+    RecoveryStrategy("critical transport OLTP", "legacy_tms on SQL MI", 60, 15, "Built-in SQL MI HA with zone redundancy where supported and justified", "Failover group/geo-restore design after live region and RTO validation", "Automated backups, PITR, restore rehearsal later", "not tested", "derived evidence"),
+    RecoveryStrategy("billing/service", "billing_ops on PostgreSQL Flexible Server", 240, 60, "Zone-redundant HA in production if region supports it", "Geo-backup/replica strategy after live validation", "Automated backups and restore drills later", "not tested", "derived evidence"),
+    RecoveryStrategy("analytical processing", "Databricks jobs and Delta medallion data", 480, 240, "Restartable jobs, source replay, checkpoint protection", "Storage redundancy and redeployable workspace/IaC pattern", "Delta replay and job redeployment; no DR test yet", "not tested", "estimated design assumption"),
+    RecoveryStrategy("non-critical feeds", "file feeds and partner updates", 1440, 480, "Durable landing storage and replayable ingestion", "Storage redundancy plus partner resend procedure", "Raw-feed retention and replay", "not tested", "estimated design assumption"),
+]
+
+
+ENVIRONMENTS = [
+    EnvironmentDefinition("dev", "shared or single dev subscription acceptable for portfolio use", "rg-cf-dev-<region>-<capability>", "synthetic tiny/development data only", "private production pattern may be simplified locally", "no secrets committed; local placeholders only", "feature branch validation", "cost controls and no production data"),
+    EnvironmentDefinition("test", "separate test subscription or resource group boundary", "rg-cf-test-<region>-<capability>", "synthetic or masked representative data only", "production-like private endpoints where practical", "Key Vault and federated CI/CD identity", "promote from main after validation", "release gates, drift checks, and rollback evidence"),
+    EnvironmentDefinition("prod", "dedicated production subscription recommended", "rg-cf-prod-<region>-<capability>", "production-class controls; no portfolio real data", "private endpoints, Private DNS, restricted admin path", "Key Vault, managed identities, no local secrets", "controlled promotion with approvals", "locks, policy, monitoring, backup, and break-glass process"),
+]
+
+
+ASSUMPTIONS = [
+    Assumption("asm-001", "SQL MI sizing", "Initial MI sizing is design-level only; exact vCores/storage require live telemetry.", "requires live validation", "Collect CPU, IO, waits, storage growth, concurrency, and query baselines.", "Wrong sizing could cause cost waste or performance regression."),
+    Assumption("asm-002", "PostgreSQL sizing", "Flexible Server compute/storage requirements are estimated from synthetic billing profile.", "requires live validation", "Collect production volume, connection count, vacuum/write profile, and month-end load.", "Wrong sizing could affect billing availability or cost."),
+    Assumption("asm-003", "Private networking", "Production should use private connectivity for data-plane services.", "estimated design assumption", "Validate corporate network, DNS, firewall, and administrative access requirements.", "Wrong assumptions could block application connectivity."),
+    Assumption("asm-004", "Databricks compute", "Jobs should use job compute; interactive clusters are for development only.", "estimated design assumption", "Validate workload SLAs, concurrency, Lakeflow fit, and serverless availability.", "Wrong model could increase cost or reduce operational control."),
+    Assumption("asm-005", "CMK", "Service-managed keys are acceptable unless policy requires customer-managed keys.", "estimated design assumption", "Validate security policy and regulatory requirements.", "CMK later could affect deployment sequence and operations."),
+    Assumption("asm-006", "RTO/RPO", "RTO/RPO tiers come from Milestone 3 synthetic estate requirements.", "derived evidence", "Confirm contractual service commitments with business owners.", "Wrong recovery targets could over- or under-engineer HA/DR."),
+    Assumption("asm-007", "AI usage", "AI-enabled SQL/search/RAG is a future boundary, not implemented architecture.", "estimated design assumption", "Validate use cases, access controls, evaluation, and token/search cost drivers.", "Premature AI design could duplicate data or bypass governance."),
+]
+
+
+TRACEABILITY = [
+    Traceability("tr-001", "Minimise transport OLTP migration risk", "SQL-COMP-001/003/009 compatibility findings", "ADR-0001 SQL MI initial target", "cmp-sqlmi-transport", "Milestone 5+ migration implementation"),
+    Traceability("tr-002", "Remove reporting contention from OLTP", "SQL-COMP-005 performance-sensitive reporting", "ADR-0002 Databricks analytical offload", "cmp-databricks", "Operational analytics milestone"),
+    Traceability("tr-003", "Govern schema-drifted file feeds", "Depot/carrier feed data-quality defects", "ADR-0009 ADLS + Delta medallion architecture", "cmp-adls; cmp-databricks", "Databricks ingestion milestone"),
+    Traceability("tr-004", "Support duplicate/out-of-order operational events", "DUPLICATE_AND_OUT_OF_ORDER_EVENT", "ADR-0010 batch vs streaming and table-boundary design", "cmp-databricks; cmp-adls", "Databricks streaming milestone"),
+    Traceability("tr-005", "Protect customer and service data", "Sensitive contact/case/billing fields in synthetic estate", "ADR-0004 Entra-first identity", "cmp-identity; cmp-keyvault", "security/governance milestone"),
+    Traceability("tr-006", "Avoid unjustified document database adoption", "No current Cosmos DB workload target", "ADR-0007 relational vs Cosmos DB disposition", "cmp-ai-boundary", "AI-enabled data milestone"),
+    Traceability("tr-007", "Stage migration by risk", "Migration complexity and wave assessment", "ADR-0008 staged migration ordering", "cmp-iac-cicd", "migration factory milestone"),
+]
+

@@ -1,0 +1,56 @@
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Build and reports
+dist/
+build/
+htmlcov/
+.coverage
+reports/generated/
+
+# Infrastructure and secrets
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+*.pem
+*.key
+*.pfx
+*.cer
+*.crt
+.env
+.env.*
+!.env.example
+
+# Azure tooling
+.azure/
+*.bicepparam.local
+
+# Databricks local bundles/state
+.databricks/
+.bundle/
+
+# Data outputs
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep

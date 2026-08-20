@@ -1,0 +1,6 @@
+depot_code,depot_name,region,capacity_units,feed_version
+DPN,Newcastle Depot,NORTH,,v1
+DPM,Manchester Depot,NORTH,475,v1
+DPB,Birmingham Depot,MIDLANDS,550,v1
+DPL,London Gateway Depot,SOUTH,625,v1
+DPM,Manchester Depot duplicate,NORTH,475,v1

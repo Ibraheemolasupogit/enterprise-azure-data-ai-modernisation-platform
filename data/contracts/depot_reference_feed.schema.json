@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Depot reference feed",
+  "type": "object",
+  "required": [
+    "depot_code",
+    "depot_name",
+    "region",
+    "capacity_units",
+    "feed_version"
+  ],
+  "properties": {
+    "depot_code": {
+      "type": "string",
+      "pattern": "^DP[A-Z][0-9]*$"
+    },
+    "depot_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "capacity_units": {
+      "type": [
+        "integer",
+        "string",
+        "null"
+      ]
+    },
+    "feed_version": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

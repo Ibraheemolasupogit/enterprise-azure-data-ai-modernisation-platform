@@ -1,0 +1,9 @@
+customer_id,account_number,legal_name,service_tier,billing_region,created_at,is_active,contact_email
+CUST000001,AC100001,Contoso Synthetic Account 0001,priority,scotland,2022-12-18T08:00:00Z,True,ops0001@synthetic.contoso.example
+CUST000002,AC100002,Contoso Synthetic Account 0002,standard,wales,2020-12-05T08:00:00Z,True,ops0002@synthetic.contoso.example
+CUST000003,AC100003,Contoso Synthetic Account 0003,priority,scotland,2019-11-02T08:00:00Z,True,ops0003@synthetic.contoso.example
+CUST000004,AC100004,Contoso Synthetic Account 0004,standard,south,2021-05-22T08:00:00Z,True,ops0004@synthetic.contoso.example
+CUST000005,AC100005,Contoso Synthetic Account 0005,standard,scotland,2024-12-24T08:00:00Z,True,ops0005@synthetic.contoso.example
+CUST000006,AC100006,Contoso Synthetic Account 0006,standard,wales,2019-07-22T08:00:00Z,True,ops0006@synthetic.contoso.example
+CUST000007,AC100007,Contoso Synthetic Account 0007,standard,north,2022-04-07T08:00:00Z,True,ops0007@synthetic.contoso.example
+CUST000008,AC100002,Contoso Synthetic Account 0002 Ltd,standard,midlands,2022-07-16T08:00:00Z,True,ops0008@synthetic.contoso.example

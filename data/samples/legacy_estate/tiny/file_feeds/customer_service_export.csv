@@ -1,0 +1,7 @@
+case_id,shipment_ref,customer_ref,case_status,opened_at,first_note_text
+CASE00000001,SHP000000012,ACCT-000008,resolved,2026-03-12T04:00:00Z,Synthetic note 3 for lost_item on SHP000000012. No real personal data.
+CASE00000002,SHP000000016,ACCT-000005,resolved,2026-03-25T08:00:00Z,Synthetic note 3 for address_change on SHP000000016. No real personal data.
+CASE00000003,SHP000000009,ACCT-000005,resolved,2026-04-16T11:00:00Z,Synthetic note 2 for lost_item on SHP000000009. No real personal data.
+CASE00000004,SHP000000017,ACCT-000006,resolved,2026-03-02T08:00:00Z,Synthetic note 2 for damaged_goods on SHP000000017. No real personal data.
+CASE00000005,SHP000000007,ACCT-000005,open,2026-03-23T02:00:00Z,Synthetic note 3 for late_delivery on SHP000000007. No real personal data.
+CASE00000006,SHP999999999,ACCT-000007,resolved,2026-01-13T10:00:00Z,Synthetic note 3 for damaged_goods on SHP999999999. No real personal data.

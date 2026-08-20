@@ -1,0 +1,43 @@
+[
+  {
+    "carrier_update_id": "CAR-00000001",
+    "external_order_ref": "ORD-2026-00000001",
+    "partner_code": "CITYFREIGHT",
+    "partner_status": "accepted",
+    "schema_version": 1,
+    "update_timestamp": "2026-01-01T08:37:00Z"
+  },
+  {
+    "carrier_update_id": "CAR-00000002",
+    "external_order_ref": "ORD-2026-00000002",
+    "partner_code": "NORTHWAY",
+    "partner_status": "accepted",
+    "schema_version": 1,
+    "update_timestamp": "2026-01-01T09:14:00Z"
+  },
+  {
+    "carrier_update_id": "CAR-00000003",
+    "external_order_ref": "ORD-2026-00000003",
+    "partner_code": "CITYFREIGHT",
+    "partner_status": "delivered",
+    "schema_version": 1,
+    "update_timestamp": "2026-01-01T09:51:00Z"
+  },
+  {
+    "carrier_update_id": "CAR-00000004",
+    "external_order_ref": "ORD-2026-00000004",
+    "partner_code": "NORTHWAY",
+    "partner_status": "delivered",
+    "schema_version": 1,
+    "update_timestamp": "2026-01-01T10:28:00Z"
+  },
+  {
+    "carrier_update_id": "CAR-00000005",
+    "external_order_ref": "ORD-2026-00000005",
+    "partner_code": "EUROLINE",
+    "partner_eta_text": "tomorrow afternoon",
+    "partner_status": "delivered",
+    "schema_version": 2,
+    "update_timestamp": "2026-01-01T11:05:00Z"
+  }
+]

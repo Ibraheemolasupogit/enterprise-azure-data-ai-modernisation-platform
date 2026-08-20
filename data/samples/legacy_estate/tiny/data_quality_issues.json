@@ -1,0 +1,32 @@
+[
+  {
+    "description": "Two synthetic customer rows share an account number with variant legal names.",
+    "issue_code": "DUPLICATE_CUSTOMER_ACCOUNT",
+    "location": "legacy_oltp/customers.csv"
+  },
+  {
+    "description": "One depot feed row has a null capacity value.",
+    "issue_code": "MISSING_DEPOT_CAPACITY",
+    "location": "file_feeds/depot_reference_feed.csv"
+  },
+  {
+    "description": "One customer-service export row contains a malformed email.",
+    "issue_code": "INVALID_CASE_EMAIL",
+    "location": "secondary_billing/service_cases.csv"
+  },
+  {
+    "description": "One service case references an unknown shipment identifier.",
+    "issue_code": "CASE_REFERENTIAL_ANOMALY",
+    "location": "secondary_billing/service_cases.csv"
+  },
+  {
+    "description": "Operational events include duplicate delivery and late-arriving records.",
+    "issue_code": "DUPLICATE_AND_OUT_OF_ORDER_EVENT",
+    "location": "events/shipment_operational_events.jsonl"
+  },
+  {
+    "description": "One carrier update uses schema_version 2 and an extra ETA text field.",
+    "issue_code": "SCHEMA_DRIFT",
+    "location": "file_feeds/carrier_updates.json"
+  }
+]

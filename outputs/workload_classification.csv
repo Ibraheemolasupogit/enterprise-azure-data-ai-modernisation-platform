@@ -1,0 +1,8 @@
+workload_id,category,operation_count_in_sample,latency_sensitivity,throughput,concurrency,scale,transactional_consistency,read_write_ratio,elasticity,integration_complexity,evidence_class,evidence
+analytical_delay_report,analytical,3,high,medium,low,local sample; production volume requires live validation,eventual,read-heavy,high,high,locally measured,Derived from deterministic workload simulator sample.
+create_shipment,transactional OLTP,2,low,high,high,local sample; production volume requires live validation,strong,write-heavy,moderate,medium,locally measured,Derived from deterministic workload simulator sample.
+customer_lookup,transactional OLTP,7,low,medium,high,local sample; production volume requires live validation,strong,read-heavy,moderate,medium,locally measured,Derived from deterministic workload simulator sample.
+incident_case_creation,customer-service/search,6,low,medium,medium,local sample; production volume requires live validation,strong,write-heavy,moderate,medium,locally measured,Derived from deterministic workload simulator sample.
+invoice_lookup,transactional OLTP,2,medium,medium,medium,local sample; production volume requires live validation,strong,read-heavy,moderate,medium,locally measured,Derived from deterministic workload simulator sample.
+route_depot_reporting,operational reporting,4,medium,medium,medium,local sample; production volume requires live validation,eventual,read-heavy,moderate,medium,locally measured,Derived from deterministic workload simulator sample.
+update_shipment_status,event/streaming,6,low,high,high,local sample; production volume requires live validation,strong,write-heavy,moderate,high,locally measured,Derived from deterministic workload simulator sample.

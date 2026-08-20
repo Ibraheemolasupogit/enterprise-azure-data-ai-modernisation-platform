@@ -1,0 +1,20 @@
+{
+  "generated_at_utc": "2026-01-01T08:00:00+00:00",
+  "include_defects": true,
+  "profile": "tiny",
+  "row_counts": {
+    "case_notes": 16,
+    "customers": 8,
+    "depots": 4,
+    "invoices": 18,
+    "operational_events": 74,
+    "payments": 11,
+    "routes": 12,
+    "service_cases": 6,
+    "shipment_events": 73,
+    "shipments": 18,
+    "vehicles": 8
+  },
+  "scenario": "contoso_freight",
+  "seed": 20260820
+}

@@ -1,0 +1,8 @@
+trace_id,business_requirement,assessment_finding,architecture_decision,target_component,future_implementation_milestone
+tr-001,Minimise transport OLTP migration risk,SQL-COMP-001/003/009 compatibility findings,ADR-0001 SQL MI initial target,cmp-sqlmi-transport,Milestone 5+ migration implementation
+tr-002,Remove reporting contention from OLTP,SQL-COMP-005 performance-sensitive reporting,ADR-0002 Databricks analytical offload,cmp-databricks,Operational analytics milestone
+tr-003,Govern schema-drifted file feeds,Depot/carrier feed data-quality defects,ADR-0009 ADLS + Delta medallion architecture,cmp-adls; cmp-databricks,Databricks ingestion milestone
+tr-004,Support duplicate/out-of-order operational events,DUPLICATE_AND_OUT_OF_ORDER_EVENT,ADR-0010 batch vs streaming and table-boundary design,cmp-databricks; cmp-adls,Databricks streaming milestone
+tr-005,Protect customer and service data,Sensitive contact/case/billing fields in synthetic estate,ADR-0004 Entra-first identity,cmp-identity; cmp-keyvault,security/governance milestone
+tr-006,Avoid unjustified document database adoption,No current Cosmos DB workload target,ADR-0007 relational vs Cosmos DB disposition,cmp-ai-boundary,AI-enabled data milestone
+tr-007,Stage migration by risk,Migration complexity and wave assessment,ADR-0008 staged migration ordering,cmp-iac-cicd,migration factory milestone

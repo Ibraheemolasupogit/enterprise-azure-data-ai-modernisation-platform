@@ -1,0 +1,5 @@
+depot_id,depot_code,depot_name,region,capacity_units,timezone,is_active
+DEPOT001,DPN,Newcastle Depot,north,400,Europe/London,False
+DEPOT002,DPM,Manchester Depot,north,475,Europe/London,True
+DEPOT003,DPB,Birmingham Depot,midlands,550,Europe/London,True
+DEPOT004,DPL,London Gateway Depot,south,625,Europe/London,True

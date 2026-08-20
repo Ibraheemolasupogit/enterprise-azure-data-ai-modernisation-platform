@@ -1,0 +1,5 @@
+workload_tier,applies_to,assumed_rto_minutes,assumed_rpo_minutes,target_ha_design,target_dr_design,backup_restore,validation_status,evidence_class
+critical transport OLTP,legacy_tms on SQL MI,60,15,Built-in SQL MI HA with zone redundancy where supported and justified,Failover group/geo-restore design after live region and RTO validation,"Automated backups, PITR, restore rehearsal later",not tested,derived evidence
+billing/service,billing_ops on PostgreSQL Flexible Server,240,60,Zone-redundant HA in production if region supports it,Geo-backup/replica strategy after live validation,Automated backups and restore drills later,not tested,derived evidence
+analytical processing,Databricks jobs and Delta medallion data,480,240,"Restartable jobs, source replay, checkpoint protection",Storage redundancy and redeployable workspace/IaC pattern,Delta replay and job redeployment; no DR test yet,not tested,estimated design assumption
+non-critical feeds,file feeds and partner updates,1440,480,Durable landing storage and replayable ingestion,Storage redundancy plus partner resend procedure,Raw-feed retention and replay,not tested,estimated design assumption

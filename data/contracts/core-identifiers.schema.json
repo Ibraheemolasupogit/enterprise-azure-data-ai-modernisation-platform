@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contoso Freight core identifiers",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "pattern": "^CUST[0-9]{6}$"
+    },
+    "shipment_id": {
+      "type": "string",
+      "pattern": "^SHP[0-9]{9}$"
+    },
+    "depot_id": {
+      "type": "string",
+      "pattern": "^DEPOT[0-9]{3}$"
+    },
+    "vehicle_id": {
+      "type": "string",
+      "pattern": "^VEH[0-9]{6}$"
+    },
+    "invoice_id": {
+      "type": "string",
+      "pattern": "^INV[0-9]{9}$"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^CASE[0-9]{8}$"
+    }
+  }
+}
+

@@ -1,0 +1,7 @@
+case_id,customer_id,shipment_id,case_reason,case_status,opened_at,closed_at,contact_email
+CASE00000001,CUST000008,SHP000000012,lost_item,resolved,2026-03-12T04:00:00Z,,service0001@synthetic.contoso.example
+CASE00000002,CUST000005,SHP000000016,address_change,resolved,2026-03-25T08:00:00Z,2026-03-28T21:00:00Z,not-an-email
+CASE00000003,CUST000005,SHP000000009,lost_item,resolved,2026-04-16T11:00:00Z,2026-04-19T11:00:00Z,service0003@synthetic.contoso.example
+CASE00000004,CUST000006,SHP000000017,damaged_goods,resolved,2026-03-02T08:00:00Z,2026-03-04T13:00:00Z,service0004@synthetic.contoso.example
+CASE00000005,CUST000005,SHP000000007,late_delivery,open,2026-03-23T02:00:00Z,2026-03-27T20:00:00Z,service0005@synthetic.contoso.example
+CASE00000006,CUST000007,SHP999999999,damaged_goods,resolved,2026-01-13T10:00:00Z,,service0006@synthetic.contoso.example

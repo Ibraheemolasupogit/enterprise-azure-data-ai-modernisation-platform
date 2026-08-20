@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shipment operational event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "schema_version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "created",
+        "allocated",
+        "departed",
+        "arrived",
+        "delivered",
+        "exception"
+      ]
+    },
+    "aggregate_type": {
+      "const": "shipment"
+    },
+    "aggregate_id": {
+      "type": "string",
+      "pattern": "^SHP[0-9]{9}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "integer"
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+

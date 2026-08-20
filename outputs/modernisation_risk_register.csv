@@ -1,0 +1,12 @@
+risk_id,risk_category,likelihood,impact,risk_rating,mitigation,owner_role,trigger_escalation_condition
+RISK-001,downtime risk,medium,high,high,"Require rehearsal, rollback plan, and business-approved outage window.",Database operations lead,Escalate when downtime risk mitigation lacks owner or date.
+RISK-002,compatibility risk,high,high,critical,Complete static and live compatibility assessment before target lock.,Database architect,Escalate when compatibility risk mitigation lacks owner or date.
+RISK-003,data loss,low,high,high,"Use reconciliation checks, backups, and parallel-run validation.",Data engineering lead,Escalate when data loss mitigation lacks owner or date.
+RISK-004,performance regression,medium,high,high,Capture baseline workload and load-test target before cutover.,Performance engineer,Escalate when performance regression mitigation lacks owner or date.
+RISK-005,security misconfiguration,medium,high,high,Use least-privilege review and deployment policy checks.,Security architect,Escalate when security misconfiguration mitigation lacks owner or date.
+RISK-006,identity transition,high,medium,high,Inventory principals and test Entra/managed identity paths.,Identity engineer,Escalate when identity transition mitigation lacks owner or date.
+RISK-007,dependency failure,medium,medium,medium,"Map and test file, event, billing, and application dependencies.",Integration lead,Escalate when dependency failure mitigation lacks owner or date.
+RISK-008,schema drift,high,medium,high,"Implement contracts, quarantine, and schema evolution controls.",Data quality lead,Escalate when schema drift mitigation lacks owner or date.
+RISK-009,operational readiness,medium,high,high,"Complete runbooks, monitoring, and support handover.",Operations owner,Escalate when operational readiness mitigation lacks owner or date.
+RISK-010,cost uncertainty,medium,medium,medium,"Model tiers, storage growth, HA/DR, and Databricks workload costs.",FinOps owner,Escalate when cost uncertainty mitigation lacks owner or date.
+RISK-011,skills/operational ownership,medium,medium,medium,Assign service owners and train support teams before migration.,Platform owner,Escalate when skills/operational ownership mitigation lacks owner or date.

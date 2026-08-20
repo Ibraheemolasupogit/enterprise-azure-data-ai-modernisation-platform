@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Carrier update feed",
+  "type": "object",
+  "required": [
+    "carrier_update_id",
+    "partner_code",
+    "external_order_ref",
+    "partner_status",
+    "update_timestamp",
+    "schema_version"
+  ],
+  "properties": {
+    "carrier_update_id": {
+      "type": "string"
+    },
+    "partner_code": {
+      "type": "string"
+    },
+    "external_order_ref": {
+      "type": "string"
+    },
+    "partner_status": {
+      "type": "string"
+    },
+    "update_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "integer"
+    },
+    "partner_eta_text": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

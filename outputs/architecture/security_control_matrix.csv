@@ -1,0 +1,11 @@
+control_id,control_name,control_category,applies_to_assets,target_mechanism,implementation_status,evidence_class,future_milestone
+sec-001,Entra-first human access,identity,SQL MI; PostgreSQL; Databricks; Azure portal,Entra groups mapped to least-privilege database/platform roles,planned,derived evidence,security/governance milestone
+sec-002,Managed workload identity,identity,applications; ingestion; CI/CD,Managed identities and federated GitHub deployment identity,planned,derived evidence,IaC/CI-CD milestone
+sec-003,Private data-plane access,network,SQL MI; PostgreSQL; ADLS; Key Vault; Databricks,Private Link/private endpoints and Private DNS in production,planned,estimated design assumption,network/IaC milestone
+sec-004,Encryption at rest,data protection,SQL MI; PostgreSQL; ADLS; Key Vault,Service-managed encryption by default; CMK only if policy requires,planned,estimated design assumption,security milestone
+sec-005,TLS in transit,data protection,applications; databases; storage; APIs,Enforce TLS and private connectivity in production,planned,estimated design assumption,implementation milestones
+sec-006,SQL TDE and audit,database security,transport operational database,"TDE, SQL auditing, threat detection/Defender posture",planned,estimated design assumption,Azure SQL operations milestone
+sec-007,Masking and row-level controls,database security,customer/contact/service data,Dynamic Data Masking and Row-Level Security where business rules require,planned,derived evidence,security/governance milestone
+sec-008,Unity Catalog permissions,lakehouse governance,bronze/silver/gold data products,Catalog/schema/table grants and lineage,planned,estimated design assumption,Databricks implementation milestone
+sec-009,Secret isolation,secrets,integration credentials; optional keys,Key Vault references; no committed secrets,planned,derived evidence,IaC/security milestone
+sec-010,Audit retention,operations,"database, Databricks, storage, Key Vault, CI/CD",Log Analytics retention policy with archive where justified,planned,estimated design assumption,observability milestone
