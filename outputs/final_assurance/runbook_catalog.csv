@@ -1,0 +1,10 @@
+scenario,trigger,owner,platform,severity,evidence_source,recovery_goal,runbook_path,evidence_classification
+SQL unavailable,availability alert,database platform team,Azure SQL,critical,outputs/azure_sql_operations/alert_catalog.csv,restore service inside agreed RTO,docs/runbooks/sqlmi-database-unavailable.md,configuration defined
+SQL slow query,performance alert,database platform team,Azure SQL,high,outputs/sql_performance/performance_assurance.csv,mitigate regression,docs/runbooks/sqlmi-slow-query.md,configuration defined
+Databricks job failure,job failure alert,data platform team,Databricks,high,outputs/databricks_operations/job_health_rules.csv,rerun or remediate,docs/runbooks/databricks-job-failure.md,configuration defined
+Streaming lag,freshness breach,data platform team,Databricks,high,outputs/databricks_operations/streaming_health_rules.csv,recover checkpoint/throughput,docs/runbooks/databricks-streaming-lag.md,configuration defined
+Data quality failure,quality gate stop,data quality owner,Databricks,high,outputs/databricks_orchestration/quality_results.csv,quarantine/remediate/replay,docs/runbooks/data-quality-failure.md,configuration defined
+AI invocation failure,generation audit failed,AI platform team,SQL AI/Azure OpenAI,high,outputs/sql_ai/ai_failure_handling.csv,return safe failure and restore provider,docs/runbooks/sql-ai-azure-openai-invocation-failure.md,configuration defined
+AI leakage incident,security report,security team,AI/API,critical,outputs/sql_ai/ai_data_exposure_matrix.csv,contain and remediate,docs/runbooks/sql-ai-data-leakage-security-incident.md,configuration defined
+Fabric handoff failure,handoff manifest/consumer failure,shared Azure/Fabric owners,Fabric boundary,high,outputs/fabric_integration/failure_responsibility_matrix.csv,repair producer or consumer boundary,docs/fabric-integration-boundary.md,configuration defined
+Deployment rollback,failed release,DevSecOps team,CI/CD,high,.github/workflows/ci.yml,restore previous release,docs/runbooks/deployment-rollback.md,configuration defined

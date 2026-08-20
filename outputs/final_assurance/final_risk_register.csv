@@ -1,0 +1,11 @@
+risk,likelihood,impact,mitigation,residual_risk,validation_status,evidence_classification
+migration,medium,high,"wave planning, reconciliation and rollback gates",medium,requires Azure validation,requires Azure validation
+performance,medium,high,"Query Store, indexes and regression gates",medium,requires Azure validation,requires Azure validation
+availability,low,high,HA/DR architecture and runbooks,medium,requires Azure validation,requires Azure validation
+data quality,medium,high,quality gates and quarantine/replay,low,locally validated,locally validated
+security,medium,high,"least privilege, no-secret check, audit",medium,requires Azure validation,requires Azure validation
+AI leakage,medium,high,retrieval authorization and sensitive exposure matrix,medium,requires Azure validation,requires Azure validation
+cost,medium,medium,FinOps controls and cost allocation,medium,requires Databricks validation,requires Databricks validation
+identity,medium,high,Entra groups and managed identity separation,medium,requires Azure validation,requires Azure validation
+integration,medium,medium,API/Fabric contracts and runtime validation gaps,medium,requires application runtime validation,requires application runtime validation
+operational ownership,low,medium,ownership matrix and runbook catalog,low,configuration defined,configuration defined

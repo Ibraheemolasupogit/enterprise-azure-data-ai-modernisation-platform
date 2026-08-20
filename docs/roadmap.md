@@ -148,13 +148,20 @@ Intentionally deferred:
 - Fabric workspace, OneLake, Lakehouse, Warehouse, semantic model, Power BI, Fabric pipeline, notebook, Real-Time Intelligence, and Fabric CI/CD implementation.
 - Fabric runtime validation of shortcuts/interoperability and downstream enforcement.
 
-## Future Milestone: Final Cross-Platform Assurance and Portfolio Release
+## Milestone 16: Final Cross-Platform Assurance and Portfolio Release
 
-Planned:
+Implemented:
 
-- Azure Monitor and Log Analytics dashboards.
-- Databricks workload observability.
-- Cost allocation and anomaly detection.
-- Reliability tests.
-- RTO/RPO evidence.
-- Production readiness review.
+- Cross-platform capability inventory and final architecture traceability.
+- Platform ownership, security, identity, governance, data-product, resilience, failure-mode, observability, FinOps, AI, API, and CI/CD assurance.
+- Repository-wide no-secret check and deterministic generated-output assurance.
+- Implementation truth matrix, production gap register, final risk register, runbook catalog, release readiness gates, and machine-readable release manifest.
+- Portfolio release documentation for technical review.
+
+Explicit production-validation gaps:
+
+- Live Azure deployment, SQL MI/PostgreSQL sizing, backup/restore drill, DR failover, Databricks runtime execution, SQL vector runtime validation, Azure OpenAI invocation, DAB/Container Apps deployment, Fabric shortcut validation, and production identity bindings.
+
+## Optional Future Extensions
+
+Optional future work may include approved live deployment, customer-environment validation, production telemetry tuning, and operational rehearsal. These are environment-specific validation activities, not additional repository milestones.

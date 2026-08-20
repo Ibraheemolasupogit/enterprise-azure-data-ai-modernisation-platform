@@ -1,0 +1,16 @@
+gate,gate_status,evidence,production_readiness_boundary,evidence_classification
+repository quality,PASS,"docs, structure, tests and lint pass locally",portfolio release gate; not production deployment approval,configuration defined
+architecture,PASS,target architecture and traceability are defined,portfolio release gate; not production deployment approval,configuration defined
+security,CONDITIONAL,controls defined; runtime validation still required,portfolio release gate; not production deployment approval,configuration defined
+data governance,PASS,"contracts, lineage, sensitivity and quality evidence exist",portfolio release gate; not production deployment approval,configuration defined
+migration,CONDITIONAL,local migration evidence exists; live rehearsal required,portfolio release gate; not production deployment approval,configuration defined
+Azure SQL,CONDITIONAL,database project and ops defined; Azure validation required,portfolio release gate; not production deployment approval,configuration defined
+Databricks,CONDITIONAL,assets and evidence defined; runtime validation required,portfolio release gate; not production deployment approval,configuration defined
+AI,CONDITIONAL,SQL AI/RAG defined; Azure SQL/OpenAI validation required,portfolio release gate; not production deployment approval,configuration defined
+API,CONDITIONAL,DAB/API/MCP contracts defined; app runtime validation required,portfolio release gate; not production deployment approval,configuration defined
+Fabric boundary,CONDITIONAL,handoff contract defined; Fabric runtime validation required,portfolio release gate; not production deployment approval,configuration defined
+resilience,CONDITIONAL,architecture/runbooks defined; DR drills required,portfolio release gate; not production deployment approval,configuration defined
+observability,CONDITIONAL,queries/alerts defined; live telemetry required,portfolio release gate; not production deployment approval,configuration defined
+FinOps,CONDITIONAL,drivers/controls defined; runtime measurements required,portfolio release gate; not production deployment approval,configuration defined
+CI/CD,PASS,local validation and workflows are configured,portfolio release gate; not production deployment approval,configuration defined
+documentation,PASS,"portfolio docs, roadmap and reports are present",portfolio release gate; not production deployment approval,configuration defined

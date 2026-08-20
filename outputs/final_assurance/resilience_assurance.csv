@@ -1,0 +1,9 @@
+platform,architecture_target,local_status,cloud_validation,runbook,evidence_classification
+Azure SQL,zone/backup/restore/failover architecture target,not simulated locally,requires Azure validation,docs/runbooks/sqlmi-regional-dr-failover.md,requires Azure validation
+PostgreSQL,backup/restore and target service HA assumption,not simulated locally,requires Azure validation,docs/runbooks/billing-ops-cutover.md,requires Azure validation
+Databricks pipelines,"retry, replay, checkpoint and quality stop controls",locally validated,requires Databricks validation,docs/runbooks/databricks-job-failure.md,requires Databricks validation
+streaming,checkpoint recovery and lag controls,configuration defined,requires Databricks validation,docs/runbooks/databricks-streaming-lag.md,requires Databricks validation
+storage,private access and replayable raw/bronze zones,configuration defined,requires Azure validation,docs/runbooks/databricks-failed-ingestion-job.md,requires Azure validation
+API layer,"timeouts, retries, bounded request and health endpoints",configuration defined,requires application runtime validation,docs/application-api-integration.md,requires application runtime validation
+AI dependencies,fallback to insufficiency/unavailable response,configuration defined,requires Azure validation,docs/runbooks/sql-ai-azure-openai-invocation-failure.md,requires Azure validation
+Fabric boundary,last valid version and contract/failure matrix,configuration defined,requires Fabric validation,docs/fabric-integration-boundary.md,requires Fabric validation

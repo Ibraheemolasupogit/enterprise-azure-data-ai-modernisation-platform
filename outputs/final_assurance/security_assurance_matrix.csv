@@ -1,0 +1,12 @@
+control,coverage,assurance_status,runtime_validation,residual_risk,evidence,evidence_classification
+Entra ID,identity provider for users/workloads,configuration defined,runtime token validation required,incorrect group mapping,docs/application-api-integration.md,configuration defined
+managed identities,API/SQL/embedding/runtime identities separated,configuration defined,Azure validation required,over-broad identity grants,outputs/application_integration/api_authorization_matrix.csv,configuration defined
+GitHub OIDC,deployment identity pattern without stored cloud secrets,configuration defined,GitHub/Azure validation required,environment approval misconfiguration,.github/workflows/sql-cd.yml,configuration defined
+database roles,least-privilege SQL roles,configuration defined,Azure SQL validation required,permission drift,src/azure_sql/database_project/legacy_tms/Security,configuration defined
+Unity Catalog permissions,catalog/schema/table grants and governance,configuration defined,Databricks validation required,workspace/group drift,src/databricks/unity_catalog/sql/03_security_governance.sql,configuration defined
+API authorization,allowlisted DAB/API roles,locally validated,application runtime validation required,missing role claim mapping,outputs/application_integration/api_authorization_matrix.csv,locally validated
+RLS/masking/classification,sensitive data controls,configuration defined,Azure/Databricks validation required,incomplete policy binding,outputs/azure_sql_operations/sensitive_data_controls.csv,configuration defined
+Key Vault boundary,"secret storage boundary, no committed secrets",configuration defined,Azure validation required,mis-scoped secret access,infra/modules/azure-sql/managed-instance.bicep,configuration defined
+private networking,private SQL/storage/platform access,configuration defined,Azure validation required,public exposure,docs/architecture/security-governance.md,configuration defined
+retrieval authorization,AI context filtered by caller authorization,locally validated,Azure/application validation required,cross-customer context leakage,outputs/sql_ai/ai_security_matrix.csv,locally validated
+MCP allowlisting,fixed tool catalog with schemas,locally validated,application runtime validation required,tool overreach,outputs/application_integration/mcp_security_matrix.csv,locally validated

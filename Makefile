@@ -1,12 +1,15 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check fabric-integration-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd generate-sql-ai-evidence validate-sql-ai generate-application-integration-evidence validate-application-integration generate-fabric-integration-evidence validate-fabric-integration build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines generate-databricks-orchestration-evidence validate-databricks-orchestration generate-databricks-operations-evidence validate-databricks-operations
+.PHONY: help validate release-assurance test lint docs-check structure-check check-no-secrets check-generated-outputs assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check fabric-integration-check final-assurance-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd generate-sql-ai-evidence validate-sql-ai generate-application-integration-evidence validate-application-integration generate-fabric-integration-evidence validate-fabric-integration generate-final-assurance-evidence validate-final-assurance build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines generate-databricks-orchestration-evidence validate-databricks-orchestration generate-databricks-operations-evidence validate-databricks-operations
 
 PYTHON ?= python3
 
 help:
 	@echo "Available commands:"
 	@echo "  make validate        Run all local validation"
+	@echo "  make release-assurance Run final portfolio assurance checks"
 	@echo "  make test            Run pytest"
 	@echo "  make lint            Run Ruff if installed"
+	@echo "  make check-no-secrets Run repository no-secret assurance"
+	@echo "  make check-generated-outputs Verify generated evidence is reproducible"
 	@echo "  make docs-check      Validate documentation links and required docs"
 	@echo "  make structure-check Validate repository foundation structure"
 	@echo "  make assessment-check Validate generated assessment outputs"
@@ -19,6 +22,7 @@ help:
 	@echo "  make validate-sql-ai Generate and validate SQL AI/vector/RAG evidence"
 	@echo "  make validate-application-integration Generate and validate application/API integration evidence"
 	@echo "  make validate-fabric-integration Generate and validate Fabric boundary evidence"
+	@echo "  make validate-final-assurance Generate and validate final assurance evidence"
 	@echo "  make validate-databricks-foundation Generate and validate Databricks foundation evidence"
 	@echo "  make validate-databricks-pipelines Generate and validate Databricks pipeline evidence"
 	@echo "  make validate-databricks-orchestration Generate and validate Databricks orchestration evidence"
@@ -29,7 +33,9 @@ help:
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check fabric-integration-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check fabric-integration-check final-assurance-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check test lint
+
+release-assurance: validate check-no-secrets check-generated-outputs
 
 test:
 	$(PYTHON) -m pytest
@@ -42,6 +48,12 @@ docs-check:
 
 structure-check:
 	$(PYTHON) scripts/validate_structure.py
+
+check-no-secrets:
+	$(PYTHON) scripts/check_no_secrets.py
+
+check-generated-outputs:
+	$(PYTHON) scripts/check_generated_outputs.py
 
 assessment-check:
 	$(PYTHON) scripts/validate_assessment.py
@@ -69,6 +81,9 @@ application-integration-check:
 
 fabric-integration-check:
 	$(PYTHON) scripts/validate_fabric_integration.py
+
+final-assurance-check:
+	$(PYTHON) scripts/validate_final_assurance.py
 
 databricks-foundation-check:
 	$(PYTHON) scripts/validate_databricks_foundation.py
@@ -134,6 +149,12 @@ generate-fabric-integration-evidence:
 
 validate-fabric-integration: generate-fabric-integration-evidence
 	$(PYTHON) scripts/validate_fabric_integration.py
+
+generate-final-assurance-evidence:
+	$(PYTHON) -m final_assurance.cli --outputs-dir outputs/final_assurance --reports-dir reports
+
+validate-final-assurance: generate-final-assurance-evidence
+	$(PYTHON) scripts/validate_final_assurance.py
 
 build-sql-project:
 	$(PYTHON) scripts/build_sql_project.py

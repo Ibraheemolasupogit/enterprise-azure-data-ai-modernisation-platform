@@ -1,0 +1,70 @@
+{
+  "commit": "f79f599e331f0b139ad5e2e6cf8fec6511b82b17",
+  "generated_evidence": [
+    "ai_assurance.csv",
+    "api_assurance.csv",
+    "architecture_traceability.csv",
+    "capability_inventory.csv",
+    "cicd_assurance.csv",
+    "data_product_assurance.csv",
+    "failure_mode_matrix.csv",
+    "final_risk_register.csv",
+    "finops_assurance.csv",
+    "governance_traceability.csv",
+    "identity_assurance.csv",
+    "implementation_truth_matrix.csv",
+    "observability_assurance.csv",
+    "platform_ownership_matrix.csv",
+    "production_gap_register.csv",
+    "release_readiness.csv",
+    "resilience_assurance.csv",
+    "runbook_catalog.csv",
+    "security_assurance_matrix.csv"
+  ],
+  "milestone_coverage": [
+    "Milestone 1",
+    "Milestone 2",
+    "Milestone 3",
+    "Milestone 4",
+    "Milestone 5",
+    "Milestone 6",
+    "Milestone 7",
+    "Milestone 8",
+    "Milestone 9",
+    "Milestone 10",
+    "Milestone 11",
+    "Milestone 12",
+    "Milestone 13",
+    "Milestone 14",
+    "Milestone 15",
+    "Milestone 16"
+  ],
+  "platform_version": "0.1.0-milestone-16",
+  "production_validation_gaps": [
+    "live Azure deployment",
+    "SQL MI sizing",
+    "PostgreSQL sizing",
+    "real backup/restore drill",
+    "real DR failover",
+    "Databricks runtime execution",
+    "SQL vector runtime validation",
+    "Azure OpenAI invocation",
+    "DAB/Container Apps deployment",
+    "Fabric shortcut validation"
+  ],
+  "repository": "enterprise-azure-data-ai-modernisation-platform",
+  "test_count": "114 observed in latest full validation",
+  "tool_availability": {
+    "bicep": false,
+    "databricks": false,
+    "dotnet": true,
+    "git": true
+  },
+  "truth_boundary": "No live Azure, Databricks, Fabric, Azure OpenAI, or application deployment is claimed.",
+  "validation_commands": [
+    "make validate-final-assurance",
+    "make check-no-secrets",
+    "make check-generated-outputs",
+    "make release-assurance"
+  ]
+}

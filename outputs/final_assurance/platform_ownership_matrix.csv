@@ -1,0 +1,12 @@
+service,owner,accountable_support,consumers,ownership_boundary,evidence_classification
+Azure SQL,database platform team,operations/security team,application and data teams,no overlap; DB team owns platform state,configuration defined
+PostgreSQL,database platform team,migration team,billing analytics consumers,secondary target only,configuration defined
+Databricks,data platform team,data engineering team,operations team,workspace/runtime owned by data platform,configuration defined
+ADLS,platform engineering,data engineering team,Fabric consumer identity,published Gold paths only for Fabric,configuration defined
+Unity Catalog,data governance team,data platform team,analytics groups,permissions managed centrally,configuration defined
+API layer,application integration team,security team,client applications,"DAB/API owns interface, SQL owns data",configuration defined
+Azure OpenAI boundary,AI platform team,security team,API/SQL AI consumers,no local invocation claimed,configuration defined
+Fabric consumer boundary,Fabric platform team,Azure producer team,analytics consumers,Fabric downstream ownership only,configuration defined
+CI/CD,DevSecOps team,platform owners,release approvers,manual environment approval for production,configuration defined
+security,security team,platform owners,auditors,control ownership explicit,configuration defined
+operations,operations team,platform owners,service desk,runbooks mapped to platforms,configuration defined

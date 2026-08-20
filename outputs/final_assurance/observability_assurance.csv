@@ -1,0 +1,8 @@
+workload,signal,alert,owner,runbook,evidence_source,evidence_classification
+database,"SQL availability, blocking, deadlocks, resource health",Azure SQL alerts,database platform team,docs/runbooks/sqlmi-database-unavailable.md,outputs/azure_sql_operations/monitoring_catalog.csv,configuration defined
+Databricks,"jobs, compute, SQL warehouse, streaming, Delta health",Databricks operations alerts,data platform team,docs/runbooks/databricks-job-failure.md,outputs/databricks_operations/monitoring_catalog.csv,configuration defined
+API,request count/duration/failures/auth/throttling,Application Insights alerts,application integration team,docs/application-api-integration.md,outputs/application_integration/observability_catalog.csv,configuration defined
+AI calls,retrieval/generation status and dependency failures,AI audit and dependency alerts,AI platform team,docs/runbooks/sql-ai-grounding-failure.md,outputs/sql_ai/ai_audit_catalog.csv,configuration defined
+security,audit/security events and auth failures,security audit alerts,security team,docs/runbooks/incident-response.md,outputs/azure_sql_operations/alert_catalog.csv,configuration defined
+data quality,quality gate failures and freshness,quality gate alerts,data quality owner,docs/runbooks/data-quality-failure.md,outputs/databricks_orchestration/quality_results.csv,configuration defined
+cost,compute/storage/log/API/AI cost drivers,cost anomaly alerts where configured,FinOps owner,docs/runbooks/databricks-unexpected-cost.md,outputs/databricks_operations/cost_optimization_controls.csv,configuration defined

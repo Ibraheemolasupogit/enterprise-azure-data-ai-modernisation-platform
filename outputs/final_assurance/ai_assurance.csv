@@ -1,0 +1,10 @@
+ai_control,coverage,local_status,runtime_status,evidence,evidence_classification
+grounding,context-only prompt and insufficiency behavior,configuration defined,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+retrieval authorization,metadata filters and role model,locally validated,requires application runtime validation,outputs/sql_ai/sql_ai_readiness.csv,requires application runtime validation
+source traceability,document/chunk/citation contracts,locally validated,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+embedding lifecycle,current/stale/pending/failed/retired,locally validated,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+vector dimensions,1536 dimension configuration and mismatch handling,configuration defined,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+hybrid retrieval,RRF fixtures and evaluation metrics,locally validated,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+prompt injection,retrieved text treated as untrusted,configuration defined,requires application runtime validation,outputs/sql_ai/sql_ai_readiness.csv,requires application runtime validation
+sensitive-data controls,exclude/redact/restrict matrix,configuration defined,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation
+audit/failure/cost,"retrieval/generation audit, failure handling and cost controls",configuration defined,requires Azure validation,outputs/sql_ai/sql_ai_readiness.csv,requires Azure validation

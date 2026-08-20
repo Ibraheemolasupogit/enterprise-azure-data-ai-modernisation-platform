@@ -1,0 +1,8 @@
+api_control,coverage,validation_status,evidence,evidence_classification
+allowlisted APIs,all APIs map to explicit objects,locally validated,outputs/application_integration/integration_readiness.csv,locally validated
+DAB mappings,production config has named roles and no anonymous access,locally validated,outputs/application_integration/integration_readiness.csv,locally validated
+REST/GraphQL,bounded OpenAPI and selected GraphQL examples,configuration defined,outputs/application_integration/integration_readiness.csv,configuration defined
+AI endpoint,authorization-propagating thin endpoint contract,configuration defined,outputs/application_integration/integration_readiness.csv,configuration defined
+MCP schemas,strict schemas and read-focused tools,locally validated,outputs/application_integration/integration_readiness.csv,locally validated
+error/rate/observability,"consistent errors, rate classes and telemetry",configuration defined,outputs/application_integration/integration_readiness.csv,configuration defined
+network boundary,Container Apps and private SQL posture,requires Azure validation,outputs/application_integration/integration_readiness.csv,requires Azure validation

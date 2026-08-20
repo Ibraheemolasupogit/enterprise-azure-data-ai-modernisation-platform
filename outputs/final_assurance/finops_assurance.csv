@@ -1,0 +1,10 @@
+cost_area,driver,classification,optimization_control,evidence_classification
+Azure SQL,compute/storage/backup/logs,known driver,right-size after workload validation; Query Store tuning,configuration defined
+PostgreSQL,compute/storage/backup,architecture assumption,size after migration rehearsal,configuration defined
+Databricks compute,jobs/serverless/classic clusters,known driver,"policies, job sizing, autoscaling, optimization controls",configuration defined
+SQL warehouses,warehouse size and concurrency,known driver,monitor query history and right-size,configuration defined
+storage,ADLS Delta/retention/quarantine/logs,known driver,retention and lifecycle controls,configuration defined
+logs,Log Analytics/Application Insights retention,runtime measurement required,retention and sampling policy,configuration defined
+Container Apps,replicas/CPU/memory/ingress,architecture assumption,scale bounds and request telemetry,configuration defined
+Azure OpenAI,embedding/generation calls and tokens,runtime measurement required,"topK, token limits, re-embedding controls",configuration defined
+Fabric duplication boundary,copy vs shortcut storage/processing,architecture assumption,prefer no-copy shortcut/interoperability,configuration defined

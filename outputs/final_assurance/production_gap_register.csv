@@ -1,0 +1,11 @@
+gap,reason,risk,evidence_needed,owner_role,closure_criteria,evidence_classification
+live Azure deployment,no deployment requested,architecture may need environment-specific adjustment,approved Azure deployment evidence,platform engineering,Bicep deployment succeeds with approvals,configuration defined
+SQL MI sizing,local fixtures cannot size production,performance/cost risk,workload baseline and Query Store runtime metrics,database platform team,sizing validated under representative load,configuration defined
+PostgreSQL sizing,secondary target not deployed,billing workload risk,runtime sizing and restore evidence,database platform team,target sizing accepted,configuration defined
+real backup/restore drill,cloud resources absent,recovery confidence risk,restore drill evidence,operations team,restore meets target,configuration defined
+real DR failover,cloud resources absent,availability risk,failover drill evidence,operations team,RTO/RPO validated,configuration defined
+Databricks runtime execution,workspace not used locally,pipeline/runtime defect risk,bundle validate/run evidence,data platform team,jobs pass in dev/test,configuration defined
+SQL vector runtime validation,local SQL does not execute vector functions,AI retrieval runtime risk,Azure SQL vector validation,AI/data platform team,vector search passes in Azure,configuration defined
+Azure OpenAI invocation,no provider calls locally,AI generation risk,endpoint invocation and audit evidence,AI platform team,grounded generation validated,configuration defined
+DAB/Container Apps deployment,no app runtime deployed,API integration risk,Container Apps/DAB smoke test,application integration team,API smoke tests pass,configuration defined
+Fabric shortcut validation,Fabric implementation is separate,downstream handoff risk,Fabric shortcut/interoperability evidence,Fabric platform team,Fabric consumes Gold contract successfully,configuration defined

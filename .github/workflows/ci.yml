@@ -24,8 +24,8 @@ jobs:
       - name: Install dev tooling
         run: python -m pip install -e ".[dev]"
 
-      - name: Run validation
-        run: make validate
+      - name: Run final assurance
+        run: make release-assurance
 
   sql-project:
     name: SQL project build

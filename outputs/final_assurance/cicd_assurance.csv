@@ -1,0 +1,12 @@
+lifecycle_area,control,validation_status,evidence,evidence_classification
+repository validation,make validate,locally validated,Makefile,locally validated
+tests,pytest across all domains,locally validated,tests/,locally validated
+Python quality,ruff check,locally validated,pyproject.toml,locally validated
+SQL project,static tests plus optional dacpac build,configuration defined,scripts/test_sql_project.py,configuration defined
+Bicep,module traceability; build depends on tooling,configuration defined,infra/main.bicep,configuration defined
+SQL release evidence,deterministic release outputs,locally validated,outputs/sql_cicd/release_manifest.json,locally validated
+Databricks bundle,bundle assets and targets,configuration defined,databricks.yml,configuration defined
+API config,DAB/OpenAPI/MCP validation,locally validated,outputs/application_integration/api_catalog.csv,locally validated
+secret checks,repository no-secret scanner,locally validated,scripts/check_no_secrets.py,locally validated
+generated outputs,hash-before/after reproducibility check,locally validated,scripts/check_generated_outputs.py,locally validated
+environment promotion,manual approval/controlled publish boundary,configuration defined,.github/workflows/sql-cd.yml,configuration defined

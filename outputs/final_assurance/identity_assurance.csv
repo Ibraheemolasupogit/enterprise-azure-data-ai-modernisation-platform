@@ -1,0 +1,7 @@
+identity_area,identity_model,least_privilege_status,credential_assurance,validation_class,evidence_classification
+Azure SQL identities,"application roles, managed identities, deployment identity",separated,no hardcoded credentials,requires Azure validation,requires Azure validation
+Databricks identities,workspace groups and Unity Catalog grants,separated,no personal tokens committed,requires Databricks validation,requires Databricks validation
+GitHub deployment identities,OIDC/environment approval pattern,separated,no cloud secrets required in repo,configuration defined,configuration defined
+API runtime identities,Container Apps/DAB managed identity,separated,no SQL username/password preferred,requires application runtime validation,requires application runtime validation
+Fabric consumer identities,Entra service principal/groups,separated,read-only Gold boundary,requires Fabric validation,requires Fabric validation
+AI runtime identities,embedding worker and app executor roles,separated,no shared admin identity,requires Azure validation,requires Azure validation

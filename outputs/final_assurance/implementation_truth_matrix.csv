@@ -1,0 +1,8 @@
+truth_category,definition,examples,evidence_classification
+Implemented locally,"deterministic code, tests, generated evidence and static validation","assessment, migration fixtures, local transformations, validation scripts",configuration defined
+Configuration defined,target-ready architecture/code/config not executed in cloud,"Bicep, SQL roles, DAB config, Databricks assets",configuration defined
+Simulated,fixtures or deterministic ranking where real services are unavailable,"workload simulation, AI retrieval fixture rankings",configuration defined
+Requires Azure validation,"Azure SQL, Azure OpenAI, Container Apps, networking, backup/failover",no Azure deployment performed,configuration defined
+Requires Databricks validation,"workspace, Unity Catalog, jobs, system tables, streaming",no Databricks runtime execution performed,configuration defined
+Requires Fabric validation,OneLake shortcuts/interoperability and downstream enforcement,no Fabric resources implemented,configuration defined
+Deferred/blocked,production deployment and customer-environment validation,"requires cloud credentials, approvals and live environment",configuration defined
