@@ -1,0 +1,4 @@
+item_id,area,target,strategy,rationale,evidence_classification
+scd-001,SCD Type 2,dim_customer,business key customer_id; surrogate key customer_sk; effective_start_utc; effective_end_utc; is_current; change_hash,"Customer tier, legal name, and billing region changes require analytical history.",locally validated
+scd-002,MERGE pattern,dim_customer,"close current row when hash differs, insert new current row, keep unchanged rows untouched",Deterministic history tracking without operational temporal-table claims.,locally validated
+scd-003,late-arriving dimension,dim_customer,"use inferred member for late facts, then repair surrogate key when dimension arrives",Preserves fact records without dropping late-arriving data.,configuration defined

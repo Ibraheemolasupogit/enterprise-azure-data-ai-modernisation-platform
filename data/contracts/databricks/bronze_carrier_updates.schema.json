@@ -1,0 +1,12 @@
+{
+  "dataset": "bronze.carrier_updates",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "carrier_update_id", "type": "string", "nullable": false, "semantic": "carrier update event id", "key_role": "business key", "sensitivity": "internal", "source": "carrier_updates", "quality_expectation": "not null"},
+    {"name": "external_order_ref", "type": "string", "nullable": false, "semantic": "external order reference", "key_role": "join key", "sensitivity": "internal", "source": "carrier_updates", "quality_expectation": "not null"},
+    {"name": "partner_status", "type": "string", "nullable": false, "semantic": "carrier status", "key_role": "attribute", "sensitivity": "internal", "source": "carrier_updates", "quality_expectation": "known status or quarantine"},
+    {"name": "_rescued_data", "type": "string", "nullable": true, "semantic": "Auto Loader rescued drift payload", "key_role": "schema drift evidence", "sensitivity": "mixed", "source": "carrier_updates", "quality_expectation": "review before promotion"}
+  ]
+}
+

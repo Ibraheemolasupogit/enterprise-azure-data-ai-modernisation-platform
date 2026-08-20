@@ -1,0 +1,12 @@
+{
+  "dataset": "bronze.depot_reference_feed",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "depot_code", "type": "string", "nullable": false, "semantic": "depot business key", "key_role": "business key", "sensitivity": "internal", "source": "depot_reference_feed", "quality_expectation": "not null"},
+    {"name": "depot_name", "type": "string", "nullable": false, "semantic": "depot display name", "key_role": "attribute", "sensitivity": "internal", "source": "depot_reference_feed", "quality_expectation": "not null"},
+    {"name": "capacity_units", "type": "integer", "nullable": true, "semantic": "operational capacity", "key_role": "attribute", "sensitivity": "internal", "source": "depot_reference_feed", "quality_expectation": "numeric when present"},
+    {"name": "feed_version", "type": "string", "nullable": false, "semantic": "reference feed version", "key_role": "version", "sensitivity": "internal", "source": "depot_reference_feed", "quality_expectation": "not null"}
+  ]
+}
+

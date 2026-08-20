@@ -1,0 +1,6 @@
+item_id,area,target,strategy,rationale,evidence_classification
+layout-001,physical layout,bronze.shipment_operational_events,"liquid clustering by shipment_id,event_type after runtime validation; no small static partitioning",Evolving event access patterns suit clustering better than brittle partitions.,configuration defined
+layout-002,physical layout,silver.shipments,"liquid clustering by shipment_id,route_code,billing_region","Common filters are shipment, route, and region.",configuration defined
+layout-003,physical layout,gold.delivery_delay_metrics,no partitioning initially; table is small aggregate,Avoids small-file/partition overhead.,configuration defined
+layout-004,physical layout,fact_billing_invoices,partition by invoice_month only when volume justifies,Monthly revenue filters are common but current model remains modest.,configuration defined
+layout-005,physical layout,dimensions,no partitioning for small dimensions,Small dimensions should not be over-partitioned.,configuration defined

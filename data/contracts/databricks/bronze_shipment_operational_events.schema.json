@@ -1,0 +1,12 @@
+{
+  "dataset": "bronze.shipment_operational_events",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "event_id", "type": "string", "nullable": false, "semantic": "operational event id", "key_role": "dedupe key", "sensitivity": "internal", "source": "shipment_operational_events", "quality_expectation": "unique within watermark"},
+    {"name": "aggregate_id", "type": "string", "nullable": false, "semantic": "shipment id", "key_role": "foreign key", "sensitivity": "internal", "source": "shipment_operational_events", "quality_expectation": "valid shipment identifier"},
+    {"name": "occurred_at", "type": "timestamp", "nullable": false, "semantic": "event time", "key_role": "watermark", "sensitivity": "internal", "source": "shipment_operational_events", "quality_expectation": "valid timestamp"},
+    {"name": "payload", "type": "variant", "nullable": true, "semantic": "event payload", "key_role": "raw payload", "sensitivity": "mixed", "source": "shipment_operational_events", "quality_expectation": "valid JSON object"}
+  ]
+}
+

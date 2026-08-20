@@ -1,0 +1,11 @@
+{
+  "dataset": "bronze.customer_service_export",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "case_id", "type": "string", "nullable": false, "semantic": "case business key", "key_role": "business key", "sensitivity": "restricted", "source": "customer_service_export", "quality_expectation": "not null"},
+    {"name": "shipment_ref", "type": "string", "nullable": true, "semantic": "shipment reference", "key_role": "foreign key", "sensitivity": "internal", "source": "customer_service_export", "quality_expectation": "known or quarantined"},
+    {"name": "first_note_text", "type": "string", "nullable": true, "semantic": "service narrative excerpt", "key_role": "restricted attribute", "sensitivity": "restricted", "source": "customer_service_export", "quality_expectation": "masked from broad consumers"}
+  ]
+}
+

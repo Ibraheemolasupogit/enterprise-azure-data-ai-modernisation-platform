@@ -1,0 +1,6 @@
+item_id,area,target,strategy,rationale,evidence_classification
+ready-001,ingestion,all current source domains,"source ingestion matrix covers mode, landing, Bronze, contract, checkpoint, watermark, replay, idempotency",Ready for Databricks runtime validation.,locally validated
+ready-002,Bronze,all ingestion sources,Bronze catalog preserves fidelity and metadata,No premature business transformation.,configuration defined
+ready-003,Silver,core analytical entities,"Pure functions validate normalization, dedupe, quarantine, and referential handling",Transformation logic is locally testable.,locally validated
+ready-004,Gold,five representative products,"Gold products have grain, measures, and use cases",BI/Fabric assets are deferred.,locally validated
+ready-005,Databricks runtime,"Spark, Auto Loader, Structured Streaming, Delta MERGE",runtime behavior requires Databricks workspace execution,No fake runtime evidence.,requires Databricks runtime validation

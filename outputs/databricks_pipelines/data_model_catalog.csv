@@ -1,0 +1,10 @@
+object_name,object_role,grain,business_key,surrogate_key,source_systems,slowly_changing_behavior,late_arriving_handling
+dim_customer,dimension,one row per customer version,customer_id,customer_sk,legacy_tms; billing_ops,SCD Type 2 with hash change detection,late facts resolve to current or inferred customer row
+dim_depot,dimension,one row per depot,depot_code,depot_sk,legacy_tms; depot_reference_feed,Type 1 for descriptive corrections; future Type 2 if operations require,late facts use unknown depot member until reference arrives
+dim_route,dimension,one row per route version,route_code,route_sk,legacy_tms; depot_reference_feed,Type 2 candidate for depot/path changes,late facts use route effective date
+dim_vehicle,dimension,one row per vehicle,vehicle_id,vehicle_sk,legacy_tms,Type 1 initially,late facts use unknown vehicle member
+dim_date,dimension,one row per calendar date,date_key,date_sk,derived,static,not applicable
+fact_shipments,fact,one row per shipment,shipment_id,shipment_sk,legacy_tms,facts can be updated by CDC MERGE,late dimensions resolved by surrogate-key repair
+fact_shipment_events,fact,one row per accepted event,event_id,event_sk,shipment_operational_events,append with dedupe,late events accepted within watermark then quarantined/replayed by approval
+fact_billing_invoices,fact,one row per invoice,invoice_id,invoice_sk,billing_ops,MERGE by invoice id and update timestamp,late customer/shipment references resolved by inferred members
+fact_service_cases,fact,one row per service case,case_id,case_sk,billing_ops; customer_service_export,MERGE by case id,unknown shipment references quarantined

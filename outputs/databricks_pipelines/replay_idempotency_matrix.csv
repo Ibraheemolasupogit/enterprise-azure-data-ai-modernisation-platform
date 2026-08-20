@@ -1,0 +1,5 @@
+item_id,area,target,strategy,rationale,evidence_classification
+replay-001,file replay,depot_reference_feed; customer_service_export,replay by source file hash/version through COPY INTO or manifest reset,Effectively-once file processing with explicit reset.,configuration defined
+replay-002,event replay,shipment_operational_events,replay event log after checkpoint reset approval; dedupe by event_id,Duplicate delivery is expected and handled.,locally validated
+replay-003,CDC replay,legacy_tms,replay from source change_version high-water mark and MERGE idempotently,Does not fake SQL MI CDC runtime.,configuration defined
+replay-004,partial batch failure,all batch sources,"write Bronze append first, then idempotent Silver MERGE after validation",Recovery can restart from Bronze without data loss.,configuration defined

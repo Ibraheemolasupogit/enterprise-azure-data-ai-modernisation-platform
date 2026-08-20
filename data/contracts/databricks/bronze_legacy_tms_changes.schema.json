@@ -1,0 +1,12 @@
+{
+  "dataset": "bronze.legacy_tms_changes",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "source_table", "type": "string", "nullable": false, "semantic": "source table name", "key_role": "source discriminator", "sensitivity": "internal", "source": "legacy_tms", "quality_expectation": "known source table"},
+    {"name": "business_key", "type": "string", "nullable": false, "semantic": "source business key", "key_role": "business key", "sensitivity": "internal", "source": "legacy_tms", "quality_expectation": "not null"},
+    {"name": "change_version", "type": "long", "nullable": false, "semantic": "monotonic source change version", "key_role": "watermark", "sensitivity": "internal", "source": "legacy_tms", "quality_expectation": "monotonic per source"},
+    {"name": "_raw_payload", "type": "string", "nullable": false, "semantic": "source-fidelity payload", "key_role": "audit", "sensitivity": "mixed", "source": "legacy_tms", "quality_expectation": "valid JSON"}
+  ]
+}
+

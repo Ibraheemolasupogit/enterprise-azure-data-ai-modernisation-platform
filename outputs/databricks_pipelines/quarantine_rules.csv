@@ -1,0 +1,6 @@
+item_id,area,target,strategy,rationale,evidence_classification
+qr-001,required identifiers,shipments/events/cases,missing business keys are rejected to quarantine,No orphan facts in Silver.,locally validated
+qr-002,referential validation,service_cases,unknown shipment ids are quarantined,Preserves invalid records for triage.,locally validated
+qr-003,schema drift,carrier_updates,changed types and malformed JSON are quarantined,Avoids dangerous coercion.,configuration defined
+qr-004,late events,shipment_operational_events,events outside watermark routed to quarantine or replay workflow,Streaming semantics are explicit.,locally validated
+qr-005,amount sanity,billing_invoices,negative or non-numeric amounts are quarantined,Protects revenue aggregates.,configuration defined

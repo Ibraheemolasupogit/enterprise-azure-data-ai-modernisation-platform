@@ -1,0 +1,12 @@
+{
+  "dataset": "silver.shipments",
+  "schema_version": 1,
+  "evidence_classification": "locally validated",
+  "fields": [
+    {"name": "shipment_id", "type": "string", "nullable": false, "semantic": "shipment business key", "key_role": "business key", "sensitivity": "internal", "source": "legacy_tms", "quality_expectation": "not null and unique"},
+    {"name": "customer_id", "type": "string", "nullable": false, "semantic": "customer reference", "key_role": "foreign key", "sensitivity": "identifier", "source": "legacy_tms", "quality_expectation": "known customer"},
+    {"name": "shipment_status", "type": "string", "nullable": false, "semantic": "normalized shipment status", "key_role": "attribute", "sensitivity": "internal", "source": "legacy_tms", "quality_expectation": "known status"},
+    {"name": "declared_value_gbp", "type": "decimal(12,2)", "nullable": false, "semantic": "declared shipment value", "key_role": "measure", "sensitivity": "commercial", "source": "legacy_tms", "quality_expectation": "non-negative"}
+  ]
+}
+

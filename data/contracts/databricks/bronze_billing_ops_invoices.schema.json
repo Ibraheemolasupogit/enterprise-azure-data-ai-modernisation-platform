@@ -1,0 +1,12 @@
+{
+  "dataset": "bronze.billing_ops_invoices",
+  "schema_version": 1,
+  "evidence_classification": "configuration defined",
+  "fields": [
+    {"name": "invoice_id", "type": "string", "nullable": false, "semantic": "invoice identifier", "key_role": "business key", "sensitivity": "commercial", "source": "billing_ops", "quality_expectation": "not null"},
+    {"name": "shipment_id", "type": "string", "nullable": false, "semantic": "shipment reference", "key_role": "foreign key", "sensitivity": "internal", "source": "billing_ops", "quality_expectation": "known or quarantined"},
+    {"name": "invoice_date", "type": "date", "nullable": false, "semantic": "invoice date", "key_role": "watermark candidate", "sensitivity": "commercial", "source": "billing_ops", "quality_expectation": "valid date"},
+    {"name": "net_amount_gbp", "type": "decimal(12,2)", "nullable": false, "semantic": "net invoice amount", "key_role": "measure", "sensitivity": "commercial", "source": "billing_ops", "quality_expectation": "non-negative unless credit note"}
+  ]
+}
+

@@ -1,0 +1,12 @@
+{
+  "dataset": "gold.delivery_delay_metrics",
+  "schema_version": 1,
+  "evidence_classification": "locally validated",
+  "fields": [
+    {"name": "metric_date", "type": "date", "nullable": false, "semantic": "delivery date", "key_role": "grain", "sensitivity": "internal", "source": "silver.shipments", "quality_expectation": "not null"},
+    {"name": "delivered_count", "type": "long", "nullable": false, "semantic": "delivered shipment count", "key_role": "measure", "sensitivity": "internal", "source": "silver.shipments", "quality_expectation": "non-negative"},
+    {"name": "late_count", "type": "long", "nullable": false, "semantic": "late delivery count", "key_role": "measure", "sensitivity": "internal", "source": "silver.shipments", "quality_expectation": "between 0 and delivered_count"},
+    {"name": "late_rate", "type": "double", "nullable": false, "semantic": "late delivery ratio", "key_role": "measure", "sensitivity": "internal", "source": "silver.shipments", "quality_expectation": "between 0 and 1"}
+  ]
+}
+

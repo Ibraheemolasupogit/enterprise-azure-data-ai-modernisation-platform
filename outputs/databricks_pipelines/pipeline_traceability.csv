@@ -1,0 +1,7 @@
+source,ingestion_pattern,bronze_table,silver_transformation,gold_product,consumer_or_use_case,evidence_classification
+legacy_tms,incremental/CDC-oriented relational ingestion,bronze.legacy_tms_changes,silver.shipments; silver.customer_accounts,gold.shipment_operations_performance; gold.delivery_delay_metrics,operational analytics; BI serving,configuration defined
+billing_ops,batch/incremental relational ingestion,bronze.billing_ops_invoices,silver.billing_invoices,gold.billing_revenue_summary,revenue operations,configuration defined
+depot_reference_feed,batch file ingestion using COPY INTO,bronze.depot_reference_feed,silver.depots_routes,gold.depot_route_performance,route/depot analytics,configuration defined
+carrier_updates,Auto Loader JSON ingestion,bronze.carrier_updates,silver.shipment_events,gold.delivery_delay_metrics,delivery exception analytics,configuration defined
+customer_service_export,batch CSV ingestion,bronze.customer_service_export,silver.service_cases,gold.service_incident_summary,service operations,configuration defined
+shipment_operational_events,Structured Streaming event ingestion,bronze.shipment_operational_events,silver.shipment_events,gold.shipment_operations_performance; gold.delivery_delay_metrics,event-driven operational analytics,configuration defined

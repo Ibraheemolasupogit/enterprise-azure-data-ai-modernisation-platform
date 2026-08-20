@@ -18,6 +18,8 @@ variables:
     description: Production deployment service principal supplied by protected environment configuration.
   runtime_lts:
     default: "15.4.x-scala2.12"
+  storage_account_name:
+    description: Environment-specific ADLS Gen2 storage account name.
 
 workspace:
   root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
@@ -30,14 +32,38 @@ targets:
       host: ${var.dev_workspace_host}
     variables:
       catalog: ${var.dev_catalog}
-    resources: {}
+    resources:
+      jobs:
+        medallion_validation:
+          name: contoso-freight-medallion-validation-dev
+          tasks:
+            - task_key: validate_pipeline_modules
+              spark_python_task:
+                python_file: ../src/databricks/notebooks/ingestion_entrypoint.py
+                parameters:
+                  - --catalog
+                  - ${var.dev_catalog}
+                  - --environment
+                  - dev
   test:
     mode: production
     workspace:
       host: ${var.test_workspace_host}
     variables:
       catalog: ${var.test_catalog}
-    resources: {}
+    resources:
+      jobs:
+        medallion_validation:
+          name: contoso-freight-medallion-validation-test
+          tasks:
+            - task_key: validate_pipeline_modules
+              spark_python_task:
+                python_file: ../src/databricks/notebooks/ingestion_entrypoint.py
+                parameters:
+                  - --catalog
+                  - ${var.test_catalog}
+                  - --environment
+                  - test
   prod:
     mode: production
     workspace:
@@ -47,4 +73,16 @@ targets:
       service_principal_name: ${var.prod_service_principal_name}
     variables:
       catalog: ${var.prod_catalog}
-    resources: {}
+    resources:
+      jobs:
+        medallion_validation:
+          name: contoso-freight-medallion-validation-prod
+          tasks:
+            - task_key: validate_pipeline_modules
+              spark_python_task:
+                python_file: ../src/databricks/notebooks/ingestion_entrypoint.py
+                parameters:
+                  - --catalog
+                  - ${var.prod_catalog}
+                  - --environment
+                  - prod

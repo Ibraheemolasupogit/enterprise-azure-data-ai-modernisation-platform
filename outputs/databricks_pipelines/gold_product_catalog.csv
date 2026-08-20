@@ -1,0 +1,6 @@
+gold_product,grain,source_silver_tables,measures,downstream_use_case,sensitive_data_handling,evidence_classification
+gold.shipment_operations_performance,daily by shipment status,silver.shipments,"shipment_count, open_count, delivered_count",operational analytics and BI serving,no direct PII,locally validated
+gold.depot_route_performance,daily by route and depot,silver.shipments; silver.depots_routes,"shipment_count, on_time_count, delayed_count",depot and route performance,regional row filters apply,configuration defined
+gold.delivery_delay_metrics,delivery date,silver.shipments; silver.shipment_events,"delivered_count, late_count, late_rate, rolling late rate",SLA and delay analysis,no direct PII,locally validated
+gold.billing_revenue_summary,invoice month and status,silver.billing_invoices,"invoice_count, net_revenue_gbp, paid_amount_gbp",revenue operations summary,commercial sensitivity tag,locally validated
+gold.service_incident_summary,daily by case reason/status,silver.service_cases,"case_count, open_count, resolved_count",service and incident trend analysis,case detail excluded,configuration defined

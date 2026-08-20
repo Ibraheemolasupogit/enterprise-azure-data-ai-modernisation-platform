@@ -1,0 +1,5 @@
+item_id,area,target,strategy,rationale,evidence_classification
+chk-001,checkpoint,legacy_tms,abfss://checkpoints/<env>/legacy_tms/,incremental high-water mark and MERGE replay state,configuration defined
+chk-002,checkpoint,carrier_updates,abfss://checkpoints/<env>/autoloader/carrier_updates/,Auto Loader exactly-once file discovery and schema state,configuration defined
+chk-003,checkpoint,shipment_operational_events,abfss://checkpoints/<env>/streaming/shipment_operational_events/,Structured Streaming offset and watermark state,configuration defined
+chk-004,schema location,carrier_updates,abfss://checkpoints/<env>/schemas/carrier_updates/,Auto Loader schema inference and evolution state,configuration defined

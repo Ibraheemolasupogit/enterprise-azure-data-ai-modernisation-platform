@@ -77,22 +77,20 @@ Implemented:
 - Compute decision framework for interactive, jobs, serverless jobs, SQL warehouse, future pipeline, and exception-only classic compute.
 - Unity Catalog catalog/schema strategy, representative DDL, storage credential and external-location model, least-privilege grants, fine-grained governance patterns, governed tags, retention policy, lineage/audit readiness, Delta Sharing boundary, federation decisions, and Databricks Asset Bundle foundation.
 
-## Future Milestone: Databricks Ingestion and Transformation
+## Milestone 10: Databricks Ingestion and Medallion Processing
+
+Implemented:
+
+- Batch, incremental/CDC-oriented, Auto Loader, and Structured Streaming ingestion patterns for current source domains.
+- Bronze, Silver, and Gold medallion assets with local transformation functions and Databricks-ready Spark/SQL assets.
+- Analytical dimensions/facts, SCD Type 2 customer history strategy, schema drift handling, quarantine routing, replay/idempotency, physical layout strategy, data contracts, and pipeline traceability.
+
+## Future Milestone: Formal Databricks Data Quality and Lakeflow Orchestration
 
 Planned:
 
-- Batch ingestion.
-- CDC ingestion.
-- Streaming ingestion pattern.
-- Bronze, Silver, and Gold transformation code.
-
-## Future Milestone: Databricks Data Quality and Lakeflow Orchestration
-
-Planned:
-
-- Data quality checks.
+- Formal data quality constraints and expectations.
 - Lakeflow orchestration.
-- Replay and late-arriving data behaviour.
 - Pipeline-level expectations, recovery, and deployment lifecycle.
 
 ## Future Milestone: Databricks Monitoring and Optimization

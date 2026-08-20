@@ -1,0 +1,5 @@
+item_id,area,target,strategy,rationale,evidence_classification
+drift-001,additive field,carrier_updates.partner_eta_text,rescue in _rescued_data and evolve schema after contract review,Schema version 2 fixture adds ETA text safely.,locally validated
+drift-002,unexpected field,carrier_updates.*,rescue and alert; do not expose to Silver until reviewed,Prevents silent business semantics changes.,configuration defined
+drift-003,changed type,carrier_updates.schema_version,quarantine and fail contract validation,Dangerous type changes should not be coerced silently.,configuration defined
+drift-004,malformed JSON,carrier_updates file,route raw payload to quarantine with parser error,Malformed payload remains auditable.,configuration defined

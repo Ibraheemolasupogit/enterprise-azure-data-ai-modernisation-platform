@@ -4,7 +4,7 @@ This repository is the foundation for an enterprise Azure Data and AI modernisat
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. Milestone 8 adds SQL database development lifecycle, database-as-code, dacpac build readiness, release evidence, drift controls, and CI/CD guardrails. Milestone 9 adds the Databricks platform and Unity Catalog foundation. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
+Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. Milestone 8 adds SQL database development lifecycle, database-as-code, dacpac build readiness, release evidence, drift controls, and CI/CD guardrails. Milestone 9 adds the Databricks platform and Unity Catalog foundation. Milestone 10 adds Databricks ingestion, data modelling, and medallion processing. The repository still does not deploy Azure resources, does not run production Databricks pipelines, and does not claim working AI workloads.
 
 ## Business Problem
 
@@ -117,9 +117,17 @@ Milestone 9 includes:
 - Target-ready Unity Catalog SQL assets for representative shipment, customer, depot/route, billing/service, operational event, quarantine, audit, view, function, and governance objects.
 - Least-privilege access model, governed tags, row/column security patterns, retention strategy, lineage/audit readiness, Delta Sharing and federation boundaries, and Databricks Asset Bundle foundation.
 
+Milestone 10 includes:
+
+- Source ingestion patterns for `legacy_tms`, `billing_ops`, depot reference feeds, carrier updates, customer service exports, and shipment operational events.
+- Bronze, Silver, and Gold medallion design with Databricks-ready Spark/PySpark/SQL assets and deterministic local transformation functions.
+- Auto Loader, Structured Streaming, incremental/CDC, checkpoint, replay, idempotency, schema drift, and quarantine design.
+- Analytical data model with dimensions, facts, physical layout strategy, and SCD Type 2 customer dimension logic.
+- Data contracts and generated evidence for ingestion, Bronze/Silver/Gold catalogs, model, SCD, drift, checkpoints, quarantine, replay, layout, traceability, and readiness.
+
 ## Planned Roadmap
 
-Future milestones will add Databricks ingestion and transformation, Databricks data quality, Lakeflow orchestration, Databricks monitoring and optimization, operational analytics, AI-enabled SQL/search/RAG, API integration, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
+Future milestones will add formal Databricks data-quality constraints, Lakeflow Jobs/orchestration, Databricks monitoring and optimization, AI-enabled SQL/search/RAG, API integration, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
 ## Architecture Decisions and Trade-Offs
 
@@ -210,4 +218,10 @@ Generate and validate Databricks platform foundation evidence with:
 
 ```bash
 make validate-databricks-foundation
+```
+
+Generate and validate Databricks ingestion and medallion evidence with:
+
+```bash
+make validate-databricks-pipelines
 ```
