@@ -133,15 +133,22 @@ Intentionally deferred:
 - Managed identity to Azure SQL validation.
 - Production API gateway policies and external consumer onboarding.
 
-## Future Milestone: Fabric Downstream Integration Boundary
+## Milestone 15: Microsoft Fabric Downstream Integration Boundary
 
-Planned:
+Implemented:
 
-- Explicit Microsoft Fabric consumption boundary where needed.
-- Downstream semantic model and reporting integration decisions.
-- Cross-platform lineage and governance alignment.
+- Explicit producer/consumer ownership matrix separating Azure Data & AI platform, Fabric platform, and shared contract responsibilities.
+- Governed Gold product catalog for Fabric consumption with no Bronze/Silver exposure by default.
+- Integration pattern decisions for OneLake shortcuts, ADLS/Delta interoperability, controlled batch copy by exception, mirroring/API boundaries, and cost/duplication controls.
+- Contract-first handoff with schema fields, sensitivity, freshness, quality expectations, semantic versioning, compatibility policy, publication gate, and quality manifest.
+- Identity/storage access, sensitivity metadata, lineage handoff identifiers, freshness/SLA responsibility, failure ownership, and readiness evidence.
 
-## Future Milestone: Monitoring, FinOps, and Production Assurance
+Intentionally deferred:
+
+- Fabric workspace, OneLake, Lakehouse, Warehouse, semantic model, Power BI, Fabric pipeline, notebook, Real-Time Intelligence, and Fabric CI/CD implementation.
+- Fabric runtime validation of shortcuts/interoperability and downstream enforcement.
+
+## Future Milestone: Final Cross-Platform Assurance and Portfolio Release
 
 Planned:
 

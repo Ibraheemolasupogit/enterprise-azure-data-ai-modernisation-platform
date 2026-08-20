@@ -1,0 +1,7 @@
+control,purpose,evidence_classification
+prefer shortcut/no-copy,minimize duplicate storage and avoid repeated transformations when supported,configuration defined
+copy only by exception,use batch copy for finance snapshots or retention needs with lifecycle approval,configuration defined
+avoid Bronze/Silver exposure,prevent duplicate transformation ownership and unnecessary data movement,configuration defined
+retain one authoritative Gold producer,Fabric consumes; it does not recompute producer-owned Gold logic,configuration defined
+review egress and region alignment,avoid avoidable cross-region/cross-cloud movement,configuration defined
+version lifecycle,do not retain indefinite duplicate product versions without deprecation policy,configuration defined

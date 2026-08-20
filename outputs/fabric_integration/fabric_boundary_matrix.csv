@@ -1,0 +1,13 @@
+responsibility,owner,boundary,evidence_classification
+operational database sources,Azure Data & AI platform,source of truth and operational change capture,configuration defined
+Azure SQL,Azure Data & AI platform,"schema, operations, performance, CI/CD, AI SQL boundary",configuration defined
+Databricks Bronze/Silver/Gold engineering,Azure Data & AI platform,"ingestion, transformations, data quality, and Gold products",configuration defined
+Gold contracts and publication readiness,Azure Data & AI platform,contract-first handoff and quality/freshness status,configuration defined
+API and AI services,Azure Data & AI platform,REST/GraphQL/MCP/API and SQL AI service boundary,configuration defined
+Fabric ingestion/shortcut/mirroring decisions,Fabric platform,downstream consumption pattern after handoff,configuration defined
+OneLake/Lakehouse/Warehouse,Fabric platform,Fabric-side data estate implementation,configuration defined
+semantic models and Power BI,Fabric platform,"downstream modelling, RLS/OLS, reports, and adoption",configuration defined
+Fabric monitoring and CI/CD,Fabric platform,Fabric-side operations and release process,configuration defined
+data contracts,Shared,producer defines; consumer validates and negotiates changes,configuration defined
+identity groups and sensitivity metadata,Shared,Entra group alignment and label/control handoff,configuration defined
+SLA/freshness and incident coordination,Shared,producer and consumer responsibilities remain separate,configuration defined

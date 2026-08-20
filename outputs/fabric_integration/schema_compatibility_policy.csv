@@ -1,0 +1,8 @@
+change_type,classification,notification_versioning,evidence_classification
+add nullable column,backward compatible,minor version increment; notify consumers in release notes,configuration defined
+add non-nullable column,review required,producer/consumer review and default/backfill strategy,configuration defined
+breaking rename,breaking,major version increment and migration period,configuration defined
+removed field,breaking,major version increment and deprecation notice,configuration defined
+changed data type,breaking,major version increment unless widening is proven compatible,configuration defined
+changed grain,breaking,new product version or new product id,configuration defined
+changed key semantics,breaking,new contract and consumer migration plan,configuration defined

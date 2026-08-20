@@ -1,0 +1,7 @@
+capability,status,evidence
+Fabric-facing product catalog,locally validated,fabric_data_product_catalog.csv and tests
+contract-first handoff,locally validated,fabric_data_contracts.csv
+publication gate and quality manifest,configuration defined,publication_gate.csv; quality_handoff_manifest.csv
+identity/storage/sensitivity handoff,configuration defined,identity_access_matrix.csv; sensitivity_handoff.csv
+OneLake shortcut/interoperability pattern,requires Fabric runtime validation,integration_pattern_decisions.csv
+Fabric downstream implementation,deferred to Fabric repository,no Fabric resources implemented here

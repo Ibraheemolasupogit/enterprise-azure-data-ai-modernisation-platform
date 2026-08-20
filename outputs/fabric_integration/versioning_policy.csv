@@ -1,0 +1,5 @@
+version_state,classification,policy,evidence_classification
+active version,backward compatible,current semantic version receives compatible additive changes,configuration defined
+deprecated version,review required,time-bound support while consumers migrate,configuration defined
+breaking change,breaking,major version or new product id; migration period required,configuration defined
+removed version,breaking,only after lifecycle approval and consumer notification,configuration defined

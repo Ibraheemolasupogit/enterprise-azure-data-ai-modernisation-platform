@@ -1,0 +1,6 @@
+product_id,publication_timestamp,schema_version,record_count,quality_status,freshness_status,critical_rule_failures,source_processing_id,evidence_classification
+fabric-prod-001,<runtime-publication-timestamp>,1.0.0,<runtime-record-count>,critical checks passed,<runtime-freshness-status>,0 required for publication,<runtime-processing-id>,configuration defined
+fabric-prod-002,<runtime-publication-timestamp>,1.0.0,<runtime-record-count>,critical checks passed,<runtime-freshness-status>,0 required for publication,<runtime-processing-id>,configuration defined
+fabric-prod-003,<runtime-publication-timestamp>,1.0.0,<runtime-record-count>,critical checks passed,<runtime-freshness-status>,0 required for publication,<runtime-processing-id>,configuration defined
+fabric-prod-004,<runtime-publication-timestamp>,1.0.0,<runtime-record-count>,critical checks passed,<runtime-freshness-status>,0 required for publication,<runtime-processing-id>,configuration defined
+fabric-prod-005,<runtime-publication-timestamp>,1.0.0,<runtime-record-count>,critical checks passed,<runtime-freshness-status>,0 required for publication,<runtime-processing-id>,configuration defined

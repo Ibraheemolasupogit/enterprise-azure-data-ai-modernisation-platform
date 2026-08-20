@@ -1,0 +1,13 @@
+dataset,schema_version,field,data_type,nullable,key,semantic_meaning,sensitivity,allowed_consumer_class,freshness_expectation,quality_expectation,lifecycle,product_id,evidence_classification
+gold.shipment_operations_performance,1.0.0,event_date,date,no,primary,Gold aggregation date,operational,analytics,daily,critical checks passed,active,fabric-prod-001,locally validated
+gold.shipment_operations_performance,1.0.0,shipment_status,string,no,primary,Normalized shipment status,operational,analytics,daily,valid status domain,active,fabric-prod-001,locally validated
+gold.shipment_operations_performance,1.0.0,shipment_count,integer,no,measure,Number of shipments,operational,analytics,daily,non-negative,active,fabric-prod-001,locally validated
+gold.depot_route_performance,1.0.0,event_date,date,no,primary,Aggregation date,operational,regional analytics,daily,critical checks passed,active,fabric-prod-002,locally validated
+gold.depot_route_performance,1.0.0,depot_code,string,no,primary,Depot natural key,operational,regional analytics,daily,known depot,active,fabric-prod-002,locally validated
+gold.depot_route_performance,1.0.0,route_id,string,no,primary,Route identifier,operational,regional analytics,daily,known route,active,fabric-prod-002,locally validated
+gold.delivery_delay_metrics,1.0.0,delivery_date,date,no,primary,Delivery date,operational,analytics,daily,critical checks passed,active,fabric-prod-003,locally validated
+gold.delivery_delay_metrics,1.0.0,late_rate,decimal,no,measure,Share of late deliveries,operational,analytics,daily,between 0 and 1,active,fabric-prod-003,locally validated
+gold.billing_revenue_summary,1.0.0,invoice_month,string,no,primary,Invoice month,financial confidential,finance analytics,daily/monthly,critical checks passed,active,fabric-prod-004,locally validated
+gold.billing_revenue_summary,1.0.0,net_revenue_gbp,decimal,no,measure,Net revenue in GBP,financial confidential,finance analytics,daily/monthly,non-negative unless adjustment flagged,active,fabric-prod-004,locally validated
+gold.service_incident_summary,1.0.0,case_date,date,no,primary,Service case opened date,confidential service data,service analytics,daily,critical checks passed,active,fabric-prod-005,locally validated
+gold.service_incident_summary,1.0.0,case_count,integer,no,measure,Number of service cases,confidential service data,service analytics,daily,non-negative,active,fabric-prod-005,locally validated

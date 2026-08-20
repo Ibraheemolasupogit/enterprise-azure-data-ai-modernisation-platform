@@ -1,0 +1,9 @@
+failure_scenario,owner,producer_action,consumer_action,escalation,recovery_boundary,evidence_classification
+Gold product unavailable,Azure Data & AI platform,stop publication; repair or rerun Gold job,hold Fabric refresh/consumption,Azure data platform incident,producer/consumer boundary remains explicit,configuration defined
+freshness breach,Shared,publish breach status and expected recovery,surface consumer SLA impact,joint incident if downstream users affected,producer/consumer boundary remains explicit,configuration defined
+schema incompatibility,Shared,block publish or publish new version,validate consumer impact and migrate,contract review board,producer/consumer boundary remains explicit,configuration defined
+shortcut/storage access failure,Fabric platform,confirm Azure access boundary is healthy,repair Fabric connection/shortcut identity,Fabric platform operations,producer/consumer boundary remains explicit,configuration defined
+Fabric consumer uses stale version,Fabric platform,keep deprecated version lifecycle metadata current,migrate consumer to active version,Fabric adoption/support,producer/consumer boundary remains explicit,configuration defined
+Azure-side data quality failure,Azure Data & AI platform,block publication and remediate upstream,consume last valid version if policy allows,Azure data quality owner,producer/consumer boundary remains explicit,configuration defined
+identity/RBAC failure,Shared,validate Azure RBAC/ACL and group membership,validate Fabric workspace/connection permissions,identity/security teams,producer/consumer boundary remains explicit,configuration defined
+downstream Fabric processing failure,Fabric platform,no producer action unless contract defect found,repair Fabric pipeline/model/report,Fabric operations,producer/consumer boundary remains explicit,configuration defined

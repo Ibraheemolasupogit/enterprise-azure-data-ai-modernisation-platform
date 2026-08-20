@@ -1,0 +1,5 @@
+identity,preferred_auth,allowed_access,storage_boundary,evidence_classification
+platform publisher identity,Azure managed identity or service principal,write publication manifest and expose read path metadata,Gold publication container/path only,configuration defined
+Fabric ingestion/shortcut identity,Entra service principal or managed identity where supported,read published Gold product paths,read-only to product path; no Bronze/Silver,configuration defined
+analytics consumer groups,Entra groups,consume Fabric-side models and shortcuts,Fabric-side RLS/OLS and workspace roles,configuration defined
+auditor/security group,Entra group,"read contract, manifest, lineage, and audit metadata",metadata-only by default,configuration defined
