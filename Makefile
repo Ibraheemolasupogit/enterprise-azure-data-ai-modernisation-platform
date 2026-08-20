@@ -1,4 +1,4 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance
+.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd build-sql-project test-sql-project
 
 PYTHON ?= python3
 
@@ -15,11 +15,14 @@ help:
 	@echo "  make validate-migration Validate generated migration evidence"
 	@echo "  make validate-azure-sql-operations Generate and validate Azure SQL operations evidence"
 	@echo "  make validate-sql-performance Generate and validate SQL performance evidence"
+	@echo "  make validate-sql-cicd Generate and validate SQL database lifecycle evidence"
+	@echo "  make build-sql-project Build the SQL project dacpac when dotnet is available"
+	@echo "  make test-sql-project Run static SQL project tests"
 	@echo "  make generate-estate Generate the default synthetic legacy estate"
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check test lint
 
 test:
 	$(PYTHON) -m pytest
@@ -47,6 +50,9 @@ azure-sql-operations-check:
 
 sql-performance-check:
 	$(PYTHON) scripts/validate_sql_performance.py
+
+sql-cicd-check:
+	$(PYTHON) scripts/validate_sql_cicd.py
 
 generate-estate:
 	$(PYTHON) -m legacy_estate.generator --profile development --output-dir data/raw/legacy_estate
@@ -76,3 +82,15 @@ generate-sql-performance-evidence:
 
 validate-sql-performance: generate-sql-performance-evidence
 	$(PYTHON) scripts/validate_sql_performance.py
+
+generate-sql-release-evidence:
+	$(PYTHON) -m sql_cicd.cli --outputs-dir outputs/sql_cicd --reports-dir reports
+
+validate-sql-cicd: generate-sql-release-evidence test-sql-project
+	$(PYTHON) scripts/validate_sql_cicd.py
+
+build-sql-project:
+	$(PYTHON) scripts/build_sql_project.py
+
+test-sql-project:
+	$(PYTHON) scripts/test_sql_project.py

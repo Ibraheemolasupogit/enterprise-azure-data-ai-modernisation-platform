@@ -1,6 +1,6 @@
 # SQL Performance Engineering
 
-Milestone 7 adds a reproducible SQL performance-engineering capability for `legacy_tms` on Azure SQL Managed Instance. It does not collect Azure telemetry, execute workloads on SQL MI, fabricate execution-plan XML, or implement SQL CI/CD.
+Milestone 7 adds a reproducible SQL performance-engineering capability for `legacy_tms` on Azure SQL Managed Instance. It does not collect Azure telemetry, execute workloads on SQL MI, or fabricate execution-plan XML. Milestone 8 integrates the regression model into SQL CI/CD release evidence.
 
 ## Scope
 
@@ -24,7 +24,7 @@ Deferred:
 - Real SQL MI execution.
 - Production Query Store runtime analysis.
 - Actual execution-plan capture.
-- Full SQL CI/CD integration.
+- Live SQL MI performance gate execution.
 - Broad index/query tuning campaign.
 
 ## Evidence Boundary
@@ -129,5 +129,4 @@ flowchart LR
   Document --> Remove["Remove temporary mitigation if appropriate"]
 ```
 
-The workflow maps to the future SQL CI/CD milestone, but CI/CD is not implemented here.
-
+The workflow now maps into the Milestone 8 SQL CI/CD evidence model, while live Query Store comparison still requires an Azure SQL Managed Instance environment.

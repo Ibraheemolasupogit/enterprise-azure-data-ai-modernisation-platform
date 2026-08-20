@@ -1,0 +1,7 @@
+check_id,area,check,status,evidence,deferred_boundary
+ready-001,schema,SDK-style SQL project is present.,ready,legacy_tms.sqlproj,Azure publish deferred
+ready-002,build,Dacpac can be built when dotnet restore is available.,tooling dependent,scripts/build_sql_project.py,local environment may lack dotnet/sqlpackage
+ready-003,reference data,Reference data manifest and post-deployment script are deterministic.,ready,reference_data_manifest.csv,no production data deployment
+ready-004,drift,Drift scenarios and release stop rules are defined.,ready,schema_drift_scenarios.csv,live drift query requires Azure SQL MI
+ready-005,security,Security regression gates require least privilege and data-protection review.,ready,security_regression_gate.csv,principal binding remains environment specific
+ready-006,promotion,"Environment promotion matrix separates local, dev, test, and prod.",ready,environment_promotion_matrix.csv,actual approvals configured in GitHub environments

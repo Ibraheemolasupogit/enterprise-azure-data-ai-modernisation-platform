@@ -1,0 +1,47 @@
+{
+  "dacpac_expected_path": "src/azure_sql/database_project/legacy_tms/bin/Debug/legacy_tms.dacpac",
+  "database": "legacy_tms",
+  "evidence_boundary": "local static evidence; no Azure deployment performed",
+  "output_hashes": {
+    "database_object_traceability.csv": "6aa389b5e30e1cc6cf0f6882d7ac4cbcdec1a8b1c66e54e859a7d336adfd97a4",
+    "database_test_catalog.csv": "74157d7c6ad6efe71e8dd3d2e95d2c4aab5610ad8d736962053bfd7b694abd48",
+    "deployment_safety_rules.csv": "ad2454a1de24208773466579d21118565e16df09ce45eea18c5b8d0d95a31c50",
+    "environment_promotion_matrix.csv": "92b2f6637b733183454df9231f1985d978516ab6108c85ae3e6581a2e9228f4f",
+    "performance_regression_gate.csv": "114352799ac1cd10e5c5a954aaaa9dd0427ca8ad3c4b88ecb0bb403bbc700d40",
+    "reference_data_manifest.csv": "0d49b042d95effeb01a0e066a1f2597f9945ea61ea1c59b46eb240ef96a086dc",
+    "release_readiness.csv": "527bcd00ba871451689ab0f0bffb744e73660483ca8edcf5cd7f98291aa6326e",
+    "schema_drift_scenarios.csv": "c10cd5dd06571e94f8102c60239f7a85094ee3ba38bf85ef98877806d692bffe",
+    "security_regression_gate.csv": "1964f9ba57901d0f6a4145047e5d577cfd5f42df1dc41bcdec1a9cd2d26e0770",
+    "sql_project_inventory.csv": "2e13f51d28626e542447ea9bb75d56ee13e2013ecd1e8c8a91321f1eea2cf746"
+  },
+  "outputs": [
+    "database_object_traceability.csv",
+    "database_test_catalog.csv",
+    "deployment_safety_rules.csv",
+    "environment_promotion_matrix.csv",
+    "performance_regression_gate.csv",
+    "reference_data_manifest.csv",
+    "release_readiness.csv",
+    "schema_drift_scenarios.csv",
+    "security_regression_gate.csv",
+    "sql_project_inventory.csv"
+  ],
+  "project": "src/azure_sql/database_project/legacy_tms/legacy_tms.sqlproj",
+  "release_gates": [
+    "schema build",
+    "deployment preview",
+    "drift classification",
+    "reference data manifest",
+    "performance regression gate",
+    "security regression gate",
+    "environment approval"
+  ],
+  "tooling": {
+    "build_command": "make build-sql-project",
+    "dotnet_available": true,
+    "dotnet_sdk_8_or_newer": false,
+    "highest_dotnet_sdk": "3.1.426",
+    "publish_command": "deferred to approved GitHub Actions environment",
+    "sqlpackage_available": false
+  }
+}

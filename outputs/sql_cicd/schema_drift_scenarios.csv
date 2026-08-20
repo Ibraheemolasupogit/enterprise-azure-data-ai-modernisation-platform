@@ -1,0 +1,5 @@
+scenario_id,drift_type,example_change,detection_method,expected_response,automation_boundary
+drift-001,manual hotfix,Index added directly in production.,sqlpackage drift/deploy report compared with committed dacpac,"capture, classify, and back-port to project or remove with approval",not auto-remediated locally
+drift-002,permission drift,Ad hoc user granted table access.,security regression gate plus post-deployment permission query,revoke or codify through role model,requires live SQL validation
+drift-003,reference drift,Depot name changed directly in target.,reference data checksum/manifest review,confirm authoritative source then update project seed or target,no automatic delete
+drift-004,breaking column change,Column length altered outside the project.,dacpac model comparison,block release and run compatibility review,manual DBA review

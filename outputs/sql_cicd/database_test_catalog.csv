@@ -1,0 +1,8 @@
+test_id,test_type,target,assertion,execution_context,required_for_release
+test-001,static schema,legacy_tms.sqlproj,SQL project exists and uses Microsoft.Build.Sql SDK.,local CI,yes
+test-002,static schema,tables,Required OLTP tables are declared as database-as-code assets.,local CI,yes
+test-003,static schema,stored procedures,Procedure assets are represented in the project.,local CI,yes
+test-004,reference data,PostDeployment/ReferenceData.sql,Reference MERGE statements are idempotent and natural-key based.,local CI,yes
+test-005,deployment safety,deployment_safety_rules.csv,Unsafe release classes have explicit stop actions.,local CI,yes
+test-006,drift,schema_drift_scenarios.csv,Manual and security drift scenarios are documented.,local CI,yes
+test-007,integration,dacpac build,dotnet build creates a dacpac when SDK restore is available.,developer or CI runner,tooling dependent

@@ -1,0 +1,5 @@
+/src/azure_sql/database_project/ @database-reviewers
+/src/azure_sql/target_sqlmi/ @database-reviewers
+/src/azure_sql/operations/ @database-reviewers
+/src/azure_sql/performance/ @database-reviewers
+

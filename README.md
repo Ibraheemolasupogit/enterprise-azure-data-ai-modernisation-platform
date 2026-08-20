@@ -4,7 +4,7 @@ This repository is the foundation for an enterprise Azure Data and AI modernisat
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
+Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. Milestone 8 adds SQL database development lifecycle, database-as-code, dacpac build readiness, release evidence, drift controls, and CI/CD guardrails. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
 
 ## Business Problem
 
@@ -100,9 +100,17 @@ Milestone 7 includes:
 - SQL performance workload catalog and deterministic baseline model.
 - Query Store configuration/diagnostic scripts, DMV toolkit, execution-plan analysis model, index recommendations, statistics strategy, blocking/deadlock scenarios, parameter-sensitive query scenario, regression workflow, and performance assurance evidence.
 
+Milestone 8 includes:
+
+- SDK-style SQL Database Project for the `legacy_tms` Azure SQL Managed Instance target using `Microsoft.Build.Sql`.
+- Declarative table, view, procedure, security, pre-deployment, post-deployment reference-data, and static test assets.
+- Dacpac build command that uses real local tooling when available and fails clearly when `dotnet` is absent.
+- Deterministic SQL release evidence for inventory, traceability, reference data, safety rules, drift scenarios, environment promotion, tests, performance gates, security gates, readiness, and release manifest.
+- GitHub Actions CI/CD guardrails for validation, dacpac build, artifact upload, release preview, environment approval, and explicit no-secret/no-fake-publish boundaries.
+
 ## Planned Roadmap
 
-Future milestones will add SQL Database Project / CI-CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring execution, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
+Future milestones will add Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring execution, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
 ## Architecture Decisions and Trade-Offs
 
@@ -119,7 +127,7 @@ This platform deliberately separates workload responsibilities:
 | Path | Purpose |
 | --- | --- |
 | `infra/` | Bicep infrastructure modules, environment parameter placeholders, deployment scripts |
-| `src/azure_sql/` | Future SQL schema, migration, performance, and operational automation assets |
+| `src/azure_sql/` | SQL schema, migration, operations, performance, database project, and release automation assets |
 | `src/databricks/` | Future Databricks jobs, Lakeflow, notebooks, and Unity Catalog assets |
 | `src/data_engineering/` | Secondary source schemas plus future ingestion, CDC, streaming, modelling, and data-quality code |
 | `src/ai/` | Future SQL AI, embeddings, search, and RAG components |
@@ -179,3 +187,12 @@ Generate and validate SQL performance evidence with:
 ```bash
 make validate-sql-performance
 ```
+
+Generate and validate SQL database lifecycle and CI/CD evidence with:
+
+```bash
+make validate-sql-cicd
+make build-sql-project
+```
+
+`make build-sql-project` requires a local .NET SDK and Microsoft.Build.Sql restore capability. If that tooling is unavailable, the command reports the missing dependency instead of claiming a dacpac exists.

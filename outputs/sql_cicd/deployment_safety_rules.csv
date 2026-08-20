@@ -1,0 +1,7 @@
+rule_id,area,rule,enforcement_point,failure_action,rollback_boundary
+safe-001,destructive changes,"Block drop table, drop column, data loss, and unreviewed object removal in release preview.",sqlpackage deploy report and script review,stop release,restore point or backup boundary only
+safe-002,schema drift,Compare deployed database to the committed dacpac before publish.,drift report job,stop release until drift is classified,do not auto-overwrite manual hotfixes
+safe-003,reference data,Reference data deployments must be idempotent and natural-key based.,static test and manifest check,stop release,manual data repair script if partial execution occurs
+safe-004,permissions,Security changes require explicit role/grant traceability.,CODEOWNERS and security regression gate,require security review,revoke/grant script under change control
+safe-005,environment promotion,"Production publish requires main branch, approved environment, release evidence, and no failed gates.",GitHub Actions environment gate,stop release,previous dacpac plus database backup
+safe-006,transaction boundary,One dacpac release is the rollback unit; data migrations use separate reviewed scripts.,release manifest,split release,roll forward preferred after schema publish

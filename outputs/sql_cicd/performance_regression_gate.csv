@@ -1,0 +1,4 @@
+gate_id,area,measured_artifact,threshold,evidence_source,release_decision
+perf-001,query duration,Milestone 7 baseline by workload,no critical OLTP workload worsens beyond 20 percent without waiver,outputs/sql_performance/performance_baseline.csv,block promotion
+perf-002,logical reads,Query Store or deterministic baseline,no high-criticality workload increases reads beyond 25 percent without mitigation,Query Store after Azure validation,block production
+perf-003,index drift,target schema indexes,required customer/status and route/status indexes remain present,sql_project_inventory.csv,block promotion

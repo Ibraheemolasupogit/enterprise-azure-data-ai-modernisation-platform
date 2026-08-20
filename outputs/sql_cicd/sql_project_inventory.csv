@@ -1,0 +1,17 @@
+object_id,object_type,schema_name,object_name,source_path,deployment_phase,owner,evidence_classification
+obj-001,schema,dbo,dbo,src/azure_sql/database_project/legacy_tms/Schemas/dbo.sql,schema,database engineering,configuration defined
+obj-002,table,dbo,CustomerAccount,src/azure_sql/database_project/legacy_tms/Tables/dbo.CustomerAccount.sql,schema,database engineering,configuration defined
+obj-003,table,dbo,CustomerAccountAudit,src/azure_sql/database_project/legacy_tms/Tables/dbo.CustomerAccountAudit.sql,schema,database engineering,configuration defined
+obj-004,table,dbo,Depot,src/azure_sql/database_project/legacy_tms/Tables/dbo.Depot.sql,schema,database engineering,configuration defined
+obj-005,table,dbo,Route,src/azure_sql/database_project/legacy_tms/Tables/dbo.Route.sql,schema,database engineering,configuration defined
+obj-006,table,dbo,Vehicle,src/azure_sql/database_project/legacy_tms/Tables/dbo.Vehicle.sql,schema,database engineering,configuration defined
+obj-007,table,dbo,Shipment,src/azure_sql/database_project/legacy_tms/Tables/dbo.Shipment.sql,schema,database engineering,configuration defined
+obj-008,table,dbo,ShipmentEventHistory,src/azure_sql/database_project/legacy_tms/Tables/dbo.ShipmentEventHistory.sql,schema,database engineering,configuration defined
+obj-009,view,dbo,vw_OpenShipmentsByDepot,src/azure_sql/database_project/legacy_tms/Views/dbo.vw_OpenShipmentsByDepot.sql,schema,database engineering,configuration defined
+obj-010,view,dbo,vw_CustomerServiceSnapshot,src/azure_sql/database_project/legacy_tms/Views/dbo.vw_CustomerServiceSnapshot.sql,schema,database engineering,configuration defined
+obj-011,stored procedure,dbo,usp_CreateShipment,src/azure_sql/database_project/legacy_tms/StoredProcedures/dbo.usp_CreateShipment.sql,schema,database engineering,configuration defined
+obj-012,stored procedure,dbo,usp_UpdateShipmentStatus,src/azure_sql/database_project/legacy_tms/StoredProcedures/dbo.usp_UpdateShipmentStatus.sql,schema,database engineering,configuration defined
+obj-013,security,dbo,roles and permissions,src/azure_sql/database_project/legacy_tms/Security/RolesAndPermissions.sql,post-deployment,platform security,configuration defined
+obj-014,security,dbo,data protection,src/azure_sql/database_project/legacy_tms/Security/DataProtection.sql,post-deployment,platform security,configuration defined
+obj-015,reference data,dbo,Depot and Route seed,src/azure_sql/database_project/legacy_tms/PostDeployment/ReferenceData.sql,post-deployment,database engineering,deterministic local
+obj-016,test,dbo,static database assertions,src/azure_sql/database_project/legacy_tms/Tests/static_schema_tests.sql,validation,quality engineering,static analysis

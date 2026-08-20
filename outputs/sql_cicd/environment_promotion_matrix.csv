@@ -1,0 +1,5 @@
+environment,branch_or_trigger,approval_gate,deployment_mode,data_safety_level,evidence_required
+local,developer command,none,build and static validation only,synthetic data only,release_manifest.json
+dev,feature branch or workflow_dispatch,pull request review,"deploy report, script preview, optional publish",non-production data,"dacpac, deploy report, test catalog"
+test,main branch workflow_dispatch,database owner approval,publish after drift review,masked or synthetic test data,signed release manifest and regression gates
+prod,main branch workflow_dispatch,protected environment approval,manual approval then publish,production controls required,"approved deploy report, backup/restore point, manifest"

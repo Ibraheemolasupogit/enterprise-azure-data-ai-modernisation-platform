@@ -1,0 +1,71 @@
+name: SQL Database Release Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment for release preview
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+      confirm_publish:
+        description: Set true only after deployment report and drift evidence are approved
+        required: true
+        default: "false"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  release-preview:
+    name: Build, preview, and gate
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Install dev tooling
+        run: python -m pip install -e ".[dev]"
+
+      - name: Generate deterministic release evidence
+        run: make validate-sql-cicd
+
+      - name: Build dacpac
+        run: make build-sql-project
+
+      - name: Summarise release boundary
+        run: |
+          echo "Target environment: ${{ inputs.environment }}"
+          echo "This workflow builds and gates the dacpac. Publish requires approved environment configuration and no committed secrets."
+          echo "Use managed identity/OIDC and environment-scoped connection details configured outside the repository."
+
+      - name: Block unapproved publish
+        if: ${{ inputs.confirm_publish != 'true' }}
+        run: |
+          echo "Publish not confirmed. Release stops after build and evidence generation."
+          exit 0
+
+      - name: Publish placeholder
+        if: ${{ inputs.confirm_publish == 'true' }}
+        run: |
+          echo "Live publish is intentionally not implemented in this reference repository."
+          echo "Add sqlpackage publish only after environment secrets, drift reports, backups, and approvals are configured."
+          exit 1
+

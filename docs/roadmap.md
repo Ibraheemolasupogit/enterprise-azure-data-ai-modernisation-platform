@@ -2,6 +2,8 @@
 
 This roadmap preserves the long-term scope while keeping each milestone honest about what is implemented.
 
+Scope anchors retained across the programme: Azure SQL modernisation, SQL CI/CD, Databricks, ingestion, medallion architecture, data quality, operational analytics, vector and hybrid search, RAG, monitoring, FinOps, and production assurance.
+
 ## Milestone 1: Enterprise Platform Foundation
 
 Implemented in this milestone:
@@ -21,27 +23,52 @@ Intentionally deferred:
 - AI search, embeddings, and RAG services.
 - Production monitoring and FinOps dashboards.
 
-## Milestone 2: Azure SQL Modernisation Baseline
+## Milestone 2: Synthetic Legacy Source Estate
 
-Planned:
+Implemented:
 
-- Legacy SQL Server assessment model.
-- Azure SQL Database and Managed Instance target patterns.
-- Schema migration workflow.
-- Security baseline, auditing, masking, and row-level security examples.
-- Backup, HA/DR, and operational runbook foundations.
+- SQL Server-style legacy OLTP source assets.
+- PostgreSQL-like secondary billing source assets.
+- Deterministic synthetic fixtures, contracts, workload simulation, and documented data-quality defects.
 
-## Milestone 3: SQL CI/CD and Operational Automation
+## Milestone 3: Estate Assessment and Modernisation Decisioning
 
-Planned:
+Implemented:
 
-- Database project or migration tooling.
-- Schema drift checks.
-- Data drift and reference-data validation.
-- Query performance baselines.
-- Automated deployment gates.
+- Estate inventory, compatibility assessment, dependency model, workload classification, target-service decisions, complexity scoring, wave planning, and risk register.
 
-## Milestone 4: Databricks Lakehouse Foundation
+## Milestone 4: Target-State Architecture and Platform Decisions
+
+Implemented:
+
+- Workload-to-target matrix, component catalog, security controls, recovery strategy, environment model, architecture traceability, and architecture report.
+
+## Milestone 5: Migration Factory
+
+Implemented:
+
+- Migration manifests, target-ready schemas, local deterministic migration execution, reconciliation checks, validation gates, cutover readiness, rollback readiness, and failure scenarios.
+
+## Milestone 6: Azure SQL Operational Administration Model
+
+Implemented:
+
+- SQL MI operating baseline, Bicep module intent, Entra-first security assets, monitoring/KQL assets, alert catalog, SQL Agent jobs, backup/restore readiness, HA/DR readiness, and runbooks.
+
+## Milestone 7: SQL Performance Engineering
+
+Implemented:
+
+- Workload catalog, deterministic baseline model, Query Store and DMV toolkit, index recommendations, statistics strategy, blocking/deadlock scenarios, parameter-sensitive query scenario, regression workflow, and performance assurance evidence.
+
+## Milestone 8: SQL Database Development Lifecycle and CI/CD
+
+Implemented:
+
+- SDK-style SQL Database Project for `legacy_tms`.
+- Declarative schema assets, reference-data deployment script, drift scenarios, safety rules, environment promotion matrix, regression gates, release manifest, GitHub Actions CI, and release-preview guardrails.
+
+## Future Milestone: Databricks Lakehouse Foundation
 
 Planned:
 
@@ -51,7 +78,7 @@ Planned:
 - Delta Lake bronze, silver, and gold conventions.
 - Workload optimisation standards.
 
-## Milestone 5: Ingestion and Medallion Processing
+## Future Milestone: Ingestion and Medallion Processing
 
 Planned:
 
@@ -61,25 +88,7 @@ Planned:
 - Data quality checks.
 - Replay and late-arriving data behaviour.
 
-## Milestone 6: Governance, Security, and Lineage
-
-Planned:
-
-- Purview integration points.
-- Classification and ownership metadata.
-- End-to-end lineage examples.
-- RBAC and access review automation.
-- Audit reporting.
-
-## Milestone 7: Operational Analytics
-
-Planned:
-
-- Curated data products for shipment reliability, depot performance, fleet maintenance, and disruption analysis.
-- Semantic models or serving views.
-- Data freshness and quality SLOs.
-
-## Milestone 8: SQL AI, Vector, and Hybrid Search
+## Future Milestone: SQL AI, Vector, and Hybrid Search
 
 Planned:
 
@@ -89,7 +98,7 @@ Planned:
 - Hybrid search index design.
 - Security-trimmed retrieval.
 
-## Milestone 9: Grounded RAG
+## Future Milestone: Grounded RAG
 
 Planned:
 
@@ -99,7 +108,7 @@ Planned:
 - Citation, grounding, and safety controls.
 - Clear separation between operational SQL AI and broader AI-platform responsibilities.
 
-## Milestone 10: Monitoring, FinOps, and Production Assurance
+## Future Milestone: Monitoring, FinOps, and Production Assurance
 
 Planned:
 
@@ -109,4 +118,3 @@ Planned:
 - Reliability tests.
 - RTO/RPO evidence.
 - Production readiness review.
-

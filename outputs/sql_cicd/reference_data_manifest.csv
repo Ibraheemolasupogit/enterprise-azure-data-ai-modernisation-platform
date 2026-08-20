@@ -1,0 +1,3 @@
+dataset_id,target_table,key_columns,row_count,deployment_method,idempotency_strategy,source_asset
+ref-001,dbo.Depot,DepotCode,4,post-deployment MERGE,"matched rows are updated, missing rows inserted, deletes are not automatic",src/azure_sql/database_project/legacy_tms/PostDeployment/ReferenceData.sql
+ref-002,dbo.Route,RouteCode,5,post-deployment MERGE,routes resolve depots by natural keys and avoid identity assumptions,src/azure_sql/database_project/legacy_tms/PostDeployment/ReferenceData.sql
