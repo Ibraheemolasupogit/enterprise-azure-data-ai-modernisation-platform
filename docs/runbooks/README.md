@@ -20,3 +20,8 @@ Initial runbooks:
 - [sqlmi-planned-failover.md](sqlmi-planned-failover.md)
 - [sqlmi-regional-dr-failover.md](sqlmi-regional-dr-failover.md)
 - [sqlmi-failed-agent-job.md](sqlmi-failed-agent-job.md)
+- [sqlmi-slow-query.md](sqlmi-slow-query.md)
+- [sqlmi-query-store-regression.md](sqlmi-query-store-regression.md)
+- [sqlmi-deadlock-recurrence.md](sqlmi-deadlock-recurrence.md)
+- [sqlmi-index-regression.md](sqlmi-index-regression.md)
+- [sqlmi-statistics-regression.md](sqlmi-statistics-regression.md)

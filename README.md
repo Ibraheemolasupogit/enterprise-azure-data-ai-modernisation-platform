@@ -4,7 +4,7 @@ This repository is the foundation for an enterprise Azure Data and AI modernisat
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
+Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
 
 ## Business Problem
 
@@ -95,9 +95,14 @@ Milestone 6 includes:
 - Entra-first T-SQL security roles, placeholder principals, grants, masking, classification, and RLS pattern.
 - KQL investigation assets, alert catalog, SQL Agent job definitions, backup/restore readiness, HA/DR readiness, operational readiness evidence, and runbooks.
 
+Milestone 7 includes:
+
+- SQL performance workload catalog and deterministic baseline model.
+- Query Store configuration/diagnostic scripts, DMV toolkit, execution-plan analysis model, index recommendations, statistics strategy, blocking/deadlock scenarios, parameter-sensitive query scenario, regression workflow, and performance assurance evidence.
+
 ## Planned Roadmap
 
-Future milestones will add SQL performance engineering, SQL database CI/CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring execution, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
+Future milestones will add SQL Database Project / CI-CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring execution, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
 ## Architecture Decisions and Trade-Offs
 
@@ -167,4 +172,10 @@ Generate and validate Azure SQL operations evidence with:
 
 ```bash
 make validate-azure-sql-operations
+```
+
+Generate and validate SQL performance evidence with:
+
+```bash
+make validate-sql-performance
 ```

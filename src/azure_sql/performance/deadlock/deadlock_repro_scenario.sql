@@ -1,0 +1,21 @@
+-- Deterministic repro pattern for compatible SQL Server environments.
+-- Do not run in production.
+--
+-- Session 1:
+-- BEGIN TRAN;
+-- UPDATE dbo.Shipment SET ShipmentStatus = 'in_transit' WHERE ShipmentId = 1;
+-- WAITFOR DELAY '00:00:10';
+-- INSERT INTO dbo.ShipmentEventHistory (ShipmentId, EventSequence, EventType, EventTimestampUtc, SourceSystem)
+-- VALUES (2, 99, 'exception', SYSUTCDATETIME(), 'deadlock-repro');
+-- ROLLBACK;
+--
+-- Session 2:
+-- BEGIN TRAN;
+-- UPDATE dbo.Shipment SET ShipmentStatus = 'delayed' WHERE ShipmentId = 2;
+-- WAITFOR DELAY '00:00:10';
+-- INSERT INTO dbo.ShipmentEventHistory (ShipmentId, EventSequence, EventType, EventTimestampUtc, SourceSystem)
+-- VALUES (1, 99, 'exception', SYSUTCDATETIME(), 'deadlock-repro');
+-- ROLLBACK;
+--
+-- Application retry guidance: retry error 1205 with jitter and idempotency controls.
+

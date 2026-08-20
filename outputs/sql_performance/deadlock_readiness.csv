@@ -1,0 +1,4 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+dl-001,extended events,Create database-scoped deadlock capture session for xml_deadlock_report where supported.,Captures evidence without fabricating graphs.,configuration defined,static analysis
+dl-002,deadlock workflow,"Capture graph, identify resources/order, classify victim, apply retry/error 1205 guidance.",Structured response to recurring deadlocks.,configuration defined,static analysis
+dl-003,repro scenario,Two sessions update Shipment then ShipmentEventHistory in opposite order.,Can be reproduced later in SQL Server-compatible environment.,simulated,simulated

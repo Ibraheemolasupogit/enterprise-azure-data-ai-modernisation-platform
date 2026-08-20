@@ -1,4 +1,4 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations
+.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance
 
 PYTHON ?= python3
 
@@ -14,11 +14,12 @@ help:
 	@echo "  make migrate-local    Run local deterministic migration factory"
 	@echo "  make validate-migration Validate generated migration evidence"
 	@echo "  make validate-azure-sql-operations Generate and validate Azure SQL operations evidence"
+	@echo "  make validate-sql-performance Generate and validate SQL performance evidence"
 	@echo "  make generate-estate Generate the default synthetic legacy estate"
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check test lint
 
 test:
 	$(PYTHON) -m pytest
@@ -44,6 +45,9 @@ migration-check:
 azure-sql-operations-check:
 	$(PYTHON) scripts/validate_azure_sql_operations.py
 
+sql-performance-check:
+	$(PYTHON) scripts/validate_sql_performance.py
+
 generate-estate:
 	$(PYTHON) -m legacy_estate.generator --profile development --output-dir data/raw/legacy_estate
 
@@ -66,3 +70,9 @@ validate-migration:
 validate-azure-sql-operations:
 	$(PYTHON) -m azure_sql_operations.cli --outputs-dir outputs/azure_sql_operations --reports-dir reports
 	$(PYTHON) scripts/validate_azure_sql_operations.py
+
+generate-sql-performance-evidence:
+	$(PYTHON) -m sql_performance.cli --outputs-dir outputs/sql_performance --reports-dir reports
+
+validate-sql-performance: generate-sql-performance-evidence
+	$(PYTHON) scripts/validate_sql_performance.py

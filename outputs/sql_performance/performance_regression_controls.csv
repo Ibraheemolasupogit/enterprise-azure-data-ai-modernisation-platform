@@ -1,0 +1,4 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+reg-001,workflow,baseline -> change -> detect -> identify query -> compare plans -> mitigate -> validate -> document -> remove temporary mitigation,Explicit lifecycle for safe tuning.,configuration defined,derived
+reg-002,Query Store,Use regressed queries and plan history reports.,Maps regression response to SQL MI/Azure SQL features.,configuration defined,static analysis
+reg-003,CI/CD boundary,Future SQL CI/CD should run post-deployment baseline comparison.,Documents Milestone 8 boundary without implementing it.,planned,derived

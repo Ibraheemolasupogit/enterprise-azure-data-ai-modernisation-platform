@@ -1,0 +1,11 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+pa-001,workload coverage,Six representative workloads are catalogued.,"Covers OLTP, reporting, customer-service, and analytical offload boundary.",locally validated,locally measured
+pa-002,baseline availability,Deterministic simulated baseline exists for every workload.,Enables regression workflow without fake Azure telemetry.,simulated,simulated
+pa-003,Query Store readiness,Configuration and diagnostics scripts exist.,Ready for SQL MI validation.,configuration defined,static analysis
+pa-004,index strategy,Focused recommendations avoid index proliferation.,Supports reporting scenario and write-overhead review.,configuration defined,static analysis
+pa-005,statistics strategy,Targeted stale-statistics strategy exists.,Avoids blanket FULLSCAN.,configuration defined,static analysis
+pa-006,blocking diagnostics,Blocking scenarios and DMV scripts exist.,Supports incident analysis.,simulated,simulated
+pa-007,deadlock diagnostics,Extended Events and workflow assets exist.,No deadlock graph fabricated.,configuration defined,static analysis
+pa-008,parameter sensitivity,Representative skew scenario and mitigation options exist.,Supports PSP/regression handling.,simulated,simulated
+pa-009,regression detection,Regression workflow and Query Store mapping exist.,Future CI/CD integration documented.,configuration defined,derived
+pa-010,operational integration,Runbooks and Milestone 6 monitoring integration exist.,Performance incidents fit operations model.,locally validated,locally measured

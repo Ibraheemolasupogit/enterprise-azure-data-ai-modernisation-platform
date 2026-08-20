@@ -1,0 +1,4 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+psp-001,representative query,usp_GetCustomerShipmentSummaryByTier models skew between critical and standard customers.,Different tiers can produce different optimal plans.,simulated,simulated
+psp-002,Query Store investigation,Compare runtime stats by parameter/runtime distribution and plan_id.,Avoids guessing from one execution.,configuration defined,static analysis
+psp-003,mitigation options,"Consider PSP optimization where available, Query Store hints, forced plans, or OPTION(RECOMPILE) only with evidence.",Mitigations have trade-offs and should be reversible.,configuration defined,derived

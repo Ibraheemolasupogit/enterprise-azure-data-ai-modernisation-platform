@@ -1,0 +1,7 @@
+workload_id,execution_duration_ms,logical_reads,cpu_proxy_ms,rows_processed,execution_count,concurrency_class,workload_type,expected_latency_class,metric_classification
+customer_lookup,35,180,12,12,7,medium,transactional OLTP,sub-100ms target after Azure validation,simulated
+shipment_create_update,55,260,22,2,5,high,transactional OLTP,sub-250ms target after Azure validation,simulated
+shipment_status_query,28,140,10,6,4,high,transactional lookup,sub-100ms target after Azure validation,simulated
+route_depot_reporting,920,14500,210,180,3,medium,operational reporting,seconds-class operational report,simulated
+incident_case_lookup,45,220,16,4,6,medium,customer-service lookup,sub-250ms target after Azure validation,simulated
+analytical_delay_report,1800,42000,480,900,3,low,candidate analytical,offload target rather than OLTP SLA,derived

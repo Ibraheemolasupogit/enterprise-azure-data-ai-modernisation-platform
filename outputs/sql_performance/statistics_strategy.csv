@@ -1,0 +1,5 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+stat-001,automatic statistics,Keep auto create/update statistics enabled unless live evidence says otherwise.,Azure SQL/SQL Server optimizer depends on current stats.,configuration defined,static analysis
+stat-002,stale detection,Use modification counters and STATS_DATE to target stale statistics.,Avoids blanket FULLSCAN across every table.,configuration defined,static analysis
+stat-003,sample strategy,Use RESAMPLE/default for routine maintenance; FULLSCAN only for narrow critical stats with evidence.,"Balances accuracy, runtime, and IO.",configuration defined,derived
+stat-004,SQL Agent integration,Integrate targeted stats job with Milestone 6 SQL Agent pattern.,Keeps operations and performance model aligned.,locally validated,locally measured

@@ -1,0 +1,4 @@
+item_id,area,recommendation,rationale,status,evidence_classification
+blk-001,blocked reader/writer,Session A updates Shipment and holds transaction; Session B reads customer shipment status.,Demonstrates RCSI trade-off and reader blocking analysis.,simulated,simulated
+blk-002,writer/writer contention,Two sessions update the same Shipment status through procedure path.,"Demonstrates lock waits, head blocker, and retry requirement.",simulated,simulated
+blk-003,sleeping open transaction,Session opens transaction and goes idle after touching ShipmentEventHistory.,Demonstrates open transaction detection and escalation.,simulated,simulated
