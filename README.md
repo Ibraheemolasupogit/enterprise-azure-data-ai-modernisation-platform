@@ -4,7 +4,7 @@ This repository is the foundation for an enterprise Azure Data and AI modernisat
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
+Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
 
 ## Business Problem
 
@@ -80,9 +80,17 @@ Milestone 4 includes:
 - Design decisions for Azure SQL Managed Instance, PostgreSQL Flexible Server, Databricks, ADLS Gen2, Delta Lake, Unity Catalog, private networking, identity, data protection, HA/DR, and environment isolation.
 - Architecture report and validation command for deterministic target-state outputs.
 
+Milestone 5 includes:
+
+- Migration manifests for `legacy_tms` and `billing_ops`.
+- Target-ready Azure SQL Managed Instance and PostgreSQL Flexible Server schema assets.
+- Compatibility remediation register mapped to assessment findings.
+- Local deterministic migration execution from synthetic source fixtures to target-shaped CSV outputs.
+- Reconciliation checks, validation gates, migration wave execution evidence, cutover readiness, rollback readiness, failure scenarios, tooling integration boundaries, and hypercare model.
+
 ## Planned Roadmap
 
-Future milestones will add migration implementation, Azure SQL administration, SQL performance engineering, SQL CI/CD, Databricks platform implementation, pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL, APIs, vector and hybrid search, RAG, monitoring, FinOps, and production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
+Future milestones will add real Azure migration execution, Azure SQL administration, SQL performance engineering, SQL CI/CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring, FinOps, and production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
 ## Architecture Decisions and Trade-Offs
 
@@ -139,4 +147,11 @@ Generate and validate the target architecture outputs with:
 
 ```bash
 make validate-architecture
+```
+
+Run the local migration factory with:
+
+```bash
+make migrate-local
+make validate-migration
 ```

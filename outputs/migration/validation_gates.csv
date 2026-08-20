@@ -1,0 +1,19 @@
+migration_id,gate_stage,gate_name,status,evidence_classification,evidence,stop_on_failure
+mig-legacy-tms-sqlmi,PRE-MIGRATION,source readiness,passed,locally validated,source readiness passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,PRE-MIGRATION,backup/recovery prerequisite,required,requires live validation,backup/recovery prerequisite requires Azure/customer validation before real cutover.,True
+mig-legacy-tms-sqlmi,PRE-MIGRATION,schema compatibility,passed,locally validated,schema compatibility passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,POST-LOAD,row counts and integrity,passed,locally validated,row counts and integrity passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,POST-LOAD,representative query placeholders,passed,simulated evidence,representative query placeholders passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,PRE-CUTOVER,delta synchronization,passed,simulated evidence,delta synchronization passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,PRE-CUTOVER,rollback readiness,passed,architecture/design evidence,rollback readiness passed local deterministic migration-factory check.,True
+mig-legacy-tms-sqlmi,POST-CUTOVER,connectivity smoke checks,required,requires live validation,connectivity smoke checks requires Azure/customer validation before real cutover.,False
+mig-legacy-tms-sqlmi,POST-CUTOVER,performance sanity checks,required,requires live validation,performance sanity checks requires Azure/customer validation before real cutover.,False
+mig-billing-postgres,PRE-MIGRATION,source readiness,passed,locally validated,source readiness passed local deterministic migration-factory check.,True
+mig-billing-postgres,PRE-MIGRATION,backup/recovery prerequisite,required,requires live validation,backup/recovery prerequisite requires Azure/customer validation before real cutover.,True
+mig-billing-postgres,PRE-MIGRATION,schema compatibility,passed,locally validated,schema compatibility passed local deterministic migration-factory check.,True
+mig-billing-postgres,POST-LOAD,row counts and integrity,passed,locally validated,row counts and integrity passed local deterministic migration-factory check.,True
+mig-billing-postgres,POST-LOAD,representative query placeholders,passed,simulated evidence,representative query placeholders passed local deterministic migration-factory check.,True
+mig-billing-postgres,PRE-CUTOVER,delta synchronization,passed,simulated evidence,delta synchronization passed local deterministic migration-factory check.,True
+mig-billing-postgres,PRE-CUTOVER,rollback readiness,passed,architecture/design evidence,rollback readiness passed local deterministic migration-factory check.,True
+mig-billing-postgres,POST-CUTOVER,connectivity smoke checks,required,requires live validation,connectivity smoke checks requires Azure/customer validation before real cutover.,False
+mig-billing-postgres,POST-CUTOVER,performance sanity checks,required,requires live validation,performance sanity checks requires Azure/customer validation before real cutover.,False

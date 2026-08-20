@@ -1,0 +1,21 @@
+migration_id,cutover_check,status,evidence_classification,notes
+mig-legacy-tms-sqlmi,entry criteria,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,freeze/quiesce plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,final sync plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,validation plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,connection switch placeholder,planned,architecture/design evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,smoke testing,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,go/no-go decision,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,communications checkpoint,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,evidence capture,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-legacy-tms-sqlmi,exit criteria,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,entry criteria,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,freeze/quiesce plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,final sync plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,validation plan,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,connection switch placeholder,planned,architecture/design evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,smoke testing,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,go/no-go decision,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,communications checkpoint,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,evidence capture,ready,simulated evidence,No real DNS or application connection switch is performed.
+mig-billing-postgres,exit criteria,ready,simulated evidence,No real DNS or application connection switch is performed.

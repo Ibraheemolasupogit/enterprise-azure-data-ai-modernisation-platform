@@ -1,0 +1,8 @@
+source_system,source_object,source_definition,target_definition,conversion_status,finding_id,evidence_classification
+legacy_tms,CustomerAccount.LegacyCustomerMemo,ntext,nvarchar(max),implemented locally,SQL-COMP-001,locally validated
+legacy_tms,Shipment.DeclaredValueGbp,money,money retained; decimal review flagged,accepted risk,SQL-COMP-002,derived from assessment
+legacy_tms,Shipment.RowVersionBytes,rowversion,rowversion preserved,implemented locally,SQL-COMP-007,locally validated
+legacy_tms,stored procedures,SQL Server T-SQL,signatures preserved for MI,implemented locally,SQL-COMP-003,locally validated
+legacy_tms,reporting index,missing covering index,IX_Shipment_Route_Status_CreatedAt,implemented locally,SQL-COMP-005,locally validated
+billing_ops,billing_ops.invoice,PostgreSQL-like table,PostgreSQL Flexible Server table,implemented locally,PG-COMP-001,locally validated
+billing_ops,customer_ref,ACCT-style identifier,retained with mapping risk evidence,accepted risk,PG-COMP-001,derived from assessment

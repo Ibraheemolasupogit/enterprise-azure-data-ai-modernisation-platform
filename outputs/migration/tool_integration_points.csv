@@ -1,0 +1,7 @@
+tool_name,migration_phase,real_integration_point,local_adapter_boundary,evidence_expected_in_real_engagement
+Azure Database Migration Service,online migration,"Initial load, delta capture, final sync for supported database migrations.",Local adapter models phases and evidence only.,"DMS project logs, cutover timestamps, validation summaries."
+Data Migration Assistant / Azure SQL assessment tooling,assessment and schema readiness,SQL Server compatibility assessment before Azure SQL MI migration.,Local static scanner and remediation register.,DMA reports and resolved blocker evidence.
+SqlPackage,schema deployment,Dacpac extract/publish or schema compare where project model is introduced.,Target SQL scripts and schema-conversion report.,"Publish report, drift report, deployment logs."
+Native SQL backup/restore,bulk migration,Backup/restore or log shipping approach where MI supports target scenario.,Offline/online mode sequence model only.,Backup chain validation and restore verification.
+pg_dump/pg_restore,PostgreSQL migration,Logical dump/restore for billing_ops offline migration.,CSV-based local movement and PostgreSQL target schema.,"Dump manifest, restore logs, row-count reconciliation."
+Azure CLI / PowerShell,orchestration,"Resource checks, identity, firewall/private endpoint, and migration command automation.",Local command orchestrator with no Azure calls.,Command transcripts and deployment evidence.

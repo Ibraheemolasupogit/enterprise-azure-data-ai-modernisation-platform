@@ -1,0 +1,8 @@
+scenario,description,status,safe_failure_behavior
+row_count_mismatch,Drops a migrated shipment row and fails row-count reconciliation.,available,stop unsafe progression and emit failed evidence
+missing_dependency,Marks dependency prerequisite unavailable and stops gates.,available,stop unsafe progression and emit failed evidence
+unresolved_compatibility_blocker,Fails schema compatibility pre-migration gate.,available,stop unsafe progression and emit failed evidence
+duplicate_key,Duplicates a billing invoice target row and fails duplicate-key reconciliation.,available,stop unsafe progression and emit failed evidence
+checksum_mismatch,Mutates migrated payment amount and fails checksum reconciliation.,available,stop unsafe progression and emit failed evidence
+stale_delta,Marks minimal-downtime delta stale and fails pre-cutover delta gate.,available,stop unsafe progression and emit failed evidence
+failed_validation_gate,Forces rollback-readiness gate failure.,available,stop unsafe progression and emit failed evidence

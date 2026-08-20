@@ -1,0 +1,5 @@
+wave,wave_name,included_scope,execution_status,evidence,wave_order_consistent_with_milestone_3
+Wave 0,prerequisites and remediation,all systems,completed locally,Assessment and architecture prerequisites represented; live evidence still required.,true
+Wave 1,feeds and analytical offload,not in Milestone 5 scope,skipped,Databricks ingestion workloads intentionally deferred.,true
+Wave 2,secondary relational source,billing_ops,eligible,Offline local migration simulation available.,true
+Wave 3,business-critical transport OLTP,legacy_tms,eligible,Minimal-downtime sequence modelled; Azure execution deferred.,true

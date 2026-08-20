@@ -1,0 +1,17 @@
+case_note_id,case_id,note_sequence,note_timestamp,agent_team,note_text
+NOTE000000001,CASE00000001,1,2026-03-12T04:00:00Z,depot_ops,Synthetic note 1 for lost_item on SHP000000012. No real personal data.
+NOTE000000002,CASE00000001,2,2026-03-12T04:00:00Z,depot_ops,Synthetic note 2 for lost_item on SHP000000012. No real personal data.
+NOTE000000003,CASE00000001,3,2026-03-12T04:00:00Z,depot_ops,Synthetic note 3 for lost_item on SHP000000012. No real personal data.
+NOTE000000004,CASE00000002,1,2026-03-25T08:00:00Z,depot_ops,Synthetic note 1 for address_change on SHP000000016. No real personal data.
+NOTE000000005,CASE00000002,2,2026-03-25T08:00:00Z,billing,Synthetic note 2 for address_change on SHP000000016. No real personal data.
+NOTE000000006,CASE00000002,3,2026-03-25T08:00:00Z,frontline,Synthetic note 3 for address_change on SHP000000016. No real personal data.
+NOTE000000007,CASE00000003,1,2026-04-16T11:00:00Z,claims,Synthetic note 1 for lost_item on SHP000000009. No real personal data.
+NOTE000000008,CASE00000003,2,2026-04-16T11:00:00Z,billing,Synthetic note 2 for lost_item on SHP000000009. No real personal data.
+NOTE000000009,CASE00000004,1,2026-03-02T08:00:00Z,billing,Synthetic note 1 for damaged_goods on SHP000000017. No real personal data.
+NOTE000000010,CASE00000004,2,2026-03-02T08:00:00Z,claims,Synthetic note 2 for damaged_goods on SHP000000017. No real personal data.
+NOTE000000011,CASE00000005,1,2026-03-23T02:00:00Z,frontline,Synthetic note 1 for late_delivery on SHP000000007. No real personal data.
+NOTE000000012,CASE00000005,2,2026-03-23T02:00:00Z,frontline,Synthetic note 2 for late_delivery on SHP000000007. No real personal data.
+NOTE000000013,CASE00000005,3,2026-03-23T02:00:00Z,claims,Synthetic note 3 for late_delivery on SHP000000007. No real personal data.
+NOTE000000014,CASE00000006,1,2026-01-13T10:00:00Z,frontline,Synthetic note 1 for damaged_goods on SHP999999999. No real personal data.
+NOTE000000015,CASE00000006,2,2026-01-13T10:00:00Z,frontline,Synthetic note 2 for damaged_goods on SHP999999999. No real personal data.
+NOTE000000016,CASE00000006,3,2026-01-13T10:00:00Z,frontline,Synthetic note 3 for damaged_goods on SHP999999999. No real personal data.

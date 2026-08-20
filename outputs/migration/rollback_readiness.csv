@@ -1,0 +1,17 @@
+migration_id,rollback_item,status,evidence_classification,notes
+mig-legacy-tms-sqlmi,decision window,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,rollback triggers,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,source reactivation,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,target write handling,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,reverse synchronization concern,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,data divergence risk,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,application connection restoration,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-legacy-tms-sqlmi,evidence retention,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,decision window,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,rollback triggers,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,source reactivation,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,target write handling,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,reverse synchronization concern,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,data divergence risk,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,application connection restoration,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
+mig-billing-postgres,evidence retention,defined,architecture/design evidence,Rollback is harder after target accepts writes; divergence must be reviewed before cutback.
