@@ -1,0 +1,3 @@
+target_table,vector_column,dimensions,distance_metric,query_pattern,index_boundary,evidence_classification
+ai.DocumentChunk,EmbeddingVector,1536,cosine,VECTOR_DISTANCE exact nearest neighbor,no vector index required; requires Azure SQL vector runtime,requires Azure SQL validation
+ai.DocumentChunk,EmbeddingVector,1536,cosine,VECTOR_SEARCH approximate nearest neighbor,DiskANN/vector index where supported; rebuild and runtime prerequisites required,requires Azure SQL validation

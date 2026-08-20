@@ -1,0 +1,7 @@
+query_id,question,expected_chunk_ids,shipment_id,account_id,top_k,evidence_classification
+eval-001,Why is shipment SHP1001 delayed and what did the carrier say?,chunk-9958c4318c68501a|chunk-2d18556e8abc8944,SHP1001,ACC-100,3,locally validated
+eval-002,Did the case note approve a refund or reroute for SHP1001?,chunk-a81e1a3d8d9353bf,SHP1001,ACC-100,3,locally validated
+eval-003,What depot and route context applies to SHP1001?,chunk-de126a2b9b5f37b2,SHP1001,ACC-100,3,locally validated
+eval-004,What should customer service say about current SHP1001 status?,chunk-2d18556e8abc8944|chunk-9958c4318c68501a|chunk-a81e1a3d8d9353bf,SHP1001,ACC-100,3,locally validated
+eval-005,What billing restriction exists for SHP2002?,chunk-c0c2df5fa121de2a,SHP2002,ACC-200,2,locally validated
+eval-006,Can route context alone prove the current delay cause for SHP1001?,chunk-de126a2b9b5f37b2|chunk-9958c4318c68501a,SHP1001,ACC-100,3,locally validated

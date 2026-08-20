@@ -1,0 +1,6 @@
+state,trigger,example_status,worker_action,evidence_classification
+current,"content hash, chunk logic, model version, and dimensions all match",current,eligible for retrieval,locally validated
+stale,"content, chunk logic, model version, or dimensions changed",stale,enqueue re-embedding asynchronously,locally validated
+pending,new or changed chunk awaiting embedding worker,pending,generate embedding with retry policy,configuration defined
+failed,provider or dimension error exceeded retry policy,failed,manual investigation and dead-letter review,configuration defined
+retired,source document retired or no longer authorized,retired,exclude from retrieval,configuration defined

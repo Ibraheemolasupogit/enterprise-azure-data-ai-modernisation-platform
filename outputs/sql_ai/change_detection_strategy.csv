@@ -1,0 +1,5 @@
+strategy,decision,reason,worker_boundary,evidence_classification
+Change Tracking,preferred,captures committed OLTP row changes without invoking AI inside triggers,async embedding worker reads changed source IDs,configuration defined
+CDC,candidate for richer audit history,useful when before/after lineage is required,batch re-embedding queue,configuration defined
+triggers,metadata only,do not call AI from OLTP triggers; optionally write lightweight queue records,transactional enqueue only,configuration defined
+Change Event Streaming,future integration boundary,appropriate for downstream event-driven refresh,requires Azure validation,requires Azure SQL validation

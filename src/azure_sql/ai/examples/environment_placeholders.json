@@ -1,0 +1,26 @@
+{
+  "azure_sql_ai": {
+    "database": "legacy_tms",
+    "schema": "ai",
+    "embedding_dimensions": 1536,
+    "distance_metric": "cosine",
+    "external_model_name": "ai.shipment_ops_embedding_model",
+    "vector_runtime_required": true
+  },
+  "azure_openai": {
+    "endpoint": "<AZURE_OPENAI_ENDPOINT>",
+    "embedding_deployment": "<AZURE_OPENAI_EMBEDDING_DEPLOYMENT>",
+    "chat_deployment": "<AZURE_OPENAI_CHAT_DEPLOYMENT>",
+    "embedding_model": "text-embedding-3-small",
+    "chat_model": "<CHAT_MODEL_NAME>",
+    "api_version": "<API_VERSION>",
+    "authentication": "Microsoft Entra managed identity"
+  },
+  "security": {
+    "application_role": "ai_app_executor",
+    "curator_role": "ai_data_curator",
+    "auditor_role": "ai_auditor",
+    "embedding_worker_role": "embedding_worker_identity"
+  },
+  "secret_policy": "No API keys, bearer tokens, connection strings, or passwords are stored in this file."
+}

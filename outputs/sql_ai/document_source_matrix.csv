@@ -1,0 +1,6 @@
+document_id,source_system,document_type,shipment_id,account_id,source_hash,ai_ready_boundary,evidence_classification
+doc-shp-1001-status,legacy_tms_curated,shipment_status,SHP1001,ACC-100,538514ea13eef505435704ff48acd321e80a18409f0b291ac5cc48a7ae04f945,operational/curated source to ai.Document ingestion queue,locally validated
+doc-shp-1001-carrier,carrier_update_feed,carrier_update,SHP1001,ACC-100,f8db7c484dde23321e75f36310f195df1745664dd0ab36630381f9c6844e7e76,operational/curated source to ai.Document ingestion queue,locally validated
+doc-shp-1001-case,customer_service_export,case_note,SHP1001,ACC-100,8c5589bd9f06e42808345673e83db928f6c9dc9bb0bcb5ae95432a81887eae86,operational/curated source to ai.Document ingestion queue,locally validated
+doc-shp-1001-route,depot_reference_feed,depot_route,SHP1001,ACC-100,836e90e1feace5658ddb1419dcbdb084bff9a881d7474228dcda411791ff4b9d,operational/curated source to ai.Document ingestion queue,locally validated
+doc-shp-2002-billing,billing_ops_curated,billing_case,SHP2002,ACC-200,1da5d9a92d880ee00710c6b89459bf3cac92b30f21eecbf5097742d590c6ea32,operational/curated source to ai.Document ingestion queue,locally validated

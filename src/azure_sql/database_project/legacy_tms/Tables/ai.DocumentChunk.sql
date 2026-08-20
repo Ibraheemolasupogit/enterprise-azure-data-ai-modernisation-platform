@@ -1,0 +1,29 @@
+CREATE TABLE [ai].[DocumentChunk]
+(
+    [ChunkId] NVARCHAR(80) NOT NULL,
+    [DocumentId] NVARCHAR(80) NOT NULL,
+    [ChunkOrdinal] INT NOT NULL,
+    [Content] NVARCHAR(MAX) NOT NULL,
+    [ContentHash] CHAR(64) NOT NULL,
+    [ChunkLogicVersion] NVARCHAR(80) NOT NULL,
+    [TokenCountEstimate] INT NOT NULL,
+    [ShipmentId] NVARCHAR(40) NULL,
+    [AccountId] NVARCHAR(40) NULL,
+    [DepotCode] NVARCHAR(20) NULL,
+    [RouteCode] NVARCHAR(40) NULL,
+    [DocumentType] NVARCHAR(60) NOT NULL,
+    [SensitivityLabel] NVARCHAR(40) NOT NULL,
+    [LifecycleState] NVARCHAR(20) NOT NULL,
+    [EmbeddingVector] VECTOR(1536) NULL,
+    [CreatedAt] DATETIME2(3) NOT NULL CONSTRAINT [DF_ai_DocumentChunk_CreatedAt] DEFAULT SYSUTCDATETIME(),
+    [UpdatedAt] DATETIME2(3) NOT NULL CONSTRAINT [DF_ai_DocumentChunk_UpdatedAt] DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT [PK_ai_DocumentChunk] PRIMARY KEY CLUSTERED ([ChunkId]),
+    CONSTRAINT [FK_ai_DocumentChunk_Document] FOREIGN KEY ([DocumentId]) REFERENCES [ai].[Document] ([DocumentId]),
+    CONSTRAINT [UQ_ai_DocumentChunk_DocumentOrdinal] UNIQUE ([DocumentId], [ChunkOrdinal]),
+    CONSTRAINT [CK_ai_DocumentChunk_LifecycleState] CHECK ([LifecycleState] IN ('active', 'retired', 'pending', 'failed')),
+    CONSTRAINT [CK_ai_DocumentChunk_TokenCount] CHECK ([TokenCountEstimate] > 0)
+);
+
+CREATE INDEX [IX_ai_DocumentChunk_Metadata]
+ON [ai].[DocumentChunk] ([ShipmentId], [AccountId], [DepotCode], [RouteCode], [DocumentType], [LifecycleState], [SensitivityLabel]);
+

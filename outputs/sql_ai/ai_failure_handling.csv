@@ -1,0 +1,11 @@
+failure_mode,handling,fallback,evidence_classification
+provider unavailable,"retry with bounded backoff, mark pending, show grounded-unavailable fallback",grounded insufficiency or manual investigation; no autonomous action,configuration defined
+embedding error,"mark failed with error class, preserve source hash, manual retry",grounded insufficiency or manual investigation; no autonomous action,configuration defined
+stale embedding,exclude stale chunk from retrieval unless emergency policy permits lexical-only fallback,grounded insufficiency or manual investigation; no autonomous action,configuration defined
+dimension mismatch,"fail validation, block retrieval/index rebuild, re-embed with configured dimensions",grounded insufficiency or manual investigation; no autonomous action,configuration defined
+no retrieval,return insufficiency response with no generated answer,grounded insufficiency or manual investigation; no autonomous action,configuration defined
+model unavailable,record generation failure and avoid fabricated answer,grounded insufficiency or manual investigation; no autonomous action,configuration defined
+timeout or throttling,"bounded retry, audit status, no hidden replay storm",grounded insufficiency or manual investigation; no autonomous action,configuration defined
+malformed model response,reject response and record parse failure,grounded insufficiency or manual investigation; no autonomous action,configuration defined
+unsafe or insufficient grounding,return insufficiency or escalation path,grounded insufficiency or manual investigation; no autonomous action,configuration defined
+suspected data leakage,"disable affected retrieval path, preserve audit, incident runbook",grounded insufficiency or manual investigation; no autonomous action,configuration defined

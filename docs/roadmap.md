@@ -99,25 +99,38 @@ Implemented:
 
 - Monitoring architecture, system-table query assets, job/pipeline observability, Spark troubleshooting, join optimization, Delta table health, streaming health/recovery, compute optimization, SQL warehouse operations, FinOps cost attribution, alert catalog, SLO assumptions, and runbooks.
 
-## Future Milestone: AI-Enabled SQL, Vector Search, and RAG
+## Milestone 13: AI-Enabled SQL, Vector Search, Hybrid Retrieval, and Database-Native RAG
+
+Implemented:
+
+- Customer Service / Shipment Operations Knowledge Assistant use case with explicit no-autonomous-decision boundary.
+- AI SQL schema integrated into the SQL database project for documents, chunks, embedding metadata, retrieval audit, and generation audit.
+- Target-ready SQL assets for `AI_GENERATE_CHUNKS`, `AI_GENERATE_EMBEDDINGS`, `CREATE EXTERNAL MODEL`, `VECTOR(1536)`, `VECTOR_DISTANCE`, `VECTOR_SEARCH`, full-text search, hybrid RRF ranking, JSON context assembly, and Azure OpenAI outbound invocation.
+- Deterministic local evidence for chunking, source traceability, stale detection, ranking fixtures, retrieval metrics, metadata filters, context assembly, security, data exposure, audit, failure handling, cost controls, and readiness.
+- Security roles, managed-identity-first configuration placeholders, prompt contract, grounding/citation audit model, and runbooks for embedding, stale vectors, dimension mismatch, quality regression, invocation failure, grounding failure, and data leakage.
+
+Intentionally deferred:
+
+- Live Azure SQL vector, AI function, external model, full-text, and outbound REST validation.
+- Real Azure OpenAI embedding or generation calls.
+- Production performance, latency, token, and relevance claims.
+
+## Future Milestone: Secure Application and API Integration
 
 Planned:
 
-- Azure SQL native AI patterns.
-- Embedding generation boundaries.
-- VECTOR storage where appropriate.
-- Hybrid search index design.
-- Security-trimmed retrieval.
+- Secure application/API façade for the shipment operations assistant.
+- End-user authorization propagation into SQL retrieval.
+- UX and operational support workflow integration.
+- API-level rate limiting, abuse handling, and response review paths.
 
-## Future Milestone: Grounded RAG
+## Future Milestone: Fabric Downstream Integration Boundary
 
 Planned:
 
-- Azure OpenAI integration.
-- Retrieval orchestration.
-- Prompt and response evaluation.
-- Citation, grounding, and safety controls.
-- Clear separation between operational SQL AI and broader AI-platform responsibilities.
+- Explicit Microsoft Fabric consumption boundary where needed.
+- Downstream semantic model and reporting integration decisions.
+- Cross-platform lineage and governance alignment.
 
 ## Future Milestone: Monitoring, FinOps, and Production Assurance
 

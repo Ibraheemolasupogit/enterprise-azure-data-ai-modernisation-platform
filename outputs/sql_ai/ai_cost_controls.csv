@@ -1,0 +1,7 @@
+control,purpose,evidence_classification
+source hash dedupe,avoid re-embedding unchanged chunks,configuration defined
+chunk count caps,bound maximum chunks per document type,configuration defined
+top-k limits,cap retrieved context per question,configuration defined
+question cache boundary,cache retrieval metadata only when policy allows,configuration defined
+model change review,dimension/model changes require explicit re-embedding plan,configuration defined
+generation token limit,set maximum generation payload and response size per use case,configuration defined

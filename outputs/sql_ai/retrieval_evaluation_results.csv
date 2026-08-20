@@ -1,0 +1,7 @@
+query_id,retrieved_chunk_ids,expected_chunk_ids,precision_at_k,recall_at_k,mrr,evidence_classification
+eval-001,chunk-2d18556e8abc8944|chunk-9958c4318c68501a|chunk-a81e1a3d8d9353bf,chunk-9958c4318c68501a|chunk-2d18556e8abc8944,0.6667,1.0,1.0,simulated
+eval-002,chunk-a81e1a3d8d9353bf|chunk-2d18556e8abc8944|chunk-9958c4318c68501a,chunk-a81e1a3d8d9353bf,0.3333,1.0,1.0,simulated
+eval-003,chunk-2d18556e8abc8944|chunk-de126a2b9b5f37b2|chunk-9958c4318c68501a,chunk-de126a2b9b5f37b2,0.3333,1.0,0.5,simulated
+eval-004,chunk-2d18556e8abc8944|chunk-a81e1a3d8d9353bf|chunk-de126a2b9b5f37b2,chunk-2d18556e8abc8944|chunk-9958c4318c68501a|chunk-a81e1a3d8d9353bf,0.6667,0.6667,1.0,simulated
+eval-005,chunk-c0c2df5fa121de2a,chunk-c0c2df5fa121de2a,0.5,1.0,1.0,simulated
+eval-006,chunk-2d18556e8abc8944|chunk-9958c4318c68501a|chunk-de126a2b9b5f37b2,chunk-de126a2b9b5f37b2|chunk-9958c4318c68501a,0.6667,1.0,0.5,simulated

@@ -1,0 +1,2 @@
+asset,strength,limit,query_pattern,evidence_classification
+full-text index on ai.DocumentChunk.Content,"exact terms, shipment IDs, carrier names, case IDs, and phrase matching",misses semantic paraphrases and operational synonyms,CONTAINS/FREETEXT with metadata filters,configuration defined

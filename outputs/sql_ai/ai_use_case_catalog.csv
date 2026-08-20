@@ -1,0 +1,2 @@
+use_case_id,domain,assistant_scope,excluded_scope,primary_users,evidence_classification
+sql-ai-001,Customer Service / Shipment Operations,"Grounded knowledge assistant for shipment, delay, case note, carrier, depot, and route questions.","No autonomous decisions, refunds, rerouting, operational writes, or ungrounded advice.",customer service agents; shipment operations supervisors,configuration defined

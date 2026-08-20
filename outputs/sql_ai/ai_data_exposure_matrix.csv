@@ -1,0 +1,5 @@
+data_class,embedding_policy,ai_context_policy,control,evidence_classification
+shipment status and events,may be embedded,allow when authorized,shipment/account filters and RLS alignment,configuration defined
+contact information,avoid where possible,exclude or redact,sanitized source projection before chunking,configuration defined
+shipment values and billing,restricted,exclude or redact,billing status only unless explicit approved use case,configuration defined
+service case notes,may be embedded after sensitivity labeling,allow when authorized,prompt-injection handling treats notes as untrusted content,configuration defined

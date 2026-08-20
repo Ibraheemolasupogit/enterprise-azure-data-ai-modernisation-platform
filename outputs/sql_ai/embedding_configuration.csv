@@ -1,0 +1,2 @@
+provider,embedding_model,model_version,dimensions,distance_metric,external_model_name,endpoint_placeholder,identity_mode,source_hash_policy,secret_policy,evidence_classification
+Azure OpenAI via Azure SQL external model boundary,text-embedding-3-small,configured-per-environment,1536,cosine,ai.shipment_ops_embedding_model,$(AZURE_OPENAI_ENDPOINT),Microsoft Entra managed identity,embed only current chunk content hash with chunk logic version,no keys in repo; managed identity and database scoped credential placeholders only,configuration defined

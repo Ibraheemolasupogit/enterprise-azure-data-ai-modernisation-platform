@@ -1,0 +1,5 @@
+principal_or_role,allowed_access,denied_access,evidence_classification
+ai_app_executor,execute context assembly and RAG procedures; filtered read through approved views,"direct embedding writes, broad table ownership, cross-account reads",configuration defined
+ai_data_curator,manage source mappings and retire documents,invoke generation endpoint,configuration defined
+ai_auditor,read audit summaries and metadata,read unrestricted chunk payloads,configuration defined
+embedding_worker_identity,read pending chunks and update embedding metadata/vector columns,generation invocation and customer-service answer paths,configuration defined

@@ -1,0 +1,6 @@
+chunk_id,document_id,chunk_ordinal,chunk_logic_version,token_count_estimate,content_hash,sql_function_boundary,evidence_classification
+chunk-2d18556e8abc8944,doc-shp-1001-status,1,deterministic-word-window-v1,43,2d18556e8abc89445a8b132febbd60d6a65c776c0e34b404ade91d364b6b4b73,AI_GENERATE_CHUNKS target-ready example; local deterministic word-window validated,locally validated
+chunk-9958c4318c68501a,doc-shp-1001-carrier,1,deterministic-word-window-v1,41,9958c4318c68501a7ac874fa7b2289a25d84ad638596d464398c2ac14df7846f,AI_GENERATE_CHUNKS target-ready example; local deterministic word-window validated,locally validated
+chunk-a81e1a3d8d9353bf,doc-shp-1001-case,1,deterministic-word-window-v1,41,a81e1a3d8d9353bf98e485a21c32f8c29c3ede771311386d719696efea818bb6,AI_GENERATE_CHUNKS target-ready example; local deterministic word-window validated,locally validated
+chunk-de126a2b9b5f37b2,doc-shp-1001-route,1,deterministic-word-window-v1,38,de126a2b9b5f37b25a02332178e6865f0e2ef6ca4ef8fbf41e074f419b8431b7,AI_GENERATE_CHUNKS target-ready example; local deterministic word-window validated,locally validated
+chunk-c0c2df5fa121de2a,doc-shp-2002-billing,1,deterministic-word-window-v1,37,c0c2df5fa121de2a0212999fd194b48e8e0f86b1d756a5211e8101850c3f5dc6,AI_GENERATE_CHUNKS target-ready example; local deterministic word-window validated,locally validated

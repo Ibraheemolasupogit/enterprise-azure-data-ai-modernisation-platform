@@ -1,0 +1,7 @@
+object_name,purpose,project_asset,evidence_classification
+ai.Document,source document registry and metadata,src/azure_sql/database_project/legacy_tms/Tables/ai.Document.sql,configuration defined
+ai.DocumentChunk,deterministic chunks with VECTOR(1536) embedding column,src/azure_sql/database_project/legacy_tms/Tables/ai.DocumentChunk.sql,configuration defined
+ai.EmbeddingMetadata,"provider, model, dimensions, hash, lifecycle, retry, and error status",src/azure_sql/database_project/legacy_tms/Tables/ai.EmbeddingMetadata.sql,configuration defined
+ai.RetrievalAudit,"retrieval request, filters, ranked chunks, identity, and status",src/azure_sql/database_project/legacy_tms/Tables/ai.RetrievalAudit.sql,configuration defined
+ai.GenerationAudit,"LLM invocation boundary, answer status, citations, and error summary",src/azure_sql/database_project/legacy_tms/Tables/ai.GenerationAudit.sql,configuration defined
+ai.usp_AssembleRagContext,SQL-native context JSON assembly for grounded generation,src/azure_sql/database_project/legacy_tms/StoredProcedures/ai.usp_AssembleRagContext.sql,configuration defined

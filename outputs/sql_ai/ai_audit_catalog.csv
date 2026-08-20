@@ -1,0 +1,3 @@
+audit_event,captured_fields,excluded_fields,evidence_classification
+retrieval request,"request id, identity, filters, top-k, chunk ids, ranks, status, error summary",raw unrestricted prompt or sensitive full payload unless policy permits,configuration defined
+generation request,"answer id, model deployment/version, endpoint status, citation ids, status, latency/token placeholders",secrets and unrestricted source payloads,configuration defined

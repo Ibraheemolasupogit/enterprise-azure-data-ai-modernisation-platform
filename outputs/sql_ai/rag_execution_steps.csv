@@ -1,0 +1,8 @@
+step_number,step,implementation,evidence_classification
+1,question received,validate caller identity and metadata filters,locally validated
+2,question embedding,AI_GENERATE_EMBEDDINGS or Azure OpenAI endpoint boundary,requires Azure OpenAI validation
+3,retrieval,full-text plus VECTOR_DISTANCE/VECTOR_SEARCH with authorization filters,requires Azure SQL validation
+4,hybrid ranking,RRF top-k and freshness filtering,locally validated
+5,context assembly,FOR JSON/JSON_OBJECT context with citations,locally validated
+6,generation,sp_invoke_external_rest_endpoint to approved Azure OpenAI endpoint,requires Azure OpenAI validation
+7,audit,record retrieval and generation status without indiscriminate sensitive payload storage,configuration defined

@@ -1,0 +1,2 @@
+strategy,inputs,ranking_rule,filters,evidence_classification
+reciprocal rank fusion,full-text rank plus vector rank,RRF score = sum 1/(60 + rank) without arbitrary learned weights,"shipment, account, depot, route, doc type, source, date, sensitivity, lifecycle, authorization",locally validated

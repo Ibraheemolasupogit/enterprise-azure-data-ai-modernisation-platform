@@ -1,0 +1,6 @@
+capability,status,evidence
+deterministic chunking and evaluation fixtures,locally validated,tests and outputs/sql_ai/*.csv
+SQL vector schema and search examples,requires Azure SQL validation,src/azure_sql/ai/search/*.sql
+SQL AI functions and external model pattern,requires Azure SQL validation,src/azure_sql/ai/embeddings/*.sql
+Azure OpenAI generation boundary,requires Azure OpenAI validation,src/azure_sql/ai/rag/sql_native_rag_sequence.sql
+"security, audit, failure, and cost controls",configuration defined,outputs/sql_ai control matrices
