@@ -3,16 +3,16 @@
   "database": "legacy_tms",
   "evidence_boundary": "local static evidence; no Azure deployment performed",
   "output_hashes": {
-    "database_object_traceability.csv": "6aa389b5e30e1cc6cf0f6882d7ac4cbcdec1a8b1c66e54e859a7d336adfd97a4",
-    "database_test_catalog.csv": "74157d7c6ad6efe71e8dd3d2e95d2c4aab5610ad8d736962053bfd7b694abd48",
-    "deployment_safety_rules.csv": "ad2454a1de24208773466579d21118565e16df09ce45eea18c5b8d0d95a31c50",
-    "environment_promotion_matrix.csv": "92b2f6637b733183454df9231f1985d978516ab6108c85ae3e6581a2e9228f4f",
-    "performance_regression_gate.csv": "114352799ac1cd10e5c5a954aaaa9dd0427ca8ad3c4b88ecb0bb403bbc700d40",
-    "reference_data_manifest.csv": "0d49b042d95effeb01a0e066a1f2597f9945ea61ea1c59b46eb240ef96a086dc",
-    "release_readiness.csv": "527bcd00ba871451689ab0f0bffb744e73660483ca8edcf5cd7f98291aa6326e",
-    "schema_drift_scenarios.csv": "c10cd5dd06571e94f8102c60239f7a85094ee3ba38bf85ef98877806d692bffe",
-    "security_regression_gate.csv": "1964f9ba57901d0f6a4145047e5d577cfd5f42df1dc41bcdec1a9cd2d26e0770",
-    "sql_project_inventory.csv": "2e13f51d28626e542447ea9bb75d56ee13e2013ecd1e8c8a91321f1eea2cf746"
+    "database_object_traceability.csv": "455a1006e525ca7f8f9d34feb84b74bf6cbf45bc9d431f65e5f972672b4bfcb9",
+    "database_test_catalog.csv": "eabcd91e3f386773b2907e86817cde9bc0a88dbfa3b1977a6b6ace379dbb262f",
+    "deployment_safety_rules.csv": "1c78afad6d37eb4ec4f094c3645ecc258138e348bd37ef4c5c7855b4cacab97e",
+    "environment_promotion_matrix.csv": "78114a25699cdd15205b13cffba4bc3bffb39594115c8f12adde3c15991208dd",
+    "performance_regression_gate.csv": "a36573f685174e10114e19d3f4cbedfcc0b9a697ace2388af50ef8da661a61b8",
+    "reference_data_manifest.csv": "f1988074557b375655563f63a641f0196c620f106dbc8f88f6c797384b93a21e",
+    "release_readiness.csv": "b0275ffd5b59db6a87b883bb57f590440cb4ee1f357a1d181190db7369a164b3",
+    "schema_drift_scenarios.csv": "ff610a5357a6d4c3fe106c7454d78a621156b2b768d07a8d9017a25368f3123c",
+    "security_regression_gate.csv": "c02d52e657641ebc5753ac104c2d083bc9f8938ad4535631a997709a5897204e",
+    "sql_project_inventory.csv": "964a2d0fc849d015bb9d37d4c5a18311a227d12c1579cbf0eb52513b92181013"
   },
   "outputs": [
     "database_object_traceability.csv",

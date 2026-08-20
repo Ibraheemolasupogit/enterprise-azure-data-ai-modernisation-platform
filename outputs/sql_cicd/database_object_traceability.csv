@@ -5,3 +5,4 @@ req-003,Reference depot and route data is idempotent,dbo.Depot; dbo.Route,PostDe
 req-004,Entra-first least privilege access model,db roles and grants,Security/RolesAndPermissions.sql,security_regression_gate.csv,security gate required
 req-005,Deployment preview before publish,dacpac deployment plan,.github/workflows/sql-cd.yml,deployment_safety_rules.csv,preview blocks unsafe release
 req-006,Drift is detected before promotion,target database model,scripts/validate_sql_cicd.py,schema_drift_scenarios.csv,manual remediation before deployment
+req-007,AI-enabled SQL persistent objects are database-as-code assets,ai.Document; ai.DocumentChunk; ai.EmbeddingMetadata; ai.RetrievalAudit; ai.GenerationAudit,src/azure_sql/database_project/legacy_tms/*/ai.*.sql,outputs/sql_ai/ai_schema_catalog.csv,SQL AI review required

@@ -15,3 +15,11 @@ obj-013,security,dbo,roles and permissions,src/azure_sql/database_project/legacy
 obj-014,security,dbo,data protection,src/azure_sql/database_project/legacy_tms/Security/DataProtection.sql,post-deployment,platform security,configuration defined
 obj-015,reference data,dbo,Depot and Route seed,src/azure_sql/database_project/legacy_tms/PostDeployment/ReferenceData.sql,post-deployment,database engineering,deterministic local
 obj-016,test,dbo,static database assertions,src/azure_sql/database_project/legacy_tms/Tests/static_schema_tests.sql,validation,quality engineering,static analysis
+obj-017,schema,ai,ai,src/azure_sql/database_project/legacy_tms/Schemas/ai.sql,schema,database engineering,configuration defined
+obj-018,table,ai,Document,src/azure_sql/database_project/legacy_tms/Tables/ai.Document.sql,schema,database engineering,configuration defined
+obj-019,table,ai,DocumentChunk,src/azure_sql/database_project/legacy_tms/Tables/ai.DocumentChunk.sql,schema,database engineering,requires Azure SQL validation
+obj-020,table,ai,EmbeddingMetadata,src/azure_sql/database_project/legacy_tms/Tables/ai.EmbeddingMetadata.sql,schema,database engineering,configuration defined
+obj-021,table,ai,RetrievalAudit,src/azure_sql/database_project/legacy_tms/Tables/ai.RetrievalAudit.sql,schema,database engineering,configuration defined
+obj-022,table,ai,GenerationAudit,src/azure_sql/database_project/legacy_tms/Tables/ai.GenerationAudit.sql,schema,database engineering,configuration defined
+obj-023,stored procedure,ai,usp_AssembleRagContext,src/azure_sql/database_project/legacy_tms/StoredProcedures/ai.usp_AssembleRagContext.sql,schema,database engineering,configuration defined
+obj-024,security,ai,AI roles and permissions,src/azure_sql/database_project/legacy_tms/Security/AiRolesAndPermissions.sql,post-deployment,platform security,configuration defined

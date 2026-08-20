@@ -6,3 +6,4 @@ test-004,reference data,PostDeployment/ReferenceData.sql,Reference MERGE stateme
 test-005,deployment safety,deployment_safety_rules.csv,Unsafe release classes have explicit stop actions.,local CI,yes
 test-006,drift,schema_drift_scenarios.csv,Manual and security drift scenarios are documented.,local CI,yes
 test-007,integration,dacpac build,dotnet build creates a dacpac when SDK restore is available.,developer or CI runner,tooling dependent
+test-008,AI guardrail,outputs/sql_ai/sql_ai_readiness.csv,"SQL AI vector, model, role, endpoint, and retrieval-security changes have evidence classifications.",local CI,yes

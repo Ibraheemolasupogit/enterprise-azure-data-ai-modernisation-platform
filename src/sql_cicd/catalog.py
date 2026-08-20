@@ -32,6 +32,14 @@ PROJECT_OBJECTS = [
     ProjectObject("obj-014", "security", "dbo", "data protection", f"{PROJECT_ROOT}/Security/DataProtection.sql", "post-deployment", "platform security", "configuration defined"),
     ProjectObject("obj-015", "reference data", "dbo", "Depot and Route seed", f"{PROJECT_ROOT}/PostDeployment/ReferenceData.sql", "post-deployment", "database engineering", "deterministic local"),
     ProjectObject("obj-016", "test", "dbo", "static database assertions", f"{PROJECT_ROOT}/Tests/static_schema_tests.sql", "validation", "quality engineering", "static analysis"),
+    ProjectObject("obj-017", "schema", "ai", "ai", f"{PROJECT_ROOT}/Schemas/ai.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-018", "table", "ai", "Document", f"{PROJECT_ROOT}/Tables/ai.Document.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-019", "table", "ai", "DocumentChunk", f"{PROJECT_ROOT}/Tables/ai.DocumentChunk.sql", "schema", "database engineering", "requires Azure SQL validation"),
+    ProjectObject("obj-020", "table", "ai", "EmbeddingMetadata", f"{PROJECT_ROOT}/Tables/ai.EmbeddingMetadata.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-021", "table", "ai", "RetrievalAudit", f"{PROJECT_ROOT}/Tables/ai.RetrievalAudit.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-022", "table", "ai", "GenerationAudit", f"{PROJECT_ROOT}/Tables/ai.GenerationAudit.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-023", "stored procedure", "ai", "usp_AssembleRagContext", f"{PROJECT_ROOT}/StoredProcedures/ai.usp_AssembleRagContext.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-024", "security", "ai", "AI roles and permissions", f"{PROJECT_ROOT}/Security/AiRolesAndPermissions.sql", "post-deployment", "platform security", "configuration defined"),
 ]
 
 TRACEABILITY = [
@@ -41,6 +49,7 @@ TRACEABILITY = [
     TraceabilityItem("req-004", "Entra-first least privilege access model", "db roles and grants", "Security/RolesAndPermissions.sql", "security_regression_gate.csv", "security gate required"),
     TraceabilityItem("req-005", "Deployment preview before publish", "dacpac deployment plan", ".github/workflows/sql-cd.yml", "deployment_safety_rules.csv", "preview blocks unsafe release"),
     TraceabilityItem("req-006", "Drift is detected before promotion", "target database model", "scripts/validate_sql_cicd.py", "schema_drift_scenarios.csv", "manual remediation before deployment"),
+    TraceabilityItem("req-007", "AI-enabled SQL persistent objects are database-as-code assets", "ai.Document; ai.DocumentChunk; ai.EmbeddingMetadata; ai.RetrievalAudit; ai.GenerationAudit", "src/azure_sql/database_project/legacy_tms/*/ai.*.sql", "outputs/sql_ai/ai_schema_catalog.csv", "SQL AI review required"),
 ]
 
 REFERENCE_DATA = [
@@ -55,6 +64,11 @@ SAFETY_RULES = [
     LifecycleRule("safe-004", "permissions", "Security changes require explicit role/grant traceability.", "CODEOWNERS and security regression gate", "require security review", "revoke/grant script under change control"),
     LifecycleRule("safe-005", "environment promotion", "Production publish requires main branch, approved environment, release evidence, and no failed gates.", "GitHub Actions environment gate", "stop release", "previous dacpac plus database backup"),
     LifecycleRule("safe-006", "transaction boundary", "One dacpac release is the rollback unit; data migrations use separate reviewed scripts.", "release manifest", "split release", "roll forward preferred after schema publish"),
+    LifecycleRule("safe-007", "AI external model", "External model, provider, endpoint, deployment, or model version changes require SQL AI review.", "SQL AI release evidence and CODEOWNERS review", "require AI/security review", "revert external model definition or disable invocation"),
+    LifecycleRule("safe-008", "vector dimensions", "Vector column dimensions, embedding model dimensions, and vector index dimensions must match.", "SQL AI validation and schema review", "stop release", "re-embed chunks and rebuild vector index after approval"),
+    LifecycleRule("safe-009", "AI role broadening", "AI roles must not gain broad ownership, unrestricted chunk access, or cross-account retrieval.", "security regression gate", "require security review", "revoke unsafe grants"),
+    LifecycleRule("safe-010", "retrieval security", "Retrieval changes must preserve shipment/account/sensitivity/lifecycle authorization filters.", "SQL AI validation and static review", "stop release", "restore previous retrieval procedure"),
+    LifecycleRule("safe-011", "AI endpoint changes", "Outbound endpoint URL and REST invocation changes require managed-identity and approved endpoint review.", "deployment safety rules and environment approval", "require AI/security review", "disable external invocation until remediated"),
 ]
 
 DRIFT_SCENARIOS = [
@@ -79,6 +93,7 @@ DATABASE_TESTS = [
     DatabaseTest("test-005", "deployment safety", "deployment_safety_rules.csv", "Unsafe release classes have explicit stop actions.", "local CI", "yes"),
     DatabaseTest("test-006", "drift", "schema_drift_scenarios.csv", "Manual and security drift scenarios are documented.", "local CI", "yes"),
     DatabaseTest("test-007", "integration", "dacpac build", "dotnet build creates a dacpac when SDK restore is available.", "developer or CI runner", "tooling dependent"),
+    DatabaseTest("test-008", "AI guardrail", "outputs/sql_ai/sql_ai_readiness.csv", "SQL AI vector, model, role, endpoint, and retrieval-security changes have evidence classifications.", "local CI", "yes"),
 ]
 
 PERFORMANCE_GATES = [
@@ -91,6 +106,8 @@ SECURITY_GATES = [
     RegressionGate("sec-001", "least privilege", "role/grant script", "application roles have execute/select access only through approved objects", "Security/RolesAndPermissions.sql", "block promotion"),
     RegressionGate("sec-002", "data protection", "masking/classification script", "customer email and memo fields retain protection controls", "Security/DataProtection.sql", "block promotion"),
     RegressionGate("sec-003", "secret handling", "workflow definitions", "no connection string or password is committed", ".github/workflows/*.yml", "block promotion"),
+    RegressionGate("sec-004", "AI retrieval security", "SQL AI retrieval assets", "metadata filters and sensitivity/lifecycle controls remain present before ranking", "outputs/sql_ai/ai_security_matrix.csv", "block promotion"),
+    RegressionGate("sec-005", "AI endpoint governance", "external model and REST endpoint definitions", "endpoint changes use managed identity placeholders and no committed secrets", "src/azure_sql/ai/embeddings/create_external_model_example.sql", "block promotion"),
 ]
 
 RELEASE_READINESS = [
@@ -100,4 +117,5 @@ RELEASE_READINESS = [
     ReleaseReadinessItem("ready-004", "drift", "Drift scenarios and release stop rules are defined.", "ready", "schema_drift_scenarios.csv", "live drift query requires Azure SQL MI"),
     ReleaseReadinessItem("ready-005", "security", "Security regression gates require least privilege and data-protection review.", "ready", "security_regression_gate.csv", "principal binding remains environment specific"),
     ReleaseReadinessItem("ready-006", "promotion", "Environment promotion matrix separates local, dev, test, and prod.", "ready", "environment_promotion_matrix.csv", "actual approvals configured in GitHub environments"),
+    ReleaseReadinessItem("ready-007", "SQL AI", "External model, vector dimension, vector index, endpoint, AI role, and retrieval-security guardrails are defined.", "ready", "outputs/sql_ai/sql_ai_readiness.csv", "runtime validation remains Azure SQL and Azure OpenAI dependent"),
 ]
