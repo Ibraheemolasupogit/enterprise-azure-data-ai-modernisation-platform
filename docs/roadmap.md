@@ -115,14 +115,23 @@ Intentionally deferred:
 - Real Azure OpenAI embedding or generation calls.
 - Production performance, latency, token, and relevance claims.
 
-## Future Milestone: Secure Application and API Integration
+## Milestone 14: Secure Application and API Integration
 
-Planned:
+Implemented:
 
-- Secure application/API façade for the shipment operations assistant.
-- End-user authorization propagation into SQL retrieval.
-- UX and operational support workflow integration.
-- API-level rate limiting, abuse handling, and response review paths.
+- Data API Builder production configuration for allowlisted shipment, reference, service-case, AI retrieval, and grounding-source capabilities.
+- REST and selected GraphQL contract examples with Entra authentication, explicit roles, field restrictions, bounded pagination, safe sorting, and no anonymous production permissions.
+- Stored-procedure/API boundaries for governed AI retrieval/RAG execution and controlled multi-table/sensitive access logic.
+- MCP-compatible read-focused tool catalog with strict schemas, role requirements, backing API/procedure mappings, audit requirements, and no destructive operations.
+- Azure Container Apps hosting decision, switch-gated Bicep module, managed identity boundary, observability KQL, API resilience/error/rate-limit design, and deterministic security evidence.
+
+Intentionally deferred:
+
+- Live Data API Builder runtime execution.
+- Entra token validation against a real tenant.
+- Container Apps deployment.
+- Managed identity to Azure SQL validation.
+- Production API gateway policies and external consumer onboarding.
 
 ## Future Milestone: Fabric Downstream Integration Boundary
 

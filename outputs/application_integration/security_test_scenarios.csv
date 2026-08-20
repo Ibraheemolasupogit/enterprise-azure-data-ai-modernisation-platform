@@ -1,0 +1,9 @@
+scenario,test_input,expected_result,claim_boundary,evidence_classification
+anonymous access attempt,call protected DAB entity without token,401/403 and no data,deterministic contract/security validation; not penetration testing,locally validated
+unauthorized role,call ServiceCaseSummary as shipment_reader,403 and no row-count hints,deterministic contract/security validation; not penetration testing,locally validated
+cross-customer retrieval attempt,AI query with shipment outside authorized account,insufficient context or 403,deterministic contract/security validation; not penetration testing,locally validated
+restricted field request,request CustomerEmail or DeclaredValueAmount,field unavailable/rejected,deterministic contract/security validation; not penetration testing,locally validated
+injection-like input,question contains SQL/control instructions,"treated as data, no dynamic SQL",deterministic contract/security validation; not penetration testing,locally validated
+oversized request,AI question exceeds size limit or topK > 5,400 validation error,deterministic contract/security validation; not penetration testing,locally validated
+invalid MCP tool input,unknown fields or malformed IDs,schema validation failure,deterministic contract/security validation; not penetration testing,locally validated
+non-allowlisted database object attempt,try table/object name input,400/403; no arbitrary SQL path,deterministic contract/security validation; not penetration testing,locally validated

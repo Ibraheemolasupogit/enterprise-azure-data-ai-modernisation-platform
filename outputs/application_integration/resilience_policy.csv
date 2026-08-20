@@ -1,0 +1,9 @@
+api_id,timeout,retry_policy,circuit_breaker_boundary,pagination_or_size_limit,evidence_classification
+api-001,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-002,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-003,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-004,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-005,30s,no automatic replay of generation action after body accepted,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-006,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-007,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined
+api-008,10s,retry idempotent read transient failures only,API host dependency policy; requires runtime implementation,page size <= 100; AI question <= 2000 chars; topK <= 5,configuration defined

@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Contoso Freight Application Integration API
+  version: 0.1.0
+paths:
+  /api/ShipmentSummary/{shipmentId}:
+    get:
+      summary: Read an authorized shipment summary.
+      security:
+        - entraBearer: [shipment_reader]
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema: { type: string, maxLength: 40 }
+      responses:
+        "200": { description: Shipment summary returned. }
+        "401": { description: Authentication failed. }
+        "403": { description: Authorization failed. }
+        "404": { description: Shipment not found or not accessible. }
+  /api/ShipmentEvents:
+    get:
+      summary: Read paged shipment event history.
+      security:
+        - entraBearer: [shipment_reader]
+      parameters:
+        - name: $filter
+          in: query
+          schema: { type: string }
+        - name: $first
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 100 }
+        - name: $orderby
+          in: query
+          schema: { type: string, enum: [EventOccurredAt, "EventOccurredAt desc"] }
+      responses:
+        "200": { description: Event page returned. }
+        "400": { description: Invalid filter, page, or sort request. }
+  /api/RouteContext:
+    get:
+      summary: Read depot, route, and carrier reference context.
+      security:
+        - entraBearer: [operations_reader]
+      parameters:
+        - name: $filter
+          in: query
+          schema: { type: string }
+      responses:
+        "200": { description: Route context returned. }
+  /api/ServiceCaseSummary:
+    get:
+      summary: Read sanitized customer-service case summaries.
+      security:
+        - entraBearer: [customer_service_user]
+      responses:
+        "200": { description: Sanitized service case summaries returned. }
+        "403": { description: Caller lacks customer-service permission. }
+  /api/ai/query:
+    post:
+      summary: Ask a grounded shipment operations question.
+      security:
+        - entraBearer: [ai_query_user]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [question, correlationId]
+              properties:
+                question: { type: string, minLength: 1, maxLength: 2000 }
+                shipmentId: { type: string, maxLength: 40 }
+                accountId: { type: string, maxLength: 40 }
+                routeCode: { type: string, maxLength: 40 }
+                topK: { type: integer, minimum: 1, maximum: 5, default: 3 }
+                correlationId: { type: string, maxLength: 80 }
+      responses:
+        "200": { description: Grounded answer with citations returned. }
+        "422": { description: Insufficient authorized grounding context. }
+        "503": { description: AI or database dependency unavailable. }
+components:
+  securitySchemes:
+    entraBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+

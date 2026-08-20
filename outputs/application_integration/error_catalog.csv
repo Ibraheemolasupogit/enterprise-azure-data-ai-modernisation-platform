@@ -1,0 +1,10 @@
+error_class,http_status,client_message,leakage_control,evidence_classification
+authentication failure,401,Missing or invalid Entra token.,Do not reveal identity provider internals.,configuration defined
+authorization failure,403,Caller is not allowed to access this resource.,Do not reveal row existence across customers.,configuration defined
+not found,404,Requested resource was not found.,Use same response for inaccessible scoped rows where appropriate.,configuration defined
+invalid request,400,Request failed validation.,Return field-level validation codes without SQL details.,configuration defined
+dependency timeout,504,A dependency timed out.,Hide SQL/OpenAI endpoint details.,configuration defined
+database unavailable,503,Database dependency is unavailable.,No schema or connection details.,configuration defined
+AI unavailable,503,AI dependency is unavailable.,No model endpoint internals.,configuration defined
+insufficient grounding,422,Answer cannot be generated from authorized context.,Expected safe outcome.,configuration defined
+throttling,429,Rate limit exceeded.,Return retry-after when implemented.,configuration defined

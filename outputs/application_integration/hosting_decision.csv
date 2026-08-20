@@ -1,0 +1,5 @@
+hosting_option,decision,reason,boundary,evidence_classification
+Azure Container Apps,selected,"fits containerized DAB/API runtime, managed identity, ingress control, revisioning, scaling, and Log Analytics integration",Bicep is switch-gated; no deployment performed,configuration defined
+Azure App Service,rejected for now,"valid option, but less aligned with containerized DAB plus sidecar/API deployment pattern used here",may be reconsidered for App Service Easy Auth standardization,configuration defined
+Azure Static Web Apps,not selected,front-end hosting only; Milestone 14 does not build a front end,future UI boundary only,configuration defined
+Azure API Management,documented boundary,"appropriate for external consumers, central policy, developer portal, versioning, and enterprise rate limiting",not added by default to avoid unnecessary complexity,configuration defined

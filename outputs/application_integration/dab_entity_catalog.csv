@@ -1,0 +1,7 @@
+entity,source_object,source_type,rest_enabled,graphql_enabled,allowed_roles,allowed_actions,field_restrictions,production_anonymous,evidence_classification
+ShipmentSummary,dbo.vw_ApiShipmentSummary,view,true,true,shipment_reader; customer_service_user,read,"exclude: CustomerEmail, DeclaredValueAmount",none,configuration defined
+ShipmentEvents,dbo.vw_ApiShipmentEvent,view,true,false,shipment_reader; customer_service_user,read,include operational status fields only,none,configuration defined
+RouteContext,dbo.vw_ApiRouteContext,view,true,true,operations_reader; customer_service_user,read,include depot/route/carrier context only,none,configuration defined
+ServiceCaseSummary,dbo.vw_ApiServiceCaseSummary,view,true,false,customer_service_user,read,exclude raw notes/contact/billing fields,none,configuration defined
+GroundingSourceReference,ai.vw_ApiGroundingSourceReference,view,true,false,ai_auditor; ai_query_user,read,source/citation metadata only,none,configuration defined
+AskGroundedOperationsQuestion,ai.usp_ApiAskGroundedOperationsQuestion,stored-procedure,true,false,ai_query_user,execute,bounded input/output contract,none,configuration defined

@@ -1,0 +1,8 @@
+capability,status,evidence
+API catalog and allowlist,locally validated,api_catalog.csv and tests
+DAB production configuration,configuration defined,src/api/dab/dab-config.production.json
+REST and GraphQL contracts,configuration defined,src/api/contracts
+SQL API views/procedures/roles,requires Azure validation,src/azure_sql/api/*.sql
+Container Apps hosting/IaC,configuration defined,infra/modules/application-integration/container-apps.bicep
+MCP tool boundary,configuration defined,src/api/mcp
+Runtime DAB/API smoke test,requires application runtime validation,DAB runtime and Azure SQL not executed locally

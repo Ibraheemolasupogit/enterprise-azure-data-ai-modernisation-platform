@@ -1,0 +1,25 @@
+query ShipmentSummary($shipmentId: String!) {
+  shipmentSummary_by_pk(ShipmentId: $shipmentId) {
+    ShipmentId
+    AccountId
+    Status
+    DepotCode
+    RouteCode
+    LastEventAt
+  }
+}
+
+query RouteContexts($routeCode: String!, $first: Int = 20) {
+  routeContexts(filter: { RouteCode: { eq: $routeCode } }, first: $first) {
+    items {
+      RouteCode
+      DepotCode
+      CarrierCode
+      ServiceRegion
+    }
+  }
+}
+
+# Production posture: GraphQL is limited to selected read entities.
+# Introspection is disabled in the production DAB configuration.
+

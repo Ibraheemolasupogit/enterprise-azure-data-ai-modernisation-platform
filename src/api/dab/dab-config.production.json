@@ -1,0 +1,146 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v2.0.0/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "connection-string": "@env('APPLICATION_SQL_CONNECTION_STRING')",
+    "options": {
+      "set-session-context": true
+    }
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api"
+    },
+    "graphql": {
+      "enabled": true,
+      "path": "/graphql",
+      "allow-introspection": false
+    },
+    "host": {
+      "mode": "production",
+      "cors": {
+        "origins": [
+          "https://<approved-application-origin>"
+        ],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "EntraID",
+        "jwt": {
+          "audience": "<APPLICATION_CLIENT_ID>",
+          "issuer": "https://login.microsoftonline.com/<TENANT_ID>/v2.0"
+        }
+      }
+    }
+  },
+  "entities": {
+    "ShipmentSummary": {
+      "source": {
+        "object": "dbo.vw_ApiShipmentSummary",
+        "type": "view",
+        "key-fields": [ "ShipmentId" ]
+      },
+      "rest": { "enabled": true, "path": "/ShipmentSummary" },
+      "graphql": { "enabled": true, "type": { "singular": "shipmentSummary", "plural": "shipmentSummaries" } },
+      "permissions": [
+        {
+          "role": "shipment_reader",
+          "actions": [
+            {
+              "action": "read",
+              "fields": {
+                "exclude": [ "CustomerEmail", "DeclaredValueAmount" ]
+              }
+            }
+          ]
+        },
+        {
+          "role": "customer_service_user",
+          "actions": [ "read" ]
+        }
+      ]
+    },
+    "ShipmentEvents": {
+      "source": {
+        "object": "dbo.vw_ApiShipmentEvent",
+        "type": "view",
+        "key-fields": [ "ShipmentId", "EventSequence" ]
+      },
+      "rest": { "enabled": true, "path": "/ShipmentEvents" },
+      "graphql": false,
+      "permissions": [
+        { "role": "shipment_reader", "actions": [ "read" ] },
+        { "role": "customer_service_user", "actions": [ "read" ] }
+      ]
+    },
+    "RouteContext": {
+      "source": {
+        "object": "dbo.vw_ApiRouteContext",
+        "type": "view",
+        "key-fields": [ "RouteCode" ]
+      },
+      "rest": { "enabled": true, "path": "/RouteContext" },
+      "graphql": { "enabled": true, "type": { "singular": "routeContext", "plural": "routeContexts" } },
+      "permissions": [
+        { "role": "operations_reader", "actions": [ "read" ] },
+        { "role": "customer_service_user", "actions": [ "read" ] }
+      ]
+    },
+    "ServiceCaseSummary": {
+      "source": {
+        "object": "dbo.vw_ApiServiceCaseSummary",
+        "type": "view",
+        "key-fields": [ "CaseId" ]
+      },
+      "rest": { "enabled": true, "path": "/ServiceCaseSummary" },
+      "graphql": false,
+      "permissions": [
+        {
+          "role": "customer_service_user",
+          "actions": [
+            {
+              "action": "read",
+              "fields": {
+                "exclude": [ "RawCaseNotes", "CustomerEmail", "BillingReference" ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "GroundingSourceReference": {
+      "source": {
+        "object": "ai.vw_ApiGroundingSourceReference",
+        "type": "view",
+        "key-fields": [ "ReferenceId" ]
+      },
+      "rest": { "enabled": true, "path": "/GroundingSourceReference" },
+      "graphql": false,
+      "permissions": [
+        { "role": "ai_query_user", "actions": [ "read" ] },
+        { "role": "ai_auditor", "actions": [ "read" ] }
+      ]
+    },
+    "AskGroundedOperationsQuestion": {
+      "source": {
+        "object": "ai.usp_ApiAskGroundedOperationsQuestion",
+        "type": "stored-procedure",
+        "parameters": {
+          "Question": "@item.question",
+          "ShipmentId": "@item.shipmentId",
+          "AccountId": "@item.accountId",
+          "RouteCode": "@item.routeCode",
+          "TopK": "@item.topK",
+          "CorrelationId": "@item.correlationId"
+        }
+      },
+      "rest": { "enabled": true, "path": "/ai/query", "methods": [ "post" ] },
+      "graphql": false,
+      "permissions": [
+        { "role": "ai_query_user", "actions": [ "execute" ] }
+      ]
+    }
+  }
+}
+

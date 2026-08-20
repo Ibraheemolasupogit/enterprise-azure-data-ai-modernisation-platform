@@ -26,6 +26,12 @@ param deployDatabricksFoundation bool = false
 @description('Object containing Azure Databricks foundation settings for future deployments.')
 param databricksFoundation object = {}
 
+@description('Whether application/API integration resources should be declared by this template.')
+param deployApplicationIntegration bool = false
+
+@description('Object containing application/API integration settings for future deployments.')
+param applicationIntegration object = {}
+
 @description('Tags applied to resources when real infrastructure modules are added.')
 param tags object = {
   workload: workloadName
@@ -55,11 +61,22 @@ module databricksFoundationModule 'modules/databricks/foundation.bicep' = if (de
   }
 }
 
+module applicationIntegrationModule 'modules/application-integration/container-apps.bicep' = if (deployApplicationIntegration) {
+  name: 'application-integration-${environment}'
+  params: {
+    environment: environment
+    location: location
+    workloadName: workloadName
+    settings: applicationIntegration
+    tags: tags
+  }
+}
+
 output foundation object = {
   workloadName: workloadName
   environment: environment
   location: location
-  status: (deployAzureSqlOperations || deployDatabricksFoundation) ? 'Selected infrastructure modules declared for future deployment validation' : 'No Azure resources declared by default'
+  status: (deployAzureSqlOperations || deployDatabricksFoundation || deployApplicationIntegration) ? 'Selected infrastructure modules declared for future deployment validation' : 'No Azure resources declared by default'
 }
 
 output azureSqlOperations object = deployAzureSqlOperations ? azureSqlOperationsModule.outputs.operationalSummary : {
@@ -67,5 +84,9 @@ output azureSqlOperations object = deployAzureSqlOperations ? azureSqlOperations
 }
 
 output databricksFoundation object = deployDatabricksFoundation ? databricksFoundationModule.outputs.foundationSummary : {
+  status: 'not declared'
+}
+
+output applicationIntegration object = deployApplicationIntegration ? applicationIntegrationModule.outputs.integrationSummary : {
   status: 'not declared'
 }

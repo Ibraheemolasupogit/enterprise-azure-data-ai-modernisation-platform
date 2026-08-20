@@ -1,0 +1,9 @@
+control,implementation,evidence_classification
+allowlisted operations,tools are fixed catalog entries and map to explicit API/procedure boundaries,configuration defined
+strict schemas,"JSON schemas reject unknown fields, oversize inputs, and invalid identifiers",configuration defined
+least privilege,each tool requires one application role and database role,configuration defined
+no arbitrary SQL,tool inputs cannot carry SQL fragments or object names,configuration defined
+no arbitrary URLs,tools do not accept callback or fetch URLs,configuration defined
+no shell execution,"MCP boundary exposes no shell, file, or process tools",configuration defined
+auditable calls,"correlation ID, identity, role, tool name, backing endpoint, and status are logged",configuration defined
+identity propagation,caller identity and selected role flow into API authorization where supported,configuration defined

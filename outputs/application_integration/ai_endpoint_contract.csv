@@ -1,0 +1,2 @@
+endpoint,input_contract,output_contract,backing_procedure,authorization_propagation,grounding_policy,evidence_classification
+POST /api/ai/query,question; optional shipmentId/accountId/routeCode scope; topK between 1 and 5; correlationId,answer; sourceReferences[]; evidenceStatus; requestId; errorState,ai.usp_ApiAskGroundedOperationsQuestion,required,use retrieved authorized context only; insufficiency is valid output,configuration defined

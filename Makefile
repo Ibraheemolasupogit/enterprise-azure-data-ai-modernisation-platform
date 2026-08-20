@@ -1,4 +1,4 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd generate-sql-ai-evidence validate-sql-ai build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines generate-databricks-orchestration-evidence validate-databricks-orchestration generate-databricks-operations-evidence validate-databricks-operations
+.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd generate-sql-ai-evidence validate-sql-ai generate-application-integration-evidence validate-application-integration build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines generate-databricks-orchestration-evidence validate-databricks-orchestration generate-databricks-operations-evidence validate-databricks-operations
 
 PYTHON ?= python3
 
@@ -17,6 +17,7 @@ help:
 	@echo "  make validate-sql-performance Generate and validate SQL performance evidence"
 	@echo "  make validate-sql-cicd Generate and validate SQL database lifecycle evidence"
 	@echo "  make validate-sql-ai Generate and validate SQL AI/vector/RAG evidence"
+	@echo "  make validate-application-integration Generate and validate application/API integration evidence"
 	@echo "  make validate-databricks-foundation Generate and validate Databricks foundation evidence"
 	@echo "  make validate-databricks-pipelines Generate and validate Databricks pipeline evidence"
 	@echo "  make validate-databricks-orchestration Generate and validate Databricks orchestration evidence"
@@ -27,7 +28,7 @@ help:
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check sql-ai-check application-integration-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check databricks-operations-check test lint
 
 test:
 	$(PYTHON) -m pytest
@@ -61,6 +62,9 @@ sql-cicd-check:
 
 sql-ai-check:
 	$(PYTHON) scripts/validate_sql_ai.py
+
+application-integration-check:
+	$(PYTHON) scripts/validate_application_integration.py
 
 databricks-foundation-check:
 	$(PYTHON) scripts/validate_databricks_foundation.py
@@ -114,6 +118,12 @@ generate-sql-ai-evidence:
 
 validate-sql-ai: generate-sql-ai-evidence
 	$(PYTHON) scripts/validate_sql_ai.py
+
+generate-application-integration-evidence:
+	$(PYTHON) -m application_integration.cli --outputs-dir outputs/application_integration --reports-dir reports
+
+validate-application-integration: generate-application-integration-evidence
+	$(PYTHON) scripts/validate_application_integration.py
 
 build-sql-project:
 	$(PYTHON) scripts/build_sql_project.py

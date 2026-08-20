@@ -1,0 +1,6 @@
+rate_limit_class,relative_limit,applies_to,rationale,implementation_boundary,evidence_classification
+operational_lookup,standard,shipment/depot/route reads,idempotent read; bounded page size,gateway/API host policy; no unsupported gateway implementation claimed,configuration defined
+customer_service_lookup,moderate,case summaries,confidential data; tighter per-user controls,gateway/API host policy; no unsupported gateway implementation claimed,configuration defined
+ai_query,strict,grounded AI question endpoint,cost-aware; topK and request-size bounded,gateway/API host policy; no unsupported gateway implementation claimed,configuration defined
+audit_lookup,restricted,AI citation/audit source references,auditor role only,gateway/API host policy; no unsupported gateway implementation claimed,configuration defined
+administrative_endpoint,restricted,health/readiness/admin diagnostics,internal access only,gateway/API host policy; no unsupported gateway implementation claimed,configuration defined

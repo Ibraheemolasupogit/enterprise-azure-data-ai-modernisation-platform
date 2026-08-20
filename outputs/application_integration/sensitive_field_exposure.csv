@@ -1,0 +1,7 @@
+data_category,field_or_source,exposure_decision,required_role,control,evidence_classification
+shipment status,dbo.vw_ApiShipmentSummary.Status,API-visible,shipment_reader,operational status is required for lookup,configuration defined
+customer contact information,"CustomerEmail, Phone",masked,customer_service_user,mask in API views; do not return through DAB field list,configuration defined
+declared shipment value,DeclaredValueAmount,never exposed,none,excluded from application-facing views,configuration defined
+billing information,Invoice and payment fields,restricted,none,not part of Milestone 14 API allowlist,configuration defined
+service-case notes,RawCaseNotes,restricted,customer_service_user,sanitized summary only; raw notes remain hidden,configuration defined
+AI retrieval context,ai.DocumentChunk.Content,restricted,ai_query_user,returned only through grounded citation-bound procedure output,configuration defined

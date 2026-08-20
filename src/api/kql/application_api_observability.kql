@@ -1,0 +1,43 @@
+// API failure rate
+requests
+| where timestamp > ago(1h)
+| summarize total=count(), failures=countif(success == false) by bin(timestamp, 5m), name
+| extend failureRate = todouble(failures) / todouble(total)
+
+// Slow requests
+requests
+| where timestamp > ago(24h)
+| where duration > 2s
+| project timestamp, operation_Id, name, duration, resultCode
+
+// SQL dependency failures
+dependencies
+| where timestamp > ago(24h)
+| where type has "SQL"
+| where success == false
+| project timestamp, operation_Id, target, name, resultCode, duration
+
+// AI dependency failures
+dependencies
+| where timestamp > ago(24h)
+| where target has "openai" or name has "Azure OpenAI"
+| where success == false
+| project timestamp, operation_Id, target, name, resultCode, duration
+
+// Authorization failures
+requests
+| where timestamp > ago(24h)
+| where resultCode in ("401", "403")
+| summarize count() by bin(timestamp, 15m), name, resultCode
+
+// Correlation-id investigation
+union requests, dependencies, traces
+| where operation_Id == "<correlation-id>"
+| order by timestamp asc
+
+// Unusual endpoint usage
+requests
+| where timestamp > ago(24h)
+| summarize calls=count(), users=dcount(user_AuthenticatedId) by name
+| order by calls desc
+

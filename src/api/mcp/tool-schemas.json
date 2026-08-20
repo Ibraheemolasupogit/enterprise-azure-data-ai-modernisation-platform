@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "tools": {
+    "get_shipment_status": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "shipmentId" ],
+        "properties": {
+          "shipmentId": { "type": "string", "minLength": 1, "maxLength": 40 },
+          "correlationId": { "type": "string", "maxLength": 80 }
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": [ "shipmentId", "status", "source" ],
+        "properties": {
+          "shipmentId": { "type": "string" },
+          "status": { "type": "string" },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "get_shipment_history": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "shipmentId" ],
+        "properties": {
+          "shipmentId": { "type": "string", "maxLength": 40 },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 100 }
+        }
+      },
+      "output": { "type": "object", "properties": { "events": { "type": "array" } } }
+    },
+    "get_route_context": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "routeCode" ],
+        "properties": { "routeCode": { "type": "string", "maxLength": 40 } }
+      },
+      "output": { "type": "object", "properties": { "route": { "type": "object" } } }
+    },
+    "search_operational_knowledge": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "query" ],
+        "properties": {
+          "query": { "type": "string", "minLength": 1, "maxLength": 1000 },
+          "shipmentId": { "type": "string", "maxLength": 40 },
+          "topK": { "type": "integer", "minimum": 1, "maximum": 5 }
+        }
+      },
+      "output": { "type": "object", "properties": { "matches": { "type": "array" } } }
+    },
+    "ask_grounded_operations_question": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "question", "correlationId" ],
+        "properties": {
+          "question": { "type": "string", "minLength": 1, "maxLength": 2000 },
+          "shipmentId": { "type": "string", "maxLength": 40 },
+          "accountId": { "type": "string", "maxLength": 40 },
+          "topK": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "correlationId": { "type": "string", "maxLength": 80 }
+        }
+      },
+      "output": {
+        "type": "object",
+        "required": [ "answer", "sourceReferences", "evidenceStatus", "requestId" ],
+        "properties": {
+          "answer": { "type": "string" },
+          "sourceReferences": { "type": "array" },
+          "evidenceStatus": { "type": "string" },
+          "requestId": { "type": "string" },
+          "errorState": { "type": [ "string", "null" ] }
+        }
+      }
+    }
+  }
+}
+

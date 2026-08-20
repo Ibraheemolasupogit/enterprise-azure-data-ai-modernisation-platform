@@ -1,0 +1,10 @@
+consumer,operation,authorization_role,database_object,data_sensitivity,audit_signal,evidence_classification
+application user,/api/ShipmentSummary/{ShipmentId},shipment_reader,dbo.vw_ApiShipmentSummary,internal,correlationId -> api-001 -> SQL dependency -> response status,configuration defined
+application user,/api/ShipmentEvents?$filter=ShipmentId eq {id},shipment_reader,dbo.vw_ApiShipmentEvent,internal,correlationId -> api-002 -> SQL dependency -> response status,configuration defined
+application user,/api/RouteContext,operations_reader,dbo.vw_ApiRouteContext,internal,correlationId -> api-003 -> SQL dependency -> response status,configuration defined
+application user,/api/ServiceCaseSummary,customer_service_user,dbo.vw_ApiServiceCaseSummary,confidential,correlationId -> api-004 -> SQL dependency -> response status,configuration defined
+application user,/api/ai/query,ai_query_user,ai.usp_ApiAskGroundedOperationsQuestion,confidential,correlationId -> api-005 -> SQL dependency -> response status,configuration defined
+application user,/api/GroundingSourceReference,ai_auditor,ai.vw_ApiGroundingSourceReference,confidential,correlationId -> api-006 -> SQL dependency -> response status,configuration defined
+application user,shipmentSummary,shipment_reader,dbo.vw_ApiShipmentSummary,internal,correlationId -> api-007 -> SQL dependency -> response status,configuration defined
+application user,routeContext,operations_reader,dbo.vw_ApiRouteContext,internal,correlationId -> api-008 -> SQL dependency -> response status,configuration defined
+AI endpoint,POST /api/ai/query,ai_query_user,ai.usp_ApiAskGroundedOperationsQuestion -> ai.usp_AssembleRagContext,confidential,API correlationId -> RetrievalAuditId -> GenerationAuditId -> citation chunk ids,configuration defined

@@ -1,0 +1,8 @@
+role,allowed_access,denied_access,entra_mapping,database_role,evidence_classification
+shipment_reader,read shipment summary/status/history through allowlisted views,"no service-case notes, no AI generation, no arbitrary SQL",appRole:shipment_reader,shipment_reader,configuration defined
+operations_reader,read depot/route/carrier reference context,no customer case or AI payload access,appRole:operations_reader,operations_reader,configuration defined
+customer_service_user,read authorized shipment and sanitized case summaries,"no raw notes, declared values, billing details, or cross-customer records",appRole:customer_service_user,customer_service_user,configuration defined
+ai_query_user,execute governed retrieval/RAG API and read citation metadata,no direct AI table ownership or unrestricted context access,appRole:ai_query_user,ai_query_user,configuration defined
+ai_auditor,read AI retrieval/generation audit summaries and citation metadata,no unrestricted sensitive payload reads,appRole:ai_auditor,ai_auditor,configuration defined
+api_runtime_identity,managed identity used by API host/DAB to connect to Azure SQL,"no db_owner, no ad hoc write grants",appRole:api_runtime_identity,api_runtime_identity,configuration defined
+api_deployment_identity,deploy app configuration and infrastructure through controlled pipeline,no runtime data-plane access,appRole:api_deployment_identity,api_deployment_identity,configuration defined
