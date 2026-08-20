@@ -1,0 +1,8 @@
+policy_id,environment,control,value_or_rule,rationale,evidence_classification
+pol-001,dev,allowed runtimes,current LTS plus one preview runtime by exception,developer flexibility with bounded testing,configuration defined
+pol-002,prod,allowed runtimes,current approved LTS only,stable production runtime,configuration defined
+pol-003,prod,max workers,cap by workload class; backfill requires approval,avoid runaway scale,configuration defined
+pol-004,prod,auto-termination,required for job clusters and warehouses where applicable,reduce idle spend,configuration defined
+pol-005,all,tags,"environment,workload,domain,owner,cost_center",mandatory FinOps attribution,configuration defined
+pol-006,prod,security mode,Unity Catalog compatible access mode,enforce governance boundary,configuration defined
+pol-007,prod,libraries,bundle/source-controlled libraries only,prevent unreviewed package drift,configuration defined

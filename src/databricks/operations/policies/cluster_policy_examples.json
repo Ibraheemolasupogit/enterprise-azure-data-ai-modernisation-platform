@@ -1,0 +1,37 @@
+{
+  "policy_family": "contoso_freight_jobs_compute",
+  "evidence_classification": "configuration defined",
+  "controls": {
+    "spark_version": {
+      "type": "allowlist",
+      "values": ["15.4.x-scala2.12"],
+      "hidden": false
+    },
+    "autoscale.max_workers": {
+      "type": "range",
+      "maxValue": 8
+    },
+    "autotermination_minutes": {
+      "type": "fixed",
+      "value": 15
+    },
+    "runtime_engine": {
+      "type": "allowlist",
+      "values": ["PHOTON", "STANDARD"]
+    },
+    "custom_tags.environment": {
+      "type": "unlimited"
+    },
+    "custom_tags.workload": {
+      "type": "unlimited"
+    },
+    "custom_tags.domain": {
+      "type": "unlimited"
+    },
+    "data_security_mode": {
+      "type": "allowlist",
+      "values": ["USER_ISOLATION", "SINGLE_USER"]
+    }
+  }
+}
+

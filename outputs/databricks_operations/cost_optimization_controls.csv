@@ -1,0 +1,8 @@
+target,area,current_or_expected_pattern,recommendation,performance_consideration,cost_consideration,evidence_classification
+idle interactive compute,preventive,interactive clusters can idle,auto-termination and dev policy limits,minimal performance impact,reduces idle spend,configuration defined
+oversized clusters,detective,worker count exceeds workload need,review utilization and right-size,improves efficiency,reduces DBU waste,requires Databricks validation
+excessive retries,corrective,retry storm hides deterministic failures,cap retries and stop data-quality failures,reduces noisy reruns,prevents repeated failed-run cost,configuration defined
+over-frequent schedules,detective,schedule exceeds freshness need,compare freshness target to run frequency,keeps products fresh enough,removes unnecessary runs,configuration defined
+SQL warehouse idle time,preventive,warehouse left running,auto-stop and queue monitoring,keeps query serving available,reduces idle warehouse cost,configuration defined
+small-file overhead,corrective,many tiny files slow reads,compact/OPTIMIZE after file-count evidence,improves scan planning,optimization cost must be justified,requires Databricks validation
+excessive retention,detective,data kept beyond policy,compare Delta/ADLS retention to policy,protects recovery boundaries,controls storage cost,configuration defined

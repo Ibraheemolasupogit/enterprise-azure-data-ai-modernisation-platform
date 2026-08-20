@@ -93,17 +93,13 @@ Implemented:
 - Deterministic quality evidence, quarantine/replay model, freshness assumptions, failure handling, backfill controls, job permissions, operational traceability, and runbooks.
 - Lakeflow Jobs bundle resources for batch feeds, relational incremental loads, event streaming, Gold publication, and controlled backfill/replay.
 
-## Future Milestone: Databricks Monitoring, Troubleshooting, and Optimization
+## Milestone 12: Databricks Monitoring, Troubleshooting, Performance, and Cost Optimization
 
-Planned:
+Implemented:
 
-- Databricks workload observability.
-- Lakeflow job/pipeline runtime troubleshooting.
-- Cost/performance optimization.
-- Predictive optimization validation.
-- SQL warehouse and job runtime tuning.
+- Monitoring architecture, system-table query assets, job/pipeline observability, Spark troubleshooting, join optimization, Delta table health, streaming health/recovery, compute optimization, SQL warehouse operations, FinOps cost attribution, alert catalog, SLO assumptions, and runbooks.
 
-## Future Milestone: SQL AI, Vector, and Hybrid Search
+## Future Milestone: AI-Enabled SQL, Vector Search, and RAG
 
 Planned:
 

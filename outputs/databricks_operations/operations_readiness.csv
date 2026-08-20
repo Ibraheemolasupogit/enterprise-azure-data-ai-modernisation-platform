@@ -1,0 +1,6 @@
+target,area,current_or_expected_pattern,recommendation,performance_consideration,cost_consideration,evidence_classification
+monitoring architecture,readiness,"signals mapped to jobs, tables, warehouses, quality and cost",ready for Databricks runtime wiring,no runtime telemetry fabricated,requires system tables/logs to execute,configuration defined
+Spark troubleshooting,readiness,symptom-to-evidence-to-remediation matrix exists,ready for Spark UI and query-plan use,safe remediation patterns only,requires runtime metrics,configuration defined
+Delta optimization,readiness,table health and retention checks defined,run OPTIMIZE/VACUUM only after evidence,protects recovery/time travel,avoids unjustified optimization cost,configuration defined
+FinOps,readiness,mandatory tags and usage dimensions defined,use system billing tables in production,separates performance and cost controls,no fake currency totals,configuration defined
+runtime boundary,readiness,system table queries and alerts are authored,execute only in Databricks workspace,no local runtime pass claims,requires Databricks validation,requires Databricks validation

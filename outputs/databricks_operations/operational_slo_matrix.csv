@@ -1,0 +1,5 @@
+workload,freshness_target,processing_target,failure_tolerance,recovery_target,business_criticality,evidence_classification
+shipment event processing,minutes-class architecture assumption,processing keeps pace with input,transient restart tolerated; repeated restart escalates,recover from checkpoint after transient failure,high,configuration defined
+operational shipment Gold,hourly architecture assumption,Gold refresh after validated Silver,critical gate failure blocks publication,rerun Gold from validated Silver,high,configuration defined
+billing Gold,daily architecture assumption,daily revenue summary after billing increment,single failed day requires owner review,rerun from Silver billing invoices,medium,configuration defined
+service/incident Gold,daily architecture assumption,daily service summary after case export,malformed cases quarantined without silent loss,replay corrected cases,medium,configuration defined

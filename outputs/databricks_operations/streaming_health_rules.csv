@@ -1,0 +1,6 @@
+rule_id,job_or_workflow,condition,threshold_or_detection,freshness_impact,owner,runbook,evidence_classification
+str-001,event_streaming_workflow,input faster than processing,input rate consistently exceeds processing rate,event freshness degraded,streaming operator,docs/runbooks/databricks-streaming-lag.md,requires Databricks validation
+str-002,event_streaming_workflow,stale checkpoint,checkpoint age exceeds breach threshold,stream recovery at risk,streaming operator,docs/runbooks/databricks-checkpoint-failure.md,configuration defined
+str-003,event_streaming_workflow,growing state,state rows/memory grows without watermark progress,streaming cost and latency risk,streaming operator,docs/runbooks/databricks-streaming-lag.md,requires Databricks validation
+str-004,event_streaming_workflow,failed micro-batch,micro-batch failure in progress/event log,event processing paused,streaming operator,docs/runbooks/databricks-job-failure.md,requires Databricks validation
+str-005,event_streaming_workflow,excessive late data,late/quarantined event share breaches assumption,Gold delay metrics may lag,data governance,docs/runbooks/databricks-streaming-lag.md,locally validated

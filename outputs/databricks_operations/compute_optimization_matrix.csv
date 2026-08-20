@@ -1,0 +1,6 @@
+target,area,current_or_expected_pattern,recommendation,performance_consideration,cost_consideration,evidence_classification
+batch feeds,jobs compute,daily bounded file processing,"jobs compute with autoscaling, Photon where Delta-heavy, auto-termination",handles variable files without interactive clusters,limits idle compute,configuration defined
+relational increments,jobs compute,frequent incremental MERGE,small-to-medium job clusters with policy limits and LTS runtime,keeps merge tasks isolated,controls recurring job cost,configuration defined
+event streaming,serverless jobs or jobs compute,continuous event ingestion,serverless where available; otherwise isolated job compute and checkpoint health,decouples stream from interactive users,continuous workloads require cost review,configuration defined
+Gold SQL refresh,SQL warehouse,SQL aggregation/serving,right-sized serverless/pro warehouse with auto-stop and queue monitoring,supports SQL refresh and BI queries,prevents idle warehouse spend,configuration defined
+backfill/replay,jobs compute,manual historical ranges,"isolated job cluster, max workers cap, no shared interactive compute",protects current workloads,backfill cost visible by tags,configuration defined

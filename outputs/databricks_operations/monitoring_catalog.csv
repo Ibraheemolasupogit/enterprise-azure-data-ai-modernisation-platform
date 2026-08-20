@@ -1,0 +1,11 @@
+control_id,workload,component,monitoring_source,signal,purpose,owner,evidence_classification
+mon-001,batch feeds,Lakeflow Jobs,job run metadata and system tables,"task status, duration, retries, queue time",detect failed or delayed batch ingestion,data engineering,configuration defined
+mon-002,relational increments,Lakeflow Jobs,job run metadata,"duration, start delay, stale high-water mark",detect stale incremental analytical loads,data engineering,configuration defined
+mon-003,shipment events,Structured Streaming,streaming progress and checkpoint metadata,"input rate, processing rate, watermark, lag, checkpoint age",detect stalled or lagging event stream,streaming operator,requires Databricks validation
+mon-004,Gold publication,Databricks SQL and Lakeflow Jobs,query history and job metadata,"query latency, Gold freshness, Gold gate result",detect stale publication and expensive SQL refresh,analytics owner,configuration defined
+mon-005,jobs compute,clusters/serverless,system.compute and Spark UI/runtime metrics,"utilization, spill, shuffle, memory pressure",troubleshoot Spark performance,platform operator,requires Databricks validation
+mon-006,SQL warehouses,Databricks SQL,query history and warehouse events,"queue time, execution duration, cache hit behavior",operate Gold consumption warehouses,analytics platform owner,requires Databricks validation
+mon-007,Unity Catalog,governance/audit,system.access audit and lineage tables,"grant changes, object access, lineage updates",security and lineage investigation,security reviewer,requires Databricks validation
+mon-008,FinOps,billing/usage,system.billing usage and list prices,DBU usage by workspace/job/tag,attribute and optimize cost,FinOps owner,requires Databricks validation
+mon-009,storage,ADLS and Delta metadata,table details/history and storage diagnostics,"file counts, table size, retention and stale files",detect Delta table health issues,data engineering,configuration defined
+mon-010,quality gates,orchestration evidence,quality_results and job task values,"critical failures, rejects, quarantines",block unsafe publication,data governance,locally validated

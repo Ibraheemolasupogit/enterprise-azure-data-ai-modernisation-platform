@@ -1,0 +1,9 @@
+symptom,possible_cause,diagnostic_evidence,safe_remediation,evidence_classification
+slow stages,"large shuffle, skew, or repeated scans","Spark UI stages, SQL DAG, task duration distribution",inspect joins/filtering; reduce scanned data; apply AQE and clustering,requires Databricks validation
+skew,hot customer/route/shipment key,task time variance and shuffle read distribution,"salt only targeted keys, broadcast small dimensions, review join order",configuration defined
+shuffle pressure,wide aggregations or non-colocated joins,"shuffle bytes, spill, stage retries","pre-filter, repartition by join key, reduce columns before join",requires Databricks validation
+spill,executor memory pressure,"spill metrics, GC time, executor logs","right-size workers, reduce shuffle width, avoid unnecessary cache",requires Databricks validation
+partition imbalance,too few/many partitions or skewed input files,"input partition sizes, task counts","coalesce small outputs, repartition before wide operations",configuration defined
+driver bottleneck,collect/toPandas or excessive metadata,"driver logs, command result size, job stall",avoid driver collection and push work to Spark,configuration defined
+Python UDF overhead,row-by-row Python execution,Python execution time and serialization metrics,replace with Spark SQL functions or vectorized alternatives,configuration defined
+inefficient joins,"missing filters, wrong build side, large shuffle",query plan and join strategy,broadcast small dimensions and filter facts before join,configuration defined

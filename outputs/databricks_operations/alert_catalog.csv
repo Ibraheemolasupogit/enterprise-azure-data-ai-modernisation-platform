@@ -1,0 +1,13 @@
+alert_id,condition,severity,owner,investigation_query,runbook,escalation_path,evidence_classification
+alert-001,job failed,ERROR,platform operator,sql/jobs_failed.sql,docs/runbooks/databricks-job-failure.md,data engineering lead,configuration defined
+alert-002,repeated task failure,ERROR,platform operator,sql/jobs_failed.sql,docs/runbooks/databricks-job-failure.md,platform lead,configuration defined
+alert-003,job duration regression,WARNING,data engineering,sql/jobs_long_running.sql,docs/runbooks/databricks-slow-job.md,workflow owner,configuration defined
+alert-004,Gold freshness breach,ERROR,analytics owner,sql/jobs_long_running.sql,docs/runbooks/databricks-stale-gold-product.md,business owner,configuration defined
+alert-005,streaming lag,ERROR,streaming operator,sql/streaming_health.sql,docs/runbooks/databricks-streaming-lag.md,platform lead,configuration defined
+alert-006,stalled stream,CRITICAL,streaming operator,sql/streaming_health.sql,docs/runbooks/databricks-streaming-lag.md,platform lead,configuration defined
+alert-007,checkpoint issue,CRITICAL,streaming operator,sql/streaming_health.sql,docs/runbooks/databricks-checkpoint-failure.md,platform lead,configuration defined
+alert-008,critical quality failure,CRITICAL,data governance,sql/quality_gate_failures.sql,docs/runbooks/databricks-quality-gate-failure.md,data owner,locally validated
+alert-009,compute saturation,WARNING,platform operator,sql/compute_utilization.sql,docs/runbooks/databricks-memory-spill.md,platform lead,requires Databricks validation
+alert-010,warehouse queue/latency,WARNING,analytics platform owner,sql/sql_warehouse_latency.sql,docs/runbooks/databricks-sql-warehouse-latency.md,analytics owner,requires Databricks validation
+alert-011,unusual usage/cost,WARNING,FinOps owner,sql/cost_attribution.sql,docs/runbooks/databricks-unexpected-cost.md,platform owner,requires Databricks validation
+alert-012,security/audit anomaly,CRITICAL,security reviewer,sql/audit_activity.sql,docs/runbooks/databricks-audit-investigation.md,security lead,requires Databricks validation

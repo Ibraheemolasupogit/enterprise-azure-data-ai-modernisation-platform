@@ -1,0 +1,4 @@
+target,area,current_or_expected_pattern,recommendation,performance_consideration,cost_consideration,evidence_classification
+Gold consumption warehouse,SQL warehouse operations,curated Gold BI and operational analytics,"monitor queued queries, p95 duration, cache use, auto-stop and concurrency",right-size warehouse from query history,avoid idle and oversized warehouse cost,requires Databricks validation
+Gold refresh SQL task,query performance,Gold aggregation SQL,"review query history for large scans, poor filters, aggregation pressure and repeated expensive queries","optimize Databricks SQL plans, not Azure SQL Server plans",reduce warehouse DBU consumption,requires Databricks validation
+warehouse sizing,serverless/pro,unknown initial concurrency,start small under architecture assumption and scale by queue/latency evidence,protects latency without guessing,avoids fabricated benchmark sizing,configuration defined

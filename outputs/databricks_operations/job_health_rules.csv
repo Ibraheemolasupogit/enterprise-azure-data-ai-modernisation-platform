@@ -1,0 +1,6 @@
+rule_id,job_or_workflow,condition,threshold_or_detection,freshness_impact,owner,runbook,evidence_classification
+job-001,batch_feeds_workflow,failed task,task result is failed,batch source not refreshed,data engineering,docs/runbooks/databricks-job-failure.md,configuration defined
+job-002,relational_incremental_workflow,delayed run,start delay exceeds architecture assumption,incremental Silver freshness at risk,data engineering,docs/runbooks/databricks-slow-job.md,configuration defined
+job-003,event_streaming_workflow,repeated retry,streaming task restarts repeatedly,event freshness degraded,streaming operator,docs/runbooks/databricks-streaming-lag.md,configuration defined
+job-004,gold_publication_workflow,stale publication,Gold freshness breach threshold exceeded,BI and operational analytics stale,analytics owner,docs/runbooks/databricks-stale-gold-product.md,configuration defined
+job-005,controlled_backfill_replay_workflow,excessive duration,backfill exceeds approved window,current processing isolation at risk,platform lead,docs/runbooks/databricks-job-failure.md,configuration defined

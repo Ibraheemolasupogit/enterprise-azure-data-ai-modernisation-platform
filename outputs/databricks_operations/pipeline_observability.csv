@@ -1,0 +1,9 @@
+stage,source_or_table,status_signal,count_signal,freshness_signal,latency_signal,checkpoint_signal,evidence_classification
+source,legacy_tms/billing_ops/file feeds/events,source availability,source manifest count,source extract/event recency,source arrival latency,not applicable,configuration defined
+ingestion,Lakeflow Jobs task,task run status,input/output record counts,processing date high-water mark,task duration,checkpoint path for incremental/streaming,configuration defined
+Bronze,bronze.*,Bronze write success,Bronze accepted/rejected counts,ingested_at max,landing-to-Bronze latency,Auto Loader/stream checkpoint where relevant,configuration defined
+Bronze quality gate,Bronze datasets,gate pass/fail,warning/rejected/quarantined counts,freshness status,gate duration,not applicable,locally validated
+Silver,silver.*,Silver write success,accepted/quarantined counts,Silver max event/date,Bronze-to-Silver latency,not applicable,configuration defined
+Silver quality gate,Silver datasets,gate pass/fail,critical failure count,freshness status,gate duration,not applicable,locally validated
+Gold,gold.*,Gold refresh success,KPI row counts,Gold max metric date,Silver-to-Gold latency,not applicable,configuration defined
+publication,Gold products,publish_readiness,published product count,consumer freshness,Gold gate-to-publish latency,not applicable,configuration defined

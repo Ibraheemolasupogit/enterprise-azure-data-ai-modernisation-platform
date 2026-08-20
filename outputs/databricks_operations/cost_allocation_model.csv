@@ -1,0 +1,8 @@
+dimension,required_tag_or_source,attribution_use,owner,evidence_classification
+environment,environment tag,split dev/test/prod usage,FinOps owner,configuration defined
+workspace,workspace_id system billing field,workspace-level chargeback,FinOps owner,requires Databricks validation
+workload,workload tag,batch/incremental/streaming/gold/backfill cost grouping,platform operator,configuration defined
+job,job_id/job_name system tables,job-level cost attribution,data engineering,requires Databricks validation
+compute type,sku/compute_type,"serverless, jobs compute, SQL warehouse split",platform operator,requires Databricks validation
+user/service principal,run_as/user identity,interactive vs service workload attribution,security reviewer,requires Databricks validation
+domain,domain tag,"shipment, billing, service, reference domain attribution",data product owner,configuration defined
