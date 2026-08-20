@@ -1,4 +1,4 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check databricks-foundation-check databricks-pipelines-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines
+.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations generate-sql-performance-evidence validate-sql-performance generate-sql-release-evidence validate-sql-cicd build-sql-project test-sql-project generate-databricks-foundation-evidence validate-databricks-foundation generate-databricks-pipeline-evidence validate-databricks-pipelines generate-databricks-orchestration-evidence validate-databricks-orchestration
 
 PYTHON ?= python3
 
@@ -18,13 +18,14 @@ help:
 	@echo "  make validate-sql-cicd Generate and validate SQL database lifecycle evidence"
 	@echo "  make validate-databricks-foundation Generate and validate Databricks foundation evidence"
 	@echo "  make validate-databricks-pipelines Generate and validate Databricks pipeline evidence"
+	@echo "  make validate-databricks-orchestration Generate and validate Databricks orchestration evidence"
 	@echo "  make build-sql-project Build the SQL project dacpac when dotnet is available"
 	@echo "  make test-sql-project Run static SQL project tests"
 	@echo "  make generate-estate Generate the default synthetic legacy estate"
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check databricks-foundation-check databricks-pipelines-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check sql-performance-check sql-cicd-check databricks-foundation-check databricks-pipelines-check databricks-orchestration-check test lint
 
 test:
 	$(PYTHON) -m pytest
@@ -61,6 +62,9 @@ databricks-foundation-check:
 
 databricks-pipelines-check:
 	$(PYTHON) scripts/validate_databricks_pipelines.py
+
+databricks-orchestration-check:
+	$(PYTHON) scripts/validate_databricks_orchestration.py
 
 generate-estate:
 	$(PYTHON) -m legacy_estate.generator --profile development --output-dir data/raw/legacy_estate
@@ -114,3 +118,9 @@ generate-databricks-pipeline-evidence:
 
 validate-databricks-pipelines: generate-databricks-pipeline-evidence
 	$(PYTHON) scripts/validate_databricks_pipelines.py
+
+generate-databricks-orchestration-evidence:
+	$(PYTHON) -m databricks_orchestration.cli --outputs-dir outputs/databricks_orchestration --reports-dir reports
+
+validate-databricks-orchestration: generate-databricks-orchestration-evidence
+	$(PYTHON) scripts/validate_databricks_orchestration.py

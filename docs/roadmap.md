@@ -85,19 +85,20 @@ Implemented:
 - Bronze, Silver, and Gold medallion assets with local transformation functions and Databricks-ready Spark/SQL assets.
 - Analytical dimensions/facts, SCD Type 2 customer history strategy, schema drift handling, quarantine routing, replay/idempotency, physical layout strategy, data contracts, and pipeline traceability.
 
-## Future Milestone: Formal Databricks Data Quality and Lakeflow Orchestration
+## Milestone 11: Databricks Data Quality and Lakeflow Jobs Orchestration
 
-Planned:
+Implemented:
 
-- Formal data quality constraints and expectations.
-- Lakeflow orchestration.
-- Pipeline-level expectations, recovery, and deployment lifecycle.
+- Formal data-quality rules and severity/action model across Bronze, Silver, and Gold.
+- Deterministic quality evidence, quarantine/replay model, freshness assumptions, failure handling, backfill controls, job permissions, operational traceability, and runbooks.
+- Lakeflow Jobs bundle resources for batch feeds, relational incremental loads, event streaming, Gold publication, and controlled backfill/replay.
 
-## Future Milestone: Databricks Monitoring and Optimization
+## Future Milestone: Databricks Monitoring, Troubleshooting, and Optimization
 
 Planned:
 
 - Databricks workload observability.
+- Lakeflow job/pipeline runtime troubleshooting.
 - Cost/performance optimization.
 - Predictive optimization validation.
 - SQL warehouse and job runtime tuning.

@@ -1,0 +1,18 @@
+dataset,layer,rule_id,rule_category,fields,expectation,severity,action_on_failure,owner_role,evidence_classification
+bronze.shipment_operational_events,Bronze,br_evt_001,schema conformity,"event_id,event_type,aggregate_id,occurred_at",record conforms to event contract,ERROR,quarantine,data engineering,locally validated
+bronze.shipment_operational_events,Bronze,br_evt_002,uniqueness,event_id,duplicate event deliveries are detected,WARNING,quarantine duplicate,data engineering,locally validated
+bronze.carrier_updates,Bronze,br_car_001,schema conformity,_rescued_data,unexpected fields are rescued and reviewed,WARNING,quarantine if dangerous type change,data engineering,configuration defined
+bronze.depot_reference_feed,Bronze,br_dep_001,completeness,"_ingested_at_utc,_source_system,_record_hash",required ingestion metadata is present,ERROR,fail task,data engineering,configuration defined
+silver.shipments,Silver,sv_shp_001,completeness,"shipment_id,customer_id,route_id",required business keys are present,CRITICAL,fail task and stop downstream dependency,data engineering,locally validated
+silver.shipments,Silver,sv_shp_002,validity,shipment_status,shipment status is in the normalized domain,ERROR,reject record,data engineering,locally validated
+silver.shipments,Silver,sv_shp_003,referential integrity,"customer_id,route_id",shipment references known customer and route,CRITICAL,quarantine and stop downstream dependency,data engineering,locally validated
+silver.billing_invoices,Silver,sv_inv_001,business rule,"net_amount_gbp,tax_amount_gbp",invoice amounts are non-negative unless explicitly credited,ERROR,reject record,finance data owner,configuration defined
+silver.service_cases,Silver,sv_case_001,validity,contact_email,synthetic service email is well formed,ERROR,quarantine,service data owner,locally validated
+silver.service_cases,Silver,sv_case_002,referential integrity,shipment_id,service case references known shipment,ERROR,quarantine,service data owner,locally validated
+silver.depots_routes,Silver,sv_dep_001,completeness,"depot_code,capacity_units",depot code exists; capacity warning when missing,WARNING,quarantine warning and manual review,reference data owner,locally validated
+silver.depots_routes,Silver,sv_dep_002,consistency,"route_code,origin_depot,destination_depot",route reference is internally consistent and not self-contradictory,ERROR,quarantine and manual review,reference data owner,configuration defined
+silver.shipment_events,Silver,sv_evt_001,timeliness,occurred_at_utc,accepted event is within watermark or replay window,WARNING,quarantine late event for replay review,data engineering,locally validated
+gold.shipment_operations_performance,Gold,gd_ops_001,grain uniqueness,"metric_date,shipment_status",one KPI row per metric date/status,CRITICAL,fail task and block publication,analytics owner,configuration defined
+gold.delivery_delay_metrics,Gold,gd_delay_001,aggregation consistency,"delivered_count,late_count,late_rate",late count does not exceed delivered count and rate is between 0 and 1,CRITICAL,fail task and block publication,analytics owner,locally validated
+gold.billing_revenue_summary,Gold,gd_bill_001,freshness,invoice_month,billing summary refreshes within daily threshold,ERROR,stop downstream publication,finance data owner,configuration defined
+gold.service_incident_summary,Gold,gd_case_001,cross-product reconciliation,case_count,case aggregates reconcile to accepted Silver service cases,ERROR,fail task,service data owner,configuration defined

@@ -1,0 +1,6 @@
+workflow,schedule,rationale,freshness_expectation,breach_threshold,business_impact,escalation_intent
+batch_feeds_workflow,daily 02:00 local time,partner and service exports are daily files,available by start of business,6 hours late,stale reference/service metrics,data engineering on-call and source owner
+relational_incremental_workflow,every 15 minutes during operating window,legacy_tms operational analytics need frequent increments,within 30 minutes,45 minutes late,stale shipment KPIs,platform operator and operational data owner
+event_streaming_workflow,continuous stream,shipment events continuously arrive; scheduling is checkpoint-driven not batch-clock driven,event visible within minutes after runtime validation,30 minutes behind watermark,delayed operational event visibility,streaming operator
+gold_publication_workflow,after successful Silver gates or hourly,Gold should publish only from validated Silver,hourly for operational products,2 hours stale,stale BI/analytics products,analytics owner
+controlled_backfill_replay_workflow,manual workflow_dispatch only,backfills require isolation and approval,case-specific,case-specific,incorrect historical correction risk,data platform lead

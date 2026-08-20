@@ -1,0 +1,6 @@
+item_id,area,target,scenario,response,evidence_classification
+ready-001,data quality,all important datasets,formal rules and deterministic quality evidence exist,ready for Databricks expectation mapping,locally validated
+ready-002,orchestration,Lakeflow Jobs,"bundle job resources define workflows, tasks, dependencies and parameters",ready for bundle validation in Databricks,configuration defined
+ready-003,failure handling,all workflow branches,retry and stop/quarantine/escalate actions are explicit,no blind retries for data-quality failures,configuration defined
+ready-004,publication,Gold products,critical Silver/Gold failures block publication,ready for runtime gate implementation,configuration defined
+ready-005,runtime boundary,Databricks workspace,"no job, expectation, stream, or pipeline was executed locally",requires Databricks runtime validation,requires Databricks runtime validation

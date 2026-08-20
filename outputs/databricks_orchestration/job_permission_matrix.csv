@@ -1,0 +1,6 @@
+principal,role,scope,permission,rationale,production_boundary
+spn-dbx-prod-pipelines,service principal,production jobs,CAN_MANAGE_RUN,runtime owner for approved prod jobs,protected environment only
+grp-data-engineers,data engineer,dev/test jobs,CAN_MANAGE_RUN,develop and validate workflows,no direct prod owner rights
+grp-platform-operators,operator,prod jobs,CAN_MANAGE_RUN,"rerun, pause, and triage operational workflows",no source-code bypass
+grp-analytics-viewers,viewer,job run results,CAN_VIEW,observe readiness and publication state,read-only
+grp-data-governance,quality owner,quality evidence and quarantine,CAN_VIEW plus table-level remediation grants,review quality evidence,no broad production write

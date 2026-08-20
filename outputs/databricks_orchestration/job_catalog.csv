@@ -1,0 +1,6 @@
+job_id,workflow,purpose,task_type,compute,parameters,max_concurrent_runs,evidence_classification
+job-batch-feeds,batch_feeds_workflow,ingest and validate depot/customer-service/billing batch feeds,python wheel/script and SQL tasks,jobs compute,"environment,catalog,source_system,processing_date,load_type,replay_mode",1,configuration defined
+job-relational-incremental,relational_incremental_workflow,incremental legacy_tms and billing_ops analytical loads,python wheel/script task,jobs compute,"environment,catalog,source_system,processing_date,checkpoint_path,load_type",1,configuration defined
+job-events-streaming,event_streaming_workflow,run and quality-gate continuously arriving shipment events,python wheel/script streaming task,serverless jobs or jobs compute,"environment,catalog,checkpoint_path,replay_mode",1,configuration defined
+job-gold-refresh,gold_publication_workflow,refresh Gold products only after validated Silver gates,SQL task,SQL warehouse,"environment,catalog,processing_date",1,configuration defined
+job-backfill-replay,controlled_backfill_replay_workflow,controlled backfill and quarantine replay,python wheel/script task,jobs compute,"environment,catalog,source_range,target_range,replay_mode",1,configuration defined

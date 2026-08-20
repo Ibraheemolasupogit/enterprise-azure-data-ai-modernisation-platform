@@ -1,0 +1,6 @@
+dataset,rules_evaluated,pass_count,warning_count,rejected_count,quarantined_count,critical_failures,freshness_status,replay_readiness,evidence_classification
+bronze.shipment_operational_events,4,3,1,0,17,0,simulated current,event log replayable with checkpoint reset approval,locally validated
+silver.shipments,6,6,0,0,0,0,fixture current,MERGE idempotent by shipment_id,locally validated
+silver.depots_routes,4,3,1,0,1,0,architecture assumption,reference feed replayable by feed_version,locally validated
+silver.service_cases,5,3,0,2,2,0,fixture current,case export replayable by extract date,locally validated
+gold.delivery_delay_metrics,4,4,0,0,0,0,derived from validated Silver fixture,Gold refresh rerunnable from Silver,locally validated

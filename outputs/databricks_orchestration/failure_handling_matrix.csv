@@ -1,0 +1,8 @@
+item_id,area,target,scenario,response,evidence_classification
+fail-001,source unavailable,landing_readiness,source file or extract unavailable,retry bounded attempts then escalate to source owner,configuration defined
+fail-002,malformed source file,bronze_ingestion,CSV/JSON parse failure,quarantine raw file and stop affected source branch,configuration defined
+fail-003,schema drift,carrier_updates,unexpected dangerous type change,rescue additive fields; quarantine/fail changed types,configuration defined
+fail-004,Bronze quality failure,bronze_quality_gate,required metadata missing,fail task and stop Silver dependency,configuration defined
+fail-005,Silver referential integrity failure,silver_quality_gate,unknown customer/route/shipment reference,quarantine and block Gold dependency when critical,locally validated
+fail-006,stale checkpoint,streaming_ingestion,checkpoint prevents progress or is inconsistent,"pause stream, preserve checkpoint, clone for diagnosis, reset only by approval",configuration defined
+fail-007,Gold reconciliation failure,gold_quality_gate,KPI grain or aggregate mismatch,block publication and rerun from validated Silver after fix,configuration defined

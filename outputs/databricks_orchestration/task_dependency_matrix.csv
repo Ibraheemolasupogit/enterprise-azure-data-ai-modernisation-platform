@@ -1,0 +1,11 @@
+workflow,task_key,depends_on,upstream_data_dependency,gate_behavior,downstream_publication_allowed
+batch_feeds_workflow,landing_readiness,,landing files and manifests,fail stops workflow,no
+batch_feeds_workflow,bronze_ingestion,landing_readiness,source files,retry transient source errors only,no
+batch_feeds_workflow,bronze_quality_gate,bronze_ingestion,Bronze tables,critical failure stops Silver,no
+batch_feeds_workflow,silver_transformation,bronze_quality_gate,validated Bronze,fail routes records to quarantine,no
+batch_feeds_workflow,silver_quality_gate,silver_transformation,Silver tables,critical failure blocks Gold,no
+gold_publication_workflow,gold_transformation,silver_quality_gate,validated Silver,run only after Silver gates pass,no
+gold_publication_workflow,gold_quality_gate,gold_transformation,Gold products,critical failure blocks publication,no
+gold_publication_workflow,publish_readiness,gold_quality_gate,validated Gold,publish only after gate pass,yes
+event_streaming_workflow,streaming_ingestion,,event landing path/checkpoint,stream restart for transient failure,no
+event_streaming_workflow,streaming_quality_gate,streaming_ingestion,Bronze event stream,schema/late-event failure quarantines or stops,no

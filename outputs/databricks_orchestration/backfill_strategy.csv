@@ -1,0 +1,5 @@
+item_id,area,target,scenario,response,evidence_classification
+bf-001,backfill,legacy_tms,source range and target range provided,isolate from current incremental processing; validate Bronze/Silver/Gold gates,configuration defined
+bf-002,backfill,shipment_operational_events,event replay range,do not overwrite streaming checkpoint; replay to isolated path then merge,configuration defined
+bf-003,backfill,quarantine replay,remediated records,"revalidate, reprocess, close evidence, and preserve original quarantine record",locally validated
+bf-004,rollback,Gold backfill,bad historical aggregate,restore from previous Delta version or rerun Gold from validated Silver,requires Databricks runtime validation

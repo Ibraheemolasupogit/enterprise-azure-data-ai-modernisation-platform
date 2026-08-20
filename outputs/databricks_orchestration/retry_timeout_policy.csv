@@ -1,0 +1,9 @@
+failure_class,retry_count,retry_delay_minutes,timeout_minutes,queueing_or_concurrency,action
+source unavailable,3,10,60,queued single concurrent run,retry and escalate after attempts
+malformed source file,0,0,30,single run,quarantine and manual review
+schema drift requiring manual intervention,0,0,30,single run,stop downstream dependency and review contract
+bronze quality failure,0,0,30,single run,"quarantine/reject, no blind retry"
+silver referential failure,0,0,45,single run,quarantine and block Gold dependency
+transient platform failure,2,5,90,queued single concurrent run,retry task
+streaming task failure,5,5,0,single active stream,restart from checkpoint and escalate if repeated
+gold reconciliation failure,0,0,30,single run,block publication and investigate

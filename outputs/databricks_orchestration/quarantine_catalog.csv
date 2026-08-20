@@ -1,0 +1,5 @@
+quarantine_target,source_dataset,rule_id,rejected_record_key,source_metadata,failure_reason,detected_at_utc,raw_payload_policy,remediation_status,replay_eligibility
+quarantine.invalid_shipment_events,bronze.shipment_operational_events,br_evt_002,event_id,"source_system,event_time,checkpoint,batch_id",duplicate or late/out-of-order event,2026-01-01T00:00:00Z,retain original event payload,open,eligible after dedupe/replay review
+quarantine.invalid_service_cases,silver.service_cases,sv_case_001,case_id,"source_file,row_number,extract_date",invalid contact email,2026-01-01T00:00:00Z,retain restricted payload with UC controls,open,eligible after source correction
+quarantine.invalid_service_cases,silver.service_cases,sv_case_002,case_id,"source_file,row_number,extract_date",unknown shipment reference,2026-01-01T00:00:00Z,retain restricted payload with UC controls,open,eligible after reference repair
+quarantine.invalid_depots_routes,silver.depots_routes,sv_dep_001,depot_code,"source_file,feed_version",missing depot capacity warning,2026-01-01T00:00:00Z,retain source row,review,eligible after steward approval

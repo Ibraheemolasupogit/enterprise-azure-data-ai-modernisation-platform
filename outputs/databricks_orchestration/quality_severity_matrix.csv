@@ -1,0 +1,5 @@
+severity,default_action,retry_behavior,downstream_behavior,manual_review_required
+INFO,log only,no retry required,continue,no
+WARNING,log and quarantine where relevant,retry only for transient source issues,continue unless threshold breached,sometimes
+ERROR,"reject record, quarantine, or fail task",do not blindly retry deterministic data errors,stop affected branch,yes
+CRITICAL,fail task and stop downstream dependency,no blind retry,block Gold/publication,yes
