@@ -1,0 +1,6 @@
+tag_name,allowed_values,applies_to,steward_group,policy_use,examples
+pii,"none,email,identifier,contact",columns and tables,grp-data-governance,drive PII column masking and discoverability,customer_accounts.contact_email=pii:email
+sensitivity,"public,internal,confidential,restricted","catalogs, schemas, tables, columns",grp-security-auditors,"masking, sharing restrictions, and review workflows",billing_service_cases.case_detail=sensitivity:restricted
+domain,"shipment,customer,depot_route,billing_service,operations",schemas and tables,grp-data-governance,domain ownership and restricted-domain access,shipments=domain:shipment
+lifecycle,"landing,bronze,silver,gold,reference,quarantine,audit","schemas, tables, volumes",grp-platform-admins,retention and promotion controls,gold.shipment_reliability=lifecycle:gold
+environment,"dev,test,prod",catalogs and external locations,grp-platform-admins,workspace/catalog binding and environment isolation,contoso_freight_prod=environment:prod

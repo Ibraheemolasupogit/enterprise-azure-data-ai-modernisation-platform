@@ -68,25 +68,41 @@ Implemented:
 - SDK-style SQL Database Project for `legacy_tms`.
 - Declarative schema assets, reference-data deployment script, drift scenarios, safety rules, environment promotion matrix, regression gates, release manifest, GitHub Actions CI, and release-preview guardrails.
 
-## Future Milestone: Databricks Lakehouse Foundation
+## Milestone 9: Databricks Platform Foundation and Unity Catalog
 
-Planned:
+Implemented:
 
-- ADLS Gen2 structure.
-- Databricks workspace conventions.
-- Unity Catalog model.
-- Delta Lake bronze, silver, and gold conventions.
-- Workload optimisation standards.
+- Dev/test/prod Databricks workspace and environment architecture.
+- Switch-gated Bicep foundation for workspace, ADLS Gen2, access connector, containers, diagnostics, and private-network assumptions.
+- Compute decision framework for interactive, jobs, serverless jobs, SQL warehouse, future pipeline, and exception-only classic compute.
+- Unity Catalog catalog/schema strategy, representative DDL, storage credential and external-location model, least-privilege grants, fine-grained governance patterns, governed tags, retention policy, lineage/audit readiness, Delta Sharing boundary, federation decisions, and Databricks Asset Bundle foundation.
 
-## Future Milestone: Ingestion and Medallion Processing
+## Future Milestone: Databricks Ingestion and Transformation
 
 Planned:
 
 - Batch ingestion.
 - CDC ingestion.
 - Streaming ingestion pattern.
+- Bronze, Silver, and Gold transformation code.
+
+## Future Milestone: Databricks Data Quality and Lakeflow Orchestration
+
+Planned:
+
 - Data quality checks.
+- Lakeflow orchestration.
 - Replay and late-arriving data behaviour.
+- Pipeline-level expectations, recovery, and deployment lifecycle.
+
+## Future Milestone: Databricks Monitoring and Optimization
+
+Planned:
+
+- Databricks workload observability.
+- Cost/performance optimization.
+- Predictive optimization validation.
+- SQL warehouse and job runtime tuning.
 
 ## Future Milestone: SQL AI, Vector, and Hybrid Search
 

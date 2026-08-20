@@ -20,6 +20,12 @@ param deployAzureSqlOperations bool = false
 @description('Object containing Azure SQL Managed Instance operational settings for future deployments.')
 param azureSqlOperations object = {}
 
+@description('Whether Azure Databricks foundation resources should be declared by this template.')
+param deployDatabricksFoundation bool = false
+
+@description('Object containing Azure Databricks foundation settings for future deployments.')
+param databricksFoundation object = {}
+
 @description('Tags applied to resources when real infrastructure modules are added.')
 param tags object = {
   workload: workloadName
@@ -38,13 +44,28 @@ module azureSqlOperationsModule 'modules/azure-sql/managed-instance.bicep' = if 
   }
 }
 
+module databricksFoundationModule 'modules/databricks/foundation.bicep' = if (deployDatabricksFoundation) {
+  name: 'databricks-foundation-${environment}'
+  params: {
+    environment: environment
+    location: location
+    workloadName: workloadName
+    settings: databricksFoundation
+    tags: tags
+  }
+}
+
 output foundation object = {
   workloadName: workloadName
   environment: environment
   location: location
-  status: deployAzureSqlOperations ? 'Azure SQL operations module declared for future deployment validation' : 'No Azure resources declared by default'
+  status: (deployAzureSqlOperations || deployDatabricksFoundation) ? 'Selected infrastructure modules declared for future deployment validation' : 'No Azure resources declared by default'
 }
 
 output azureSqlOperations object = deployAzureSqlOperations ? azureSqlOperationsModule.outputs.operationalSummary : {
+  status: 'not declared'
+}
+
+output databricksFoundation object = deployDatabricksFoundation ? databricksFoundationModule.outputs.foundationSummary : {
   status: 'not declared'
 }

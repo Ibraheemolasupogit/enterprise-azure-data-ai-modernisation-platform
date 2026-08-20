@@ -1,0 +1,4 @@
+target,workspace_host_variable,catalog_variable,service_principal_requirement,deployment_mode,resource_boundary
+dev,${var.dev_workspace_host},${var.dev_catalog},non-production deployment service principal or developer identity,development,"catalogs, schemas, policies, and future jobs for dev only"
+test,${var.test_workspace_host},${var.test_catalog},CI/CD service principal,release validation,"catalogs, schemas, policies, and future jobs for test only"
+prod,${var.prod_workspace_host},${var.prod_catalog},production service principal with protected environment approval,production,production catalog and approved resources only

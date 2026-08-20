@@ -1,0 +1,7 @@
+dataset_zone,log_retention,deleted_file_retention,vacuum_policy,time_travel_need,compliance_deletion_boundary,adls_lifecycle
+bronze,90 days,14 days minimum,VACUUM no shorter than deleted-file retention after recovery checks,short-term replay and ingestion defect diagnosis,delete requests handled by downstream purge workflow after lineage review,cool tier after 30 days for raw external files
+silver,180 days,30 days,scheduled VACUUM after quality validation,business correction and backfill support,privacy deletion propagated from source mapping,managed table lifecycle through Unity Catalog
+gold,365 days,30 days,conservative VACUUM after product-owner approval,consumer recovery and reporting reproducibility,deletion may require regenerated aggregates,managed table lifecycle through Unity Catalog
+reference,365 days,30 days,VACUUM only after reference release cycle,reference rollback and audit,hard deletes require stewardship approval,managed table lifecycle through Unity Catalog
+quarantine,90 days,30 days,purge after triage SLA and audit capture,defect investigation,sensitive payload deletion can override normal retention,ADLS lifecycle for raw quarantined payloads
+audit,730 days,90 days,no aggressive VACUUM; align with investigation needs,security and operational investigations,legal/security hold can extend retention,archive tier after 180 days where supported

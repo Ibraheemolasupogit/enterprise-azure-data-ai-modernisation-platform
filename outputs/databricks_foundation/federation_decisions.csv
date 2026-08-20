@@ -1,0 +1,5 @@
+source_system,federation_use_case,ingestion_preference,allowed_usage,restriction,decision
+legacy_tms Azure SQL MI,schema discovery and short transition queries,replicated analytical ingestion for production analytics,limited read-only transition diagnostics,not primary reporting or ingestion architecture,limited federation
+billing_ops PostgreSQL Flexible Server,source profiling and reconciliation,batch/CDC ingestion for analytical use,read-only profiling in dev/test,no operational workload coupling,limited federation
+partner files in ADLS,not applicable,file ingestion through external locations,external tables only for landing inspection,do not federate file feeds,ingest
+future APIs,contract discovery,ingestion through governed landing zone,small metadata checks only,no broad live query dependency,defer

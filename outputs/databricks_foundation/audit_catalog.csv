@@ -1,0 +1,7 @@
+item_id,area,capability,expected_evidence,current_status,evidence_classification
+aud-001,Unity Catalog events,"grants, ownership, policy and tag changes",system table query and Log Analytics export,query assets defined,requires Azure validation
+aud-002,workspace events,"workspace, repo, notebook, and admin changes",audit log diagnostics,configuration defined,requires Azure validation
+aud-003,compute events,"cluster/warehouse creation, policy use, termination",system tables and diagnostic logs,configuration defined,requires Azure validation
+aud-004,job/pipeline events,future job and pipeline run events,bundle deployment and run history,deferred until pipelines exist,requires Azure validation
+aud-005,secret access,secret scope and Key Vault-backed access,secret access events,boundary defined; no secrets committed,requires Azure validation
+aud-006,security investigation,who accessed restricted customer/service data,audit query templates,query assets defined,requires Azure validation

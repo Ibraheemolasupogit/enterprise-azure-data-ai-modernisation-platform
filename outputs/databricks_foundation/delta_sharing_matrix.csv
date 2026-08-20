@@ -1,0 +1,5 @@
+decision_id,sharing_pattern,allowed_scope,sensitive_data_rule,audit_requirement,revocation_model,decision
+share-001,Databricks-to-Databricks,approved internal or partner recipients,share Gold/reference only; no raw PII/service-case detail,"recipient, object, and query access audit",revoke recipient or share grant,allowed by exception
+share-002,open Delta Sharing,external recipients without Databricks,public/open recipients receive non-sensitive aggregates only,download/access event review,expire recipient credential and remove table,restricted
+share-003,internal consumers,internal analytics domains,prefer catalog grants over shares inside same account,Unity Catalog audit events,revoke group grants,prefer grants
+share-004,external exchange zone,contracted data exchange,exchange external location with time-bound approval,external location and share audit,remove external location/share,future capability only

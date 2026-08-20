@@ -1,6 +1,16 @@
 using '../main.bicep'
 
 param environment = 'dev'
+param deployDatabricksFoundation = false
+param databricksFoundation = {
+  workspaceSku: 'premium'
+  storageSku: 'Standard_LRS'
+  workspacePublicNetworkAccess: 'Disabled'
+  storagePublicNetworkAccess: 'Disabled'
+  requiredNsgRules: 'NoAzureDatabricksRules'
+  enableNoPublicIp: true
+  logRetentionDays: 30
+}
 param workloadName = 'contoso-freight'
 param deployAzureSqlOperations = false
 param azureSqlOperations = {

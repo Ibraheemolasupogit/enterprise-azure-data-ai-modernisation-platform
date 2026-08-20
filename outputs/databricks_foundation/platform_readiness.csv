@@ -1,0 +1,10 @@
+item_id,area,capability,expected_evidence,current_status,evidence_classification
+ready-001,workspace,dev/test/prod workspace strategy,workspace_strategy.csv,ready for IaC validation,configuration defined
+ready-002,infrastructure,Bicep module is switch-gated and contains no secrets,infra/modules/databricks/foundation.bicep,declared only,configuration defined
+ready-003,compute,compute decision framework and policies,compute_strategy.csv,ready for Azure validation,configuration defined
+ready-004,Unity Catalog,"catalogs, schemas, tables, views, functions, volumes",unity_catalog_namespace.csv,DDL assets defined,configuration defined
+ready-005,storage,"access connector, storage credential and external location model",storage_boundary.csv,no keys or SAS tokens,configuration defined
+ready-006,security,"least privilege, ABAC, row/column control patterns",fine_grained_security.csv,policy-ready,configuration defined
+ready-007,lineage,Unity Catalog lineage expectations,lineage_readiness.csv,no fabricated lineage,requires Azure validation
+ready-008,audit,system table and Log Analytics audit boundary,audit_catalog.csv,query templates defined,requires Azure validation
+ready-009,bundle,Databricks Asset Bundle targets,databricks.yml,foundation defined with no fake workloads,locally validated

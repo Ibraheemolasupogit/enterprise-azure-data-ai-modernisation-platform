@@ -1,0 +1,6 @@
+item_id,area,capability,expected_evidence,current_status,evidence_classification
+lin-001,table lineage,Unity Catalog table lineage,source -> bronze -> silver -> gold lineage after pipelines exist,designed; no fabricated graph,requires Azure validation
+lin-002,column lineage,Unity Catalog column lineage,customer/contact and shipment-status transformations traced,designed; future pipeline evidence,requires Azure validation
+lin-003,job lineage,job and bundle lineage,job run to output table links,bundle foundation only,requires Azure validation
+lin-004,impact analysis,downstream dependency review,affected Gold views and shares identified before schema changes,configuration defined,configuration defined
+lin-005,system tables,system.access and lineage tables,queryable lineage/audit evidence retained,query assets defined,requires Azure validation

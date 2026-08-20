@@ -1,0 +1,5 @@
+control_id,domain,target_object,control_type,protected_attribute,enforcement_pattern,fallback_pattern,evidence_classification
+fg-001,customer,silver.customer_accounts.contact_email,column mask,customer contact email,ABAC column mask policy based on governed tag pii=email,table-level MASK with gold.mask_email where ABAC is unavailable,configuration defined
+fg-002,operations,silver.shipments.billing_region,row filter,regional operational data,ABAC row filter by domain and region tags for analyst groups,table-level ROW FILTER function for limited regional access,configuration defined
+fg-003,service,silver.billing_service_cases.case_detail,column mask,service-case narrative text,ABAC sensitivity=restricted policy masks details except approved service groups,dynamic view only for transitional consumers,configuration defined
+fg-004,quarantine,quarantine.invalid_records,schema privilege boundary,invalid source payloads,restricted schema grants and audit logging,separate quarantine views for operators,configuration defined

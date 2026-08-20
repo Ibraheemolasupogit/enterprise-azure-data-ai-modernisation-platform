@@ -1,0 +1,9 @@
+principal,principal_type,scope,privileges,rationale,production_boundary
+grp-platform-admins,group,metastore and workspace admin boundary,MANAGE only where platform-owned,"administer workspaces, catalogs, policies, credentials",break-glass and platform operations only
+grp-data-engineers,group,dev/test catalogs,USE CATALOG; USE SCHEMA; CREATE TABLE; CREATE VOLUME; MODIFY,build and validate analytical objects before promotion,no direct prod MODIFY outside approved deployment
+spn-dbx-pipelines,service principal,bronze/silver/reference/quarantine schemas,USE CATALOG; USE SCHEMA; SELECT; MODIFY; CREATE TABLE; CREATE VOLUME,run ingestion and transformation workloads in later milestones,production identity bound to protected workflows
+grp-data-quality-operators,group,quarantine and audit schemas,USE CATALOG; USE SCHEMA; SELECT; MODIFY,triage rejected records and data quality events,no broad Gold write access
+grp-operational-analysts,group,gold schema,USE CATALOG; USE SCHEMA; SELECT; EXECUTE,consume curated operational analytics,no Bronze or raw service-case detail access
+grp-security-auditors,group,audit schema and system tables,USE CATALOG; USE SCHEMA; SELECT,"investigate lineage, audit, and administrative changes",read-only
+grp-downstream-consumers,group,shared Gold views or Delta shares,SELECT,consume approved data products,recipient-specific grants only
+spn-dbx-cicd,service principal,bundle target workspace and catalog,USE CATALOG; USE SCHEMA; CREATE TABLE; MODIFY; EXECUTE,deploy approved bundle resources,prod requires protected environment approval

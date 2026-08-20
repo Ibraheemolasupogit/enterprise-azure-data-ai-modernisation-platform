@@ -1,0 +1,29 @@
+environment,catalog,schema_name,object_type,object_name,purpose,managed_or_external,source_asset,evidence_classification
+dev,contoso_freight_dev,bronze,schema,bronze,raw landed data after future ingestion with minimal normalization,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+dev,contoso_freight_dev,silver,schema,silver,"conformed, quality-checked analytical data",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+dev,contoso_freight_dev,gold,schema,gold,curated data products and governed consumption views,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+dev,contoso_freight_dev,reference,schema,reference,governed reference and lookup data,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+dev,contoso_freight_dev,quarantine,schema,quarantine,invalid or restricted records pending triage,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+dev,contoso_freight_dev,audit,schema,audit,"pipeline, quality, lineage, and security evidence",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,bronze,schema,bronze,raw landed data after future ingestion with minimal normalization,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,silver,schema,silver,"conformed, quality-checked analytical data",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,gold,schema,gold,curated data products and governed consumption views,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,reference,schema,reference,governed reference and lookup data,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,quarantine,schema,quarantine,invalid or restricted records pending triage,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+test,contoso_freight_test,audit,schema,audit,"pipeline, quality, lineage, and security evidence",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,bronze,schema,bronze,raw landed data after future ingestion with minimal normalization,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,silver,schema,silver,"conformed, quality-checked analytical data",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,gold,schema,gold,curated data products and governed consumption views,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,reference,schema,reference,governed reference and lookup data,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,quarantine,schema,quarantine,invalid or restricted records pending triage,catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,audit,schema,audit,"pipeline, quality, lineage, and security evidence",catalog-managed metadata,src/databricks/unity_catalog/sql/01_catalogs_schemas.sql,configuration defined
+prod,contoso_freight_prod,bronze,managed table,shipment_events_raw,raw operational shipment events landed for later quality processing,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,silver,managed table,shipments,conformed shipment records after future transformation,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,silver,managed table,customer_accounts,conformed customer/account analytical records,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,reference,managed table,depots_routes,governed depot and route reference data,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,silver,managed table,billing_service_cases,billing and service case analytical boundary,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,gold,view,shipment_reliability,curated future data product for operational analytics,managed view,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,quarantine,managed volume,invalid_records,quarantine payload storage for rejected records,managed volume,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,audit,managed table,data_quality_events,future data quality and pipeline audit events,managed table,src/databricks/unity_catalog/sql/02_tables_views_volumes.sql,configuration defined
+prod,contoso_freight_prod,gold,function,mask_email,reusable masking helper for customer contact fields,SQL function,src/databricks/unity_catalog/sql/03_security_governance.sql,configuration defined
+prod,contoso_freight_prod,gold,future boundary,AI/BI Genie candidate objects,future governed consumption over curated Gold objects only,not implemented,docs/databricks-platform-foundation.md,requires Azure validation
