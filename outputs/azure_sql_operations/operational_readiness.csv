@@ -1,0 +1,13 @@
+check_id,area,requirement,status,evidence,control_or_runbook
+ops-001,identity,Entra groups and managed identity patterns defined.,configuration defined,Security role matrix generated.,outputs/azure_sql_operations/security_role_matrix.csv
+ops-002,encryption,Encryption/TDE/TLS expectations defined.,configuration defined,Configuration baseline and data controls generated.,outputs/azure_sql_operations/configuration_baseline.csv
+ops-003,auditing,Audit and diagnostic settings defined.,configuration defined,Monitoring catalog and Bicep diagnostics module.,infra/modules/azure-sql/managed-instance.bicep
+ops-004,network,Private endpoint posture defined.,configuration defined,Configuration baseline and Bicep module parameters.,outputs/azure_sql_operations/configuration_baseline.csv
+ops-005,backup,Backup retention and restore drill defined.,configuration defined,Backup/restore readiness output.,outputs/azure_sql_operations/backup_restore_readiness.csv
+ops-006,restore,Actual restore validation pending.,requires Azure validation,No Azure PITR executed locally.,docs/runbooks/sqlmi-restore-request.md
+ops-007,HA,Built-in HA design documented.,configuration defined,HA/DR readiness output.,outputs/azure_sql_operations/ha_dr_readiness.csv
+ops-008,DR,Actual failover tests pending.,requires Azure validation,No Azure failover executed locally.,docs/runbooks/sqlmi-regional-dr-failover.md
+ops-009,monitoring,Signals and KQL assets defined.,configuration defined,Monitoring catalog generated.,outputs/azure_sql_operations/monitoring_catalog.csv
+ops-010,alerting,Alerts map to runbooks.,locally validated,Alert catalog generated and validated.,outputs/azure_sql_operations/alert_catalog.csv
+ops-011,automation,SQL Agent and platform-native automation boundaries defined.,configuration defined,Automation catalog and job scripts generated.,outputs/azure_sql_operations/automation_catalog.csv
+ops-012,documentation,Operational runbooks exist.,locally validated,Runbook files present and linked.,docs/runbooks/README.md

@@ -4,7 +4,7 @@ This repository is the foundation for an enterprise Azure Data and AI modernisat
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
+Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. The repository still does not deploy Azure resources, does not implement production data pipelines, and does not claim working AI workloads.
 
 ## Business Problem
 
@@ -88,9 +88,16 @@ Milestone 5 includes:
 - Local deterministic migration execution from synthetic source fixtures to target-shaped CSV outputs.
 - Reconciliation checks, validation gates, migration wave execution evidence, cutover readiness, rollback readiness, failure scenarios, tooling integration boundaries, and hypercare model.
 
+Milestone 6 includes:
+
+- Azure SQL Managed Instance operational configuration baseline for `legacy_tms`.
+- Bicep module intent for SQL MI, managed identity, Key Vault, diagnostics, Log Analytics, and alerting.
+- Entra-first T-SQL security roles, placeholder principals, grants, masking, classification, and RLS pattern.
+- KQL investigation assets, alert catalog, SQL Agent job definitions, backup/restore readiness, HA/DR readiness, operational readiness evidence, and runbooks.
+
 ## Planned Roadmap
 
-Future milestones will add real Azure migration execution, Azure SQL administration, SQL performance engineering, SQL CI/CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring, FinOps, and production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
+Future milestones will add SQL performance engineering, SQL database CI/CD, Databricks platform implementation, Databricks pipelines, governance automation, data quality implementation, operational analytics, AI-enabled SQL/search/RAG, API integration, monitoring execution, FinOps, and final production assurance. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
 ## Architecture Decisions and Trade-Offs
 
@@ -116,7 +123,7 @@ This platform deliberately separates workload responsibilities:
 | `docs/` | Architecture, roadmap, ADRs, runbooks, and operating model |
 | `data/` | Synthetic data strategy, source contracts, sample fixtures, and ignored local generated data zones |
 | `outputs/` | Generated estate-assessment CSV outputs |
-| `reports/` | Generated assessment and target architecture reports |
+| `reports/` | Generated assessment, architecture, migration, and operations reports |
 | `tests/` | Deterministic validation for repository foundation and synthetic legacy estate |
 
 ## Local Validation
@@ -154,4 +161,10 @@ Run the local migration factory with:
 ```bash
 make migrate-local
 make validate-migration
+```
+
+Generate and validate Azure SQL operations evidence with:
+
+```bash
+make validate-azure-sql-operations
 ```

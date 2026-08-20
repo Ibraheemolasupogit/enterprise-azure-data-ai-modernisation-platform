@@ -1,0 +1,8 @@
+principal_type,placeholder_principal,database_role,permissions,least_privilege_rationale,evidence_classification
+Entra group,grp-cf-platform-admins,cf_platform_admin,ALTER ANY USER; VIEW DEFINITION; no broad data export by default,Platform administration without ownership of all data.,configuration defined
+Entra group,grp-cf-db-admins,cf_db_admin,db_owner equivalent only for DBA break/fix role in controlled environments,DBA role is separate from app and analyst roles.,configuration defined
+Managed identity,mi-cf-transport-app,cf_app_executor,EXECUTE on operational procedures; SELECT/INSERT/UPDATE only where required,Application uses procedure-led access and avoids broad DDL.,configuration defined
+Federated identity,id-cf-sql-deploy,cf_deployment,DDL deployment permissions through CI/CD only,Deployment identity is not a runtime identity.,configuration defined
+Entra group,grp-cf-operational-analysts,cf_operational_reader,SELECT on reporting views only,Analysts do not need base table write access.,configuration defined
+Entra group,grp-cf-security-auditors,cf_security_auditor,VIEW DATABASE SECURITY AUDIT; SELECT on audit/evidence views,Auditors can inspect evidence without operational writes.,configuration defined
+Managed identity,mi-cf-ops-automation,cf_automation_executor,EXECUTE on maintenance/evidence procedures only,Automation rights are scoped to operational tasks.,configuration defined

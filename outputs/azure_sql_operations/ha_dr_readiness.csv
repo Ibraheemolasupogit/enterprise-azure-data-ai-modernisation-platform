@@ -1,0 +1,8 @@
+check_id,area,requirement,status,evidence,control_or_runbook
+hadr-001,HA,Built-in SQL MI HA considered.,configuration defined,Target service baseline captured.,outputs/architecture/recovery_strategy_matrix.csv
+hadr-002,HA,Zone redundancy assumption documented.,requires Azure validation,Region/tier support and cost require validation.,docs/azure-sql-operations.md
+hadr-003,DR,Failover group/secondary-region design captured.,requires Azure validation,No failover group deployed locally.,docs/runbooks/sqlmi-regional-dr-failover.md
+hadr-004,DR,Planned failover test defined.,simulated,Runbook defines planned failover validation steps.,docs/runbooks/sqlmi-planned-failover.md
+hadr-005,DR,Unplanned outage scenario defined.,simulated,Regional DR runbook defines escalation and failover criteria.,docs/runbooks/sqlmi-regional-dr-failover.md
+hadr-006,RTO/RPO,RTO 60 / RPO 15 traces to architecture.,configuration defined,Milestone 4 recovery strategy matrix.,outputs/architecture/recovery_strategy_matrix.csv
+hadr-007,application,Application retry and reconnection requirement captured.,configuration defined,Runbooks include connection validation and app retry expectation.,docs/runbooks/sqlmi-database-unavailable.md

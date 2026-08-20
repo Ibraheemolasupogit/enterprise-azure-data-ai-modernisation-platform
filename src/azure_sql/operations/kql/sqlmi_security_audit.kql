@@ -1,0 +1,7 @@
+AzureDiagnostics
+| where Category == "SQLSecurityAuditEvents"
+| where action_name_s has_any ("DATABASE AUTHENTICATION FAILED", "FAILED_DATABASE_AUTHENTICATION_GROUP")
+| summarize failed_attempts=count() by server_principal_name_s, client_ip_s, bin(TimeGenerated, 10m)
+| where failed_attempts > 5
+| order by TimeGenerated desc
+

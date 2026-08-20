@@ -1,4 +1,4 @@
-.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration
+.PHONY: help validate test lint docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check generate-estate generate-workload assess-estate validate-architecture migrate-local validate-migration validate-azure-sql-operations
 
 PYTHON ?= python3
 
@@ -13,11 +13,12 @@ help:
 	@echo "  make validate-architecture Generate and validate architecture outputs"
 	@echo "  make migrate-local    Run local deterministic migration factory"
 	@echo "  make validate-migration Validate generated migration evidence"
+	@echo "  make validate-azure-sql-operations Generate and validate Azure SQL operations evidence"
 	@echo "  make generate-estate Generate the default synthetic legacy estate"
 	@echo "  make generate-workload Generate the default workload simulation"
 	@echo "  make assess-estate   Generate and validate estate assessment outputs"
 
-validate: docs-check structure-check assessment-check architecture-check migration-check test lint
+validate: docs-check structure-check assessment-check architecture-check migration-check azure-sql-operations-check test lint
 
 test:
 	$(PYTHON) -m pytest
@@ -40,6 +41,9 @@ architecture-check:
 migration-check:
 	$(PYTHON) scripts/validate_migration.py
 
+azure-sql-operations-check:
+	$(PYTHON) scripts/validate_azure_sql_operations.py
+
 generate-estate:
 	$(PYTHON) -m legacy_estate.generator --profile development --output-dir data/raw/legacy_estate
 
@@ -58,3 +62,7 @@ migrate-local:
 
 validate-migration:
 	$(PYTHON) scripts/validate_migration.py
+
+validate-azure-sql-operations:
+	$(PYTHON) -m azure_sql_operations.cli --outputs-dir outputs/azure_sql_operations --reports-dir reports
+	$(PYTHON) scripts/validate_azure_sql_operations.py

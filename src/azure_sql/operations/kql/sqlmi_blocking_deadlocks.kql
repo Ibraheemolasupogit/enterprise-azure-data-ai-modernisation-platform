@@ -1,0 +1,7 @@
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.SQL"
+| where Category has_any ("Errors", "SQLSecurityAuditEvents")
+| where Message has_any ("deadlock", "blocked", "blocking")
+| project TimeGenerated, Resource, Message, session_id_s, database_name_s
+| order by TimeGenerated desc
+

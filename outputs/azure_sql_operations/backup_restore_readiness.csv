@@ -1,0 +1,6 @@
+check_id,area,requirement,status,evidence,control_or_runbook
+br-001,backup,Automated backup retention policy defined.,configuration defined,35-day prod PITR assumption and LTR decision captured.,docs/runbooks/sqlmi-restore-request.md
+br-002,backup,Long-term retention decision captured.,requires Azure validation,Regulatory retention requires owner approval.,docs/azure-sql-operations.md
+br-003,restore,Restore drill prerequisites documented.,simulated,"Runbook defines prerequisites, expected commands, validation criteria, evidence, pass/fail.",docs/runbooks/sqlmi-restore-request.md
+br-004,restore,Point-in-time restore validation.,requires Azure validation,No Azure restore executed locally.,docs/runbooks/sqlmi-restore-request.md
+br-005,reconciliation,Post-restore data validation criteria exist.,configuration defined,Migration reconciliation model reused as validation pattern.,outputs/migration/data_reconciliation.csv

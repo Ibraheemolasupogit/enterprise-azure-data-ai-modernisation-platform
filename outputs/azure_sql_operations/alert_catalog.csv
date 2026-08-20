@@ -1,0 +1,9 @@
+alert_name,signal,severity,threshold_rationale,evaluation_window,action_group_intent,runbook
+sqlmi-high-cpu,cpu_percent,Sev3,"Sustained high CPU over business-relevant window, not single spike.",15 minutes,Notify database operations,docs/runbooks/sqlmi-resource-saturation.md
+sqlmi-storage-risk,storage_percent,Sev2,Storage trend approaching capacity requires proactive review.,30 minutes,Notify database operations and platform owner,docs/runbooks/sqlmi-storage-capacity.md
+sqlmi-repeated-failed-logins,connection_failed,Sev2,Repeated failures may indicate identity issue or attack.,10 minutes,Notify security and DBA,docs/runbooks/sqlmi-authentication-failure.md
+sqlmi-deadlocks,deadlock,Sev3,Repeated deadlocks affect business workflow reliability.,15 minutes,Notify DBA,docs/runbooks/sqlmi-blocking-deadlock.md
+sqlmi-unavailable,database_unavailable,Sev1,Unavailable critical OLTP database breaches service objective.,5 minutes,Page incident commander and DBA,docs/runbooks/sqlmi-database-unavailable.md
+sqlmi-failover-replication,failover_group_state,Sev1,Replication/failover status affects RTO/RPO confidence.,5 minutes,Page DBA and platform administrator,docs/runbooks/sqlmi-regional-dr-failover.md
+sqlmi-backup-restore-issue,backup_restore_event,Sev2,Backup/restore events require evidence and recovery review.,30 minutes,Notify DBA,docs/runbooks/sqlmi-restore-request.md
+sqlmi-agent-job-failed,sql_agent_job_failed,Sev3,Operational maintenance evidence job failure needs triage.,per job execution,Notify DBA,docs/runbooks/sqlmi-failed-agent-job.md

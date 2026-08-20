@@ -1,0 +1,8 @@
+asset,sensitivity,controls,implementation_status,evidence_classification
+dbo.CustomerAccount.ContactEmail,confidential contact data,Sensitive classification; Dynamic Data Masking for non-privileged readers; audit access,configuration defined,locally validated
+dbo.CustomerAccount.LegalName,confidential customer account data,Sensitive classification; role-based SELECT; audit access,configuration defined,locally validated
+dbo.Shipment.DeclaredValueGbp,commercially sensitive shipment value,Role-based SELECT; audit access; no blanket masking for operations,configuration defined,locally validated
+dbo.Shipment.LegacyOptionsJson,operational attributes,JSON contract validation later; role-based SELECT,configuration defined,derived from assessment
+billing_ops invoice/payment data,financial data boundary,PostgreSQL target owns financial protection; SQL MI references only migration evidence,planned external control,architecture/design evidence
+service case information,customer-service sensitive notes,Retain in billing/service target; future governed search requires security trimming,planned external control,architecture/design evidence
+regional shipment visibility,operational segmentation,Row-Level Security pattern for region/depot readers where business rules require,configuration defined,locally validated

@@ -1,0 +1,6 @@
+AzureActivity
+| where ResourceProviderValue == "Microsoft.Sql"
+| where OperationNameValue has_any ("failover", "restore", "backup", "managedInstances/write")
+| project TimeGenerated, OperationNameValue, ActivityStatusValue, ResourceGroup, Resource
+| order by TimeGenerated desc
+

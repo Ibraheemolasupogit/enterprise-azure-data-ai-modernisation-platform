@@ -1,0 +1,16 @@
+setting,value,rationale,evidence_classification,requires_azure_validation
+target_service,Azure SQL Managed Instance,Preserves SQL Server compatibility for legacy_tms.,derived from assessment,True
+service_tier,General Purpose initially; Business Critical only if latency/IO/HA validation justifies it,Avoids invented production sizing while documenting service-tier decision path.,estimated design assumption,True
+compute,vCore count requires workload telemetry,"CPU, waits, concurrency, and IO are not locally measurable.",requires Azure validation,True
+storage,Start from migration volume plus growth buffer; max storage reviewed quarterly,Synthetic estate does not represent production size.,estimated design assumption,True
+backup_retention,35-day PITR assumption for prod; shorter dev/test retention,Balances operational recovery with cost; exact policy requires owner approval.,estimated design assumption,True
+long_term_retention,"Required decision, not enabled locally",Regulatory retention is not proven by synthetic data.,requires Azure validation,True
+maintenance_window,Defined per environment; avoid depot handover windows,Operational peak window identified in assessment.,derived from assessment,True
+timezone,UTC for database timestamps and operational evidence,Avoids regional ambiguity.,locally validated,False
+collation,Requires live estate validation before deployment,Milestone 3 identified unknown production collation.,requires Azure validation,True
+public_endpoint,Disabled for production target,Private data-plane architecture decision.,estimated design assumption,True
+private_connectivity,"VNet delegated subnet for MI, Private DNS, restricted admin path",Milestone 4 private networking target.,estimated design assumption,True
+minimum_tls,TLS 1.2 or newer,Baseline in-transit protection expectation.,estimated design assumption,True
+entra_authentication,Entra-first with contained database users/groups,Reduces static credential use.,derived from assessment,True
+diagnostic_settings,"Send SQLSecurityAuditEvents, errors, blocks, waits, and resource metrics to Log Analytics",Supports operations and audit evidence.,configuration defined,True
+auditing,Enabled to Log Analytics/storage destination in real Azure,Audit destination cannot be validated locally.,configuration defined,True

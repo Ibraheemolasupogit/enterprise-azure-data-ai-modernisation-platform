@@ -1,0 +1,6 @@
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.SQL"
+| where duration_milliseconds_d > 30000
+| summarize occurrences=count(), max_duration_ms=max(duration_milliseconds_d) by statement_s, database_name_s
+| order by max_duration_ms desc
+

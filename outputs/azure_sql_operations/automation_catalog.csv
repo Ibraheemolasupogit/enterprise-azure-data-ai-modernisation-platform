@@ -1,0 +1,7 @@
+automation_name,mechanism,cadence,purpose,safety_boundary,evidence_classification
+integrity-check-job,SQL Agent on Managed Instance,weekly or pre-change,Run representative DBCC CHECKDB/integrity workflow and capture evidence.,Do not run heavyweight checks blindly; schedule requires production validation.,configuration defined
+statistics-maintenance-job,SQL Agent on Managed Instance,daily low-activity window,Update stale statistics based on modification thresholds.,No blanket index rebuild or query tuning in Milestone 6.,configuration defined
+operational-evidence-job,SQL Agent on Managed Instance,daily,"Capture backup status, row-count sanity, security posture, and job health evidence.",Evidence collection only.,configuration defined
+retention-cleanup-job,SQL Agent on Managed Instance,weekly,Retain job/audit staging evidence according to policy.,Does not delete regulated audit destinations.,configuration defined
+restore-drill-runbook,Azure Automation / PowerShell boundary,quarterly planned drill,Model PITR/restore validation steps and evidence capture.,No local Azure restore execution.,requires Azure validation
+diagnostic-settings-deploy,Bicep / CI-CD,per deployment,Apply diagnostic settings and alert definitions.,Deployment not executed locally.,configuration defined

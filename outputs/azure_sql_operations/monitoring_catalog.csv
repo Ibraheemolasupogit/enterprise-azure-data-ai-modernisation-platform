@@ -1,0 +1,11 @@
+signal,source,kql_asset,operational_purpose,milestone_boundary
+cpu_percent,Azure Monitor metric,kql/sqlmi_resource_health.kql,Detect sustained CPU saturation.,Deep query tuning deferred to Milestone 7.
+storage_percent,Azure Monitor metric,kql/sqlmi_resource_health.kql,Detect storage exhaustion risk.,Capacity review only.
+connection_failed,SQL audit logs,kql/sqlmi_security_audit.kql,Investigate failed logins and identity issues.,No real audit stream locally.
+deadlock,SQL diagnostics/audit,kql/sqlmi_blocking_deadlocks.kql,Triage concurrency incidents.,Query tuning deferred.
+blocking_session,SQL diagnostics,kql/sqlmi_blocking_deadlocks.kql,Triage blocking chains.,Query tuning deferred.
+database_unavailable,Azure Monitor availability,kql/sqlmi_availability_recovery.kql,Detect database availability impact.,Requires Azure validation.
+backup_restore_event,Azure activity/diagnostic logs,kql/sqlmi_availability_recovery.kql,Track restore and recovery events.,Requires Azure validation.
+failover_group_state,Azure resource health/activity,kql/sqlmi_availability_recovery.kql,Track failover/replication status.,Requires Azure validation.
+long_running_query,SQL diagnostics,kql/sqlmi_long_running_queries.kql,Identify candidates for performance milestone.,No tuning performed.
+worker_session_pressure,SQL metrics,kql/sqlmi_resource_health.kql,Detect worker/session pressure.,Requires Azure validation.

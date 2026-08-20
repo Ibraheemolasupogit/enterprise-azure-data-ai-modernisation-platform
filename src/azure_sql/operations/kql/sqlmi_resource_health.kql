@@ -1,0 +1,6 @@
+AzureMetrics
+| where ResourceProvider == "MICROSOFT.SQL"
+| where MetricName in ("avg_cpu_percent", "storage_space_used_mb", "sessions_percent", "workers_percent")
+| summarize avg(Total), max(Total) by MetricName, bin(TimeGenerated, 15m), Resource
+| order by TimeGenerated desc
+
