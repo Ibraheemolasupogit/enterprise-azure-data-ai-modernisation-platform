@@ -1,5 +1,5 @@
 {
-  "commit": "f79f599e331f0b139ad5e2e6cf8fec6511b82b17",
+  "commit": "resolved-at-release-runtime",
   "generated_evidence": [
     "ai_assurance.csv",
     "api_assurance.csv",

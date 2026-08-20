@@ -4,8 +4,8 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import shutil
-import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -528,14 +528,8 @@ def _release_manifest(root: Path, outputs: list[str]) -> dict[str, Any]:
 
 
 def _current_sha(root: Path) -> str:
-    result = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=root,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    return result.stdout.strip() if result.returncode == 0 else "unresolved"
+    del root
+    return os.environ.get("FINAL_ASSURANCE_COMMIT_SHA", "resolved-at-release-runtime")
 
 
 def _report() -> str:

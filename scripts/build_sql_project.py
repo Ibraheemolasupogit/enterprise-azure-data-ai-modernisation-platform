@@ -14,12 +14,13 @@ def main() -> int:
         print("Cannot build SQL project: dotnet is not installed or not on PATH.")
         print("Install the .NET SDK and run `make build-sql-project` again.")
         return 2
-    sdk_version = _highest_sdk_version(dotnet)
-    if sdk_version is None or sdk_version < (8, 0):
-        version_text = ".".join(str(part) for part in sdk_version) if sdk_version else "unknown"
-        print("Cannot build SQL project: .NET SDK 8.0 or newer is required.")
-        print(f"Detected highest .NET SDK version: {version_text}")
-        print("Install a current .NET SDK and run `make build-sql-project` again.")
+    sdk_version_text = _selected_sdk_version(dotnet)
+    print(f"dotnet selected SDK version: {sdk_version_text or 'unknown'}")
+    sdk_version = _parse_sdk_version(sdk_version_text)
+    if sdk_version is None or sdk_version[0] != 8:
+        print("Cannot build SQL project: this repository requires .NET SDK 8.x.")
+        print("global.json pins SDK selection to 8.0 with latestFeature roll-forward.")
+        print("Install a current .NET 8 SDK and run `make build-sql-project` again.")
         return 2
     if not PROJECT.is_file():
         print(f"Cannot build SQL project: missing {PROJECT.relative_to(ROOT)}")
@@ -32,21 +33,26 @@ def main() -> int:
     return result.returncode
 
 
-def _highest_sdk_version(dotnet: str) -> tuple[int, int] | None:
+def _selected_sdk_version(dotnet: str) -> str | None:
     result = subprocess.run(
-        [dotnet, "--list-sdks"],
+        [dotnet, "--version"],
         cwd=ROOT,
         check=False,
         capture_output=True,
         text=True,
     )
-    versions: list[tuple[int, int]] = []
-    for line in result.stdout.splitlines():
-        raw_version = line.split()[0]
-        parts = raw_version.split(".")
-        if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
-            versions.append((int(parts[0]), int(parts[1])))
-    return max(versions) if versions else None
+    if result.returncode != 0:
+        return None
+    return result.stdout.strip()
+
+
+def _parse_sdk_version(raw_version: str | None) -> tuple[int, int] | None:
+    if raw_version is None:
+        return None
+    parts = raw_version.split(".")
+    if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
+        return (int(parts[0]), int(parts[1]))
+    return None
 
 
 if __name__ == "__main__":
