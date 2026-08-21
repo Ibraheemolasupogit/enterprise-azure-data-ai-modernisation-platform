@@ -4,6 +4,8 @@ This repository implements an enterprise Azure Data and AI modernisation referen
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
+This repository provides deterministic local reference assets and evidence; it does not deploy Azure resources, does not claim production runtime validation, and does not claim working AI workloads.
+
 ## Implementation Milestones
 
 ### Milestone 1 — Enterprise Platform Foundation
