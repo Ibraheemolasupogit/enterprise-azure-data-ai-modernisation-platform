@@ -40,6 +40,10 @@ PROJECT_OBJECTS = [
     ProjectObject("obj-022", "table", "ai", "GenerationAudit", f"{PROJECT_ROOT}/Tables/ai.GenerationAudit.sql", "schema", "database engineering", "configuration defined"),
     ProjectObject("obj-023", "stored procedure", "ai", "usp_AssembleRagContext", f"{PROJECT_ROOT}/StoredProcedures/ai.usp_AssembleRagContext.sql", "schema", "database engineering", "configuration defined"),
     ProjectObject("obj-024", "security", "ai", "AI roles and permissions", f"{PROJECT_ROOT}/Security/AiRolesAndPermissions.sql", "post-deployment", "platform security", "configuration defined"),
+    ProjectObject("obj-025", "post-deployment", "dbo", "post deployment orchestration", f"{PROJECT_ROOT}/PostDeployment/PostDeployment.sql", "post-deployment", "database engineering", "configuration defined"),
+    ProjectObject("obj-026", "index", "ai", "IX_ai_Document_ShipmentAccount", f"{PROJECT_ROOT}/Indexes/ai.Document.IX_ai_Document_ShipmentAccount.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-027", "index", "ai", "IX_ai_DocumentChunk_Metadata", f"{PROJECT_ROOT}/Indexes/ai.DocumentChunk.IX_ai_DocumentChunk_Metadata.sql", "schema", "database engineering", "configuration defined"),
+    ProjectObject("obj-028", "index", "ai", "IX_ai_EmbeddingMetadata_WorkQueue", f"{PROJECT_ROOT}/Indexes/ai.EmbeddingMetadata.IX_ai_EmbeddingMetadata_WorkQueue.sql", "schema", "database engineering", "configuration defined"),
 ]
 
 TRACEABILITY = [
@@ -50,6 +54,7 @@ TRACEABILITY = [
     TraceabilityItem("req-005", "Deployment preview before publish", "dacpac deployment plan", ".github/workflows/sql-cd.yml", "deployment_safety_rules.csv", "preview blocks unsafe release"),
     TraceabilityItem("req-006", "Drift is detected before promotion", "target database model", "scripts/validate_sql_cicd.py", "schema_drift_scenarios.csv", "manual remediation before deployment"),
     TraceabilityItem("req-007", "AI-enabled SQL persistent objects are database-as-code assets", "ai.Document; ai.DocumentChunk; ai.EmbeddingMetadata; ai.RetrievalAudit; ai.GenerationAudit", "src/azure_sql/database_project/legacy_tms/*/ai.*.sql", "outputs/sql_ai/ai_schema_catalog.csv", "SQL AI review required"),
+    TraceabilityItem("req-008", "AI metadata indexes remain database-as-code assets", "IX_ai_Document_ShipmentAccount; IX_ai_DocumentChunk_Metadata; IX_ai_EmbeddingMetadata_WorkQueue", "src/azure_sql/database_project/legacy_tms/Indexes/ai.*.sql", "sql_project_inventory.csv", "SQL AI review required"),
 ]
 
 REFERENCE_DATA = [
@@ -104,7 +109,7 @@ PERFORMANCE_GATES = [
 
 SECURITY_GATES = [
     RegressionGate("sec-001", "least privilege", "role/grant script", "application roles have execute/select access only through approved objects", "Security/RolesAndPermissions.sql", "block promotion"),
-    RegressionGate("sec-002", "data protection", "masking/classification script", "customer email and memo fields retain protection controls", "Security/DataProtection.sql", "block promotion"),
+    RegressionGate("sec-002", "data protection", "table masking definition and classification script", "customer email and memo fields retain protection controls", "Tables/dbo.CustomerAccount.sql; Security/DataProtection.sql", "block promotion"),
     RegressionGate("sec-003", "secret handling", "workflow definitions", "no connection string or password is committed", ".github/workflows/*.yml", "block promotion"),
     RegressionGate("sec-004", "AI retrieval security", "SQL AI retrieval assets", "metadata filters and sensitivity/lifecycle controls remain present before ranking", "outputs/sql_ai/ai_security_matrix.csv", "block promotion"),
     RegressionGate("sec-005", "AI endpoint governance", "external model and REST endpoint definitions", "endpoint changes use managed identity placeholders and no committed secrets", "src/azure_sql/ai/embeddings/create_external_model_example.sql", "block promotion"),

@@ -5,15 +5,15 @@ This SDK-style SQL project models the `legacy_tms` Azure SQL Managed Instance da
 ## Structure
 
 - `Schemas/` contains schema declarations.
-- `Tables/` contains table, constraint, and targeted index definitions.
+- `Tables/` contains table and constraint definitions.
+- `Indexes/` contains modelled secondary indexes that are separate build objects.
 - `Views/` contains operational read models.
 - `StoredProcedures/` contains controlled write paths.
 - `Security/` contains role, grant, masking, and classification patterns.
 - `PreDeployment/` contains deployment guardrails.
-- `PostDeployment/` contains idempotent reference data.
-- `Tests/` contains static assertions for database review.
+- `PostDeployment/` contains the post-deployment entrypoint and idempotent reference data.
+- `Tests/` contains static assertions for database review and is excluded from dacpac schema compilation.
 
 ## Local Workflow
 
 Run `make validate-sql-cicd` to generate deterministic release evidence and run static gates. Run `make build-sql-project` only when the local machine has the .NET SDK and can restore `Microsoft.Build.Sql`; otherwise the command fails clearly.
-

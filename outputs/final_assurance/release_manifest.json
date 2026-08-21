@@ -55,10 +55,10 @@
   "repository": "enterprise-azure-data-ai-modernisation-platform",
   "test_count": "114 observed in latest full validation",
   "tool_availability": {
-    "bicep": false,
-    "databricks": false,
-    "dotnet": true,
-    "git": true
+    "bicep": "resolved-at-release-runtime",
+    "databricks": "resolved-at-release-runtime",
+    "dotnet": "resolved-at-release-runtime",
+    "git": "resolved-at-release-runtime"
   },
   "truth_boundary": "No live Azure, Databricks, Fabric, Azure OpenAI, or application deployment is claimed.",
   "validation_commands": [

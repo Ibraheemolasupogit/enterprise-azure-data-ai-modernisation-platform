@@ -3,7 +3,7 @@ CREATE TABLE [ai].[GenerationAudit]
     [GenerationAuditId] UNIQUEIDENTIFIER NOT NULL CONSTRAINT [DF_ai_GenerationAudit_Id] DEFAULT NEWID(),
     [RetrievalAuditId] UNIQUEIDENTIFIER NOT NULL,
     [GeneratedAt] DATETIME2(3) NOT NULL CONSTRAINT [DF_ai_GenerationAudit_GeneratedAt] DEFAULT SYSUTCDATETIME(),
-    [RequestingPrincipal] SYSNAME NOT NULL,
+    [RequestingPrincipal] NVARCHAR(128) NOT NULL,
     [ModelDeployment] NVARCHAR(128) NOT NULL,
     [ModelVersion] NVARCHAR(80) NULL,
     [EndpointName] NVARCHAR(128) NOT NULL,
@@ -20,4 +20,3 @@ CREATE TABLE [ai].[GenerationAudit]
     CONSTRAINT [FK_ai_GenerationAudit_RetrievalAudit] FOREIGN KEY ([RetrievalAuditId]) REFERENCES [ai].[RetrievalAudit] ([RetrievalAuditId]),
     CONSTRAINT [CK_ai_GenerationAudit_Status] CHECK ([Status] IN ('succeeded', 'insufficient_context', 'failed', 'blocked'))
 );
-

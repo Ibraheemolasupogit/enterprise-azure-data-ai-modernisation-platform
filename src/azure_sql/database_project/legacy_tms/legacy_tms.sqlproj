@@ -6,7 +6,17 @@
     <SuppressTSqlWarnings>71558</SuppressTSqlWarnings>
   </PropertyGroup>
   <ItemGroup>
+    <Build Remove="PreDeployment/**/*.sql" />
+    <Build Remove="PostDeployment/**/*.sql" />
+    <Build Remove="Security/**/*.sql" />
+    <Build Remove="Tests/**/*.sql" />
+    <Build Remove="Schemas/dbo.sql" />
+    <None Include="Security/**/*.sql" />
+    <None Include="Tests/**/*.sql" />
+    <None Include="Schemas/dbo.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <PreDeploy Include="PreDeployment/PreDeployment.sql" />
-    <PostDeploy Include="PostDeployment/ReferenceData.sql" />
+    <PostDeploy Include="PostDeployment/PostDeployment.sql" />
   </ItemGroup>
 </Project>

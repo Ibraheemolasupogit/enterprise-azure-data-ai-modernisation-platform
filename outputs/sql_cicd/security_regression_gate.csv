@@ -1,6 +1,6 @@
 gate_id,area,measured_artifact,threshold,evidence_source,release_decision
 sec-001,least privilege,role/grant script,application roles have execute/select access only through approved objects,Security/RolesAndPermissions.sql,block promotion
-sec-002,data protection,masking/classification script,customer email and memo fields retain protection controls,Security/DataProtection.sql,block promotion
+sec-002,data protection,table masking definition and classification script,customer email and memo fields retain protection controls,Tables/dbo.CustomerAccount.sql; Security/DataProtection.sql,block promotion
 sec-003,secret handling,workflow definitions,no connection string or password is committed,.github/workflows/*.yml,block promotion
 sec-004,AI retrieval security,SQL AI retrieval assets,metadata filters and sensitivity/lifecycle controls remain present before ranking,outputs/sql_ai/ai_security_matrix.csv,block promotion
 sec-005,AI endpoint governance,external model and REST endpoint definitions,endpoint changes use managed identity placeholders and no committed secrets,src/azure_sql/ai/embeddings/create_external_model_example.sql,block promotion

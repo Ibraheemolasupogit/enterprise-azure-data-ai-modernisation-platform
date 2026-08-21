@@ -5,7 +5,6 @@ import argparse
 import csv
 import json
 import os
-import shutil
 from pathlib import Path
 from typing import Any
 
@@ -517,10 +516,10 @@ def _release_manifest(root: Path, outputs: list[str]) -> dict[str, Any]:
         "test_count": "114 observed in latest full validation",
         "generated_evidence": outputs,
         "tool_availability": {
-            "git": shutil.which("git") is not None,
-            "bicep": shutil.which("bicep") is not None,
-            "databricks": shutil.which("databricks") is not None,
-            "dotnet": shutil.which("dotnet") is not None,
+            "git": _runtime_value("FINAL_ASSURANCE_TOOL_GIT", "resolved-at-release-runtime"),
+            "bicep": _runtime_value("FINAL_ASSURANCE_TOOL_BICEP", "resolved-at-release-runtime"),
+            "databricks": _runtime_value("FINAL_ASSURANCE_TOOL_DATABRICKS", "resolved-at-release-runtime"),
+            "dotnet": _runtime_value("FINAL_ASSURANCE_TOOL_DOTNET", "resolved-at-release-runtime"),
         },
         "production_validation_gaps": [row["gap"] for row in _gap_register()],
         "truth_boundary": "No live Azure, Databricks, Fabric, Azure OpenAI, or application deployment is claimed.",
@@ -530,6 +529,10 @@ def _release_manifest(root: Path, outputs: list[str]) -> dict[str, Any]:
 def _current_sha(root: Path) -> str:
     del root
     return os.environ.get("FINAL_ASSURANCE_COMMIT_SHA", "resolved-at-release-runtime")
+
+
+def _runtime_value(env_name: str, default: str) -> str:
+    return os.environ.get(env_name, default)
 
 
 def _report() -> str:

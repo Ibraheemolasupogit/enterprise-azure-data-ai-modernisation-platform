@@ -23,7 +23,3 @@ CREATE TABLE [ai].[DocumentChunk]
     CONSTRAINT [CK_ai_DocumentChunk_LifecycleState] CHECK ([LifecycleState] IN ('active', 'retired', 'pending', 'failed')),
     CONSTRAINT [CK_ai_DocumentChunk_TokenCount] CHECK ([TokenCountEstimate] > 0)
 );
-
-CREATE INDEX [IX_ai_DocumentChunk_Metadata]
-ON [ai].[DocumentChunk] ([ShipmentId], [AccountId], [DepotCode], [RouteCode], [DocumentType], [LifecycleState], [SensitivityLabel]);
-

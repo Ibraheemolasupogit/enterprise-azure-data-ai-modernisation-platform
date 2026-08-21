@@ -6,3 +6,4 @@ req-004,Entra-first least privilege access model,db roles and grants,Security/Ro
 req-005,Deployment preview before publish,dacpac deployment plan,.github/workflows/sql-cd.yml,deployment_safety_rules.csv,preview blocks unsafe release
 req-006,Drift is detected before promotion,target database model,scripts/validate_sql_cicd.py,schema_drift_scenarios.csv,manual remediation before deployment
 req-007,AI-enabled SQL persistent objects are database-as-code assets,ai.Document; ai.DocumentChunk; ai.EmbeddingMetadata; ai.RetrievalAudit; ai.GenerationAudit,src/azure_sql/database_project/legacy_tms/*/ai.*.sql,outputs/sql_ai/ai_schema_catalog.csv,SQL AI review required
+req-008,AI metadata indexes remain database-as-code assets,IX_ai_Document_ShipmentAccount; IX_ai_DocumentChunk_Metadata; IX_ai_EmbeddingMetadata_WorkQueue,src/azure_sql/database_project/legacy_tms/Indexes/ai.*.sql,sql_project_inventory.csv,SQL AI review required

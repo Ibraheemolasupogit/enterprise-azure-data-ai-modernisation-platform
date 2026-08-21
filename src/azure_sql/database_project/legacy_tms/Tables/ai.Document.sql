@@ -19,7 +19,3 @@ CREATE TABLE [ai].[Document]
     CONSTRAINT [CK_ai_Document_LifecycleState] CHECK ([LifecycleState] IN ('active', 'retired', 'pending', 'failed')),
     CONSTRAINT [CK_ai_Document_SensitivityLabel] CHECK ([SensitivityLabel] IN ('public', 'internal', 'confidential', 'restricted'))
 );
-
-CREATE INDEX [IX_ai_Document_ShipmentAccount]
-ON [ai].[Document] ([ShipmentId], [AccountId], [LifecycleState], [SensitivityLabel]);
-

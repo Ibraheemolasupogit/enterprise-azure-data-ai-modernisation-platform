@@ -23,3 +23,7 @@ obj-021,table,ai,RetrievalAudit,src/azure_sql/database_project/legacy_tms/Tables
 obj-022,table,ai,GenerationAudit,src/azure_sql/database_project/legacy_tms/Tables/ai.GenerationAudit.sql,schema,database engineering,configuration defined
 obj-023,stored procedure,ai,usp_AssembleRagContext,src/azure_sql/database_project/legacy_tms/StoredProcedures/ai.usp_AssembleRagContext.sql,schema,database engineering,configuration defined
 obj-024,security,ai,AI roles and permissions,src/azure_sql/database_project/legacy_tms/Security/AiRolesAndPermissions.sql,post-deployment,platform security,configuration defined
+obj-025,post-deployment,dbo,post deployment orchestration,src/azure_sql/database_project/legacy_tms/PostDeployment/PostDeployment.sql,post-deployment,database engineering,configuration defined
+obj-026,index,ai,IX_ai_Document_ShipmentAccount,src/azure_sql/database_project/legacy_tms/Indexes/ai.Document.IX_ai_Document_ShipmentAccount.sql,schema,database engineering,configuration defined
+obj-027,index,ai,IX_ai_DocumentChunk_Metadata,src/azure_sql/database_project/legacy_tms/Indexes/ai.DocumentChunk.IX_ai_DocumentChunk_Metadata.sql,schema,database engineering,configuration defined
+obj-028,index,ai,IX_ai_EmbeddingMetadata_WorkQueue,src/azure_sql/database_project/legacy_tms/Indexes/ai.EmbeddingMetadata.IX_ai_EmbeddingMetadata_WorkQueue.sql,schema,database engineering,configuration defined

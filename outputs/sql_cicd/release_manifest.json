@@ -3,7 +3,7 @@
   "database": "legacy_tms",
   "evidence_boundary": "local static evidence; no Azure deployment performed",
   "output_hashes": {
-    "database_object_traceability.csv": "455a1006e525ca7f8f9d34feb84b74bf6cbf45bc9d431f65e5f972672b4bfcb9",
+    "database_object_traceability.csv": "f5e97ed394e7e72d71c2f6ba198c42e98782d8d437ca4d57ae88eeaab37e16d8",
     "database_test_catalog.csv": "eabcd91e3f386773b2907e86817cde9bc0a88dbfa3b1977a6b6ace379dbb262f",
     "deployment_safety_rules.csv": "1c78afad6d37eb4ec4f094c3645ecc258138e348bd37ef4c5c7855b4cacab97e",
     "environment_promotion_matrix.csv": "78114a25699cdd15205b13cffba4bc3bffb39594115c8f12adde3c15991208dd",
@@ -11,8 +11,8 @@
     "reference_data_manifest.csv": "f1988074557b375655563f63a641f0196c620f106dbc8f88f6c797384b93a21e",
     "release_readiness.csv": "b0275ffd5b59db6a87b883bb57f590440cb4ee1f357a1d181190db7369a164b3",
     "schema_drift_scenarios.csv": "ff610a5357a6d4c3fe106c7454d78a621156b2b768d07a8d9017a25368f3123c",
-    "security_regression_gate.csv": "c02d52e657641ebc5753ac104c2d083bc9f8938ad4535631a997709a5897204e",
-    "sql_project_inventory.csv": "964a2d0fc849d015bb9d37d4c5a18311a227d12c1579cbf0eb52513b92181013"
+    "security_regression_gate.csv": "0b729e25e7399e8d9a0773f2574cd72146bb055e2effc48eda70cf682422659c",
+    "sql_project_inventory.csv": "52b69d52f5c40498f40915e626b9692194037753ecee84a9f05808d3d102bf8d"
   },
   "outputs": [
     "database_object_traceability.csv",
@@ -38,10 +38,10 @@
   ],
   "tooling": {
     "build_command": "make build-sql-project",
-    "dotnet_available": true,
-    "dotnet_sdk_8_or_newer": false,
-    "highest_dotnet_sdk": "3.1.426",
+    "dotnet_available": "resolved-at-build-runtime",
+    "dotnet_sdk_policy": "global.json requires .NET SDK 8.x with latestFeature roll-forward",
     "publish_command": "deferred to approved GitHub Actions environment",
-    "sqlpackage_available": false
+    "selected_dotnet_sdk": "resolved-at-build-runtime",
+    "sqlpackage_available": "resolved-at-deploy-runtime"
   }
 }

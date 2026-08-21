@@ -5,8 +5,7 @@ import argparse
 import csv
 import hashlib
 import json
-import shutil
-import subprocess
+import os
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
@@ -82,10 +81,10 @@ def _release_manifest(outputs_dir: Path) -> dict[str, Any]:
         "dacpac_expected_path": "src/azure_sql/database_project/legacy_tms/bin/Debug/legacy_tms.dacpac",
         "evidence_boundary": "local static evidence; no Azure deployment performed",
         "tooling": {
-            "dotnet_available": shutil.which("dotnet") is not None,
-            "highest_dotnet_sdk": _highest_dotnet_sdk(),
-            "dotnet_sdk_8_or_newer": _dotnet_sdk_supported(),
-            "sqlpackage_available": shutil.which("sqlpackage") is not None,
+            "dotnet_available": _runtime_value("SQL_CICD_DOTNET_AVAILABLE", "resolved-at-build-runtime"),
+            "selected_dotnet_sdk": _runtime_value("SQL_CICD_DOTNET_SDK", "resolved-at-build-runtime"),
+            "dotnet_sdk_policy": "global.json requires .NET SDK 8.x with latestFeature roll-forward",
+            "sqlpackage_available": _runtime_value("SQL_CICD_SQLPACKAGE_AVAILABLE", "resolved-at-deploy-runtime"),
             "build_command": "make build-sql-project",
             "publish_command": "deferred to approved GitHub Actions environment",
         },
@@ -111,26 +110,8 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _highest_dotnet_sdk() -> str:
-    dotnet = shutil.which("dotnet")
-    if dotnet is None:
-        return "not found"
-    result = subprocess.run(
-        [dotnet, "--list-sdks"],
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    versions = [line.split()[0] for line in result.stdout.splitlines() if line.split()]
-    return sorted(versions)[-1] if versions else "unknown"
-
-
-def _dotnet_sdk_supported() -> bool:
-    version = _highest_dotnet_sdk()
-    if version in {"not found", "unknown"}:
-        return False
-    parts = version.split(".")
-    return bool(parts and parts[0].isdigit() and int(parts[0]) >= 8)
+def _runtime_value(env_name: str, default: str) -> str:
+    return os.environ.get(env_name, default)
 
 
 def _report() -> str:

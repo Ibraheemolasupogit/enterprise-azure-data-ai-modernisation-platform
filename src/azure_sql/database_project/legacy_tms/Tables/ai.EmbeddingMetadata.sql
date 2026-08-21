@@ -23,7 +23,3 @@ CREATE TABLE [ai].[EmbeddingMetadata]
     CONSTRAINT [CK_ai_EmbeddingMetadata_Status] CHECK ([EmbeddingStatus] IN ('current', 'stale', 'pending', 'failed', 'retired')),
     CONSTRAINT [CK_ai_EmbeddingMetadata_Dimensions] CHECK ([Dimensions] > 0)
 );
-
-CREATE INDEX [IX_ai_EmbeddingMetadata_WorkQueue]
-ON [ai].[EmbeddingMetadata] ([EmbeddingStatus], [RetryCount], [RequestedAt]);
-

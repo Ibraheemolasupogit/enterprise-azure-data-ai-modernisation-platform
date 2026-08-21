@@ -2,7 +2,7 @@ CREATE TABLE [ai].[RetrievalAudit]
 (
     [RetrievalAuditId] UNIQUEIDENTIFIER NOT NULL CONSTRAINT [DF_ai_RetrievalAudit_Id] DEFAULT NEWID(),
     [RequestedAt] DATETIME2(3) NOT NULL CONSTRAINT [DF_ai_RetrievalAudit_RequestedAt] DEFAULT SYSUTCDATETIME(),
-    [RequestingPrincipal] SYSNAME NOT NULL,
+    [RequestingPrincipal] NVARCHAR(128) NOT NULL,
     [QuestionHash] CHAR(64) NOT NULL,
     [ShipmentId] NVARCHAR(40) NULL,
     [AccountId] NVARCHAR(40) NULL,
@@ -17,4 +17,3 @@ CREATE TABLE [ai].[RetrievalAudit]
     CONSTRAINT [PK_ai_RetrievalAudit] PRIMARY KEY CLUSTERED ([RetrievalAuditId]),
     CONSTRAINT [CK_ai_RetrievalAudit_Status] CHECK ([Status] IN ('succeeded', 'insufficient_context', 'failed', 'blocked'))
 );
-
