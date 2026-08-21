@@ -4,7 +4,55 @@ This repository implements an enterprise Azure Data and AI modernisation referen
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
-Milestone 1 establishes the repository structure, architectural intent, engineering standards, and decision records. Milestone 2 adds a deterministic synthetic legacy source estate for future assessment, migration, ingestion, governance, performance, and AI work. Milestone 3 adds estate assessment and modernisation decisioning. Milestone 4 adds target-state architecture and platform decisions. Milestone 5 adds a local migration factory for schema, data, validation, cutover, rollback, and evidence generation. Milestone 6 adds the Azure SQL operational administration model. Milestone 7 adds SQL performance engineering. Milestone 8 adds SQL database development lifecycle, database-as-code, dacpac build readiness, release evidence, drift controls, and CI/CD guardrails. Milestone 9 adds the Databricks platform and Unity Catalog foundation. Milestone 10 adds Databricks ingestion, data modelling, and medallion processing. Milestone 11 adds Databricks data quality, Lakeflow Jobs, and operational orchestration. Milestone 12 adds Databricks monitoring, troubleshooting, performance, and cost optimization. Milestone 13 adds AI-enabled SQL, vector search, hybrid retrieval, and database-native RAG design for a grounded shipment operations assistant. Milestone 14 adds secure application/API integration with Data API Builder, REST, GraphQL, stored-procedure boundaries, MCP tool contracts, Container Apps hosting architecture, and deterministic security evidence. Milestone 15 adds the Microsoft Fabric downstream integration boundary for governed Gold product handoff, contracts, ownership, identity, lineage, freshness, quality, and failure responsibility. Milestone 16 adds final cross-platform assurance and portfolio release evidence. The repository still does not deploy Azure resources, does not claim working AI workloads, run production Databricks pipelines, execute Azure SQL AI functions locally, invoke Azure OpenAI locally, run a production application API, implement Fabric resources, or claim production deployment readiness.
+## Implementation Milestones
+
+### Milestone 1 — Enterprise Platform Foundation
+Established the repository structure, architectural intent, engineering standards, decision records, Bicep-first infrastructure foundations, validation framework, and CI baseline for the Contoso Freight modernisation programme.
+
+### Milestone 2 — Synthetic Legacy Data Estate
+Created a deterministic synthetic legacy estate spanning SQL Server-style operational workloads, PostgreSQL-like billing and service data, file feeds, event streams, contracts, workload simulation, and documented data-quality defects.
+
+### Milestone 3 — Estate Assessment and Modernisation Decisioning
+Implemented current-state inventory, dependency mapping, workload classification, compatibility assessment, Azure target recommendations, migration complexity scoring, migration waves, risks, and evidence-backed modernisation decisions.
+
+### Milestone 4 — Target-State Architecture
+Defined the target architecture across operational data, analytical engineering, AI-enabled data, and control/security/operations planes, including workload-to-service mapping, networking, identity, security, HA/DR, environment strategy, and architecture traceability.
+
+### Milestone 5 — Migration Factory
+Built a deterministic migration factory for SQL Server and PostgreSQL workloads with migration manifests, target schemas, compatibility remediation, reconciliation, cutover, rollback, hypercare, readiness gates, and migration evidence.
+
+### Milestone 6 — Azure SQL Administration and Operations
+Implemented the Azure SQL Managed Instance operational model with Entra-first access, managed identity, Key Vault integration, masking, RLS patterns, auditing, monitoring, alerts, SQL Agent jobs, backup/restore readiness, HA/DR guidance, and operational runbooks.
+
+### Milestone 7 — SQL Performance Engineering
+Added workload baselines, Query Store and DMV diagnostics, execution-plan analysis, indexing and statistics strategy, blocking/deadlock investigation, parameter-sensitive query handling, regression controls, and performance assurance evidence.
+
+### Milestone 8 — SQL Database Development Lifecycle and CI/CD
+Implemented an SDK-style SQL Database Project with database-as-code, declarative schema objects, reference-data deployment, static SQL tests, DACPAC build automation, release evidence, schema-drift controls, security and performance gates, and GitHub Actions CI/CD guardrails.
+
+### Milestone 9 — Databricks Platform and Unity Catalog Foundation
+Established the Databricks platform foundation with dev/test/prod environment design, compute strategy, Unity Catalog hierarchy, managed-identity storage access, least-privilege permissions, governance tags, row/column security patterns, lineage, sharing boundaries, and Databricks Asset Bundle structure.
+
+### Milestone 10 — Databricks Ingestion and Medallion Processing
+Implemented ingestion patterns for relational, file, and event sources; Bronze/Silver/Gold processing; Auto Loader; Structured Streaming; CDC and incremental loads; replay and idempotency; schema drift handling; quarantine; SCD Type 2; dimensional modelling; and governed Gold data products.
+
+### Milestone 11 — Data Quality and Lakeflow Orchestration
+Added formal data-quality rules, severity and remediation handling, quarantine and replay controls, freshness checks, publication gates, Lakeflow Jobs orchestration, task dependencies, retries, schedules, parameters, permissions, and operational runbooks.
+
+### Milestone 12 — Databricks Operations, Performance and FinOps
+Implemented monitoring across jobs, compute, SQL warehouses, streaming, Delta tables, Unity Catalog, data quality, audit, and cost; added system-table diagnostics, Spark troubleshooting, Delta health, streaming recovery, compute policy, SLOs, operational alerts, and FinOps controls.
+
+### Milestone 13 — AI-Enabled SQL, Vector Search and RAG
+Implemented AI-ready SQL assets for document chunking, embeddings, vector search, full-text search, hybrid retrieval, RRF ranking, SQL-native RAG context assembly, retrieval evaluation, audit, security, failure handling, cost controls, and Azure OpenAI integration boundaries.
+
+### Milestone 14 — Secure Application and API Integration
+Added secure application integration using Data API Builder, REST, GraphQL, stored-procedure boundaries, Entra authentication, managed identity, authorization roles, sensitive-field controls, MCP tool contracts, Container Apps hosting architecture, resilience, rate limiting, observability, and audit traceability.
+
+### Milestone 15 — Microsoft Fabric Downstream Integration Boundary
+Defined the governed handoff from Azure and Databricks Gold products into Microsoft Fabric, including ownership boundaries, OneLake shortcut and Delta interoperability patterns, contracts, schema compatibility, publication gates, freshness, sensitivity, lineage, quality, failure responsibility, and duplication controls.
+
+### Milestone 16 — Final Cross-Platform Assurance and Portfolio Release
+Completed repository-wide assurance across architecture, security, identity, governance, resilience, observability, FinOps, AI, APIs, CI/CD, data products, ownership, failure modes, production gaps, risks, runbooks, implementation truth, release readiness, and deterministic final release evidence.
 
 ## Business Problem
 
