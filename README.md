@@ -1,6 +1,6 @@
 # Enterprise Azure Data and AI Modernisation Platform
 
-This repository is the foundation for an enterprise Azure Data and AI modernisation reference implementation that modernises a legacy operational data estate into a secure platform.
+This repository implements an enterprise Azure Data and AI modernisation reference platform that modernises a legacy operational data estate into a secure, governed platform.
 
 The scenario is a fictional international logistics company, Contoso Freight, moving from fragmented SQL Server workloads and spreadsheet-driven analytics toward a governed platform spanning Azure SQL, Azure Databricks, ADLS Gen2, Microsoft Entra ID, Key Vault, observability, CI/CD, and AI-enabled data products.
 
@@ -12,7 +12,7 @@ Contoso Freight runs shipment booking, depot operations, fleet maintenance, cust
 
 ## Target Solution
 
-The planned platform provides:
+The platform demonstrates:
 
 - Azure SQL modernisation patterns for operational databases, including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VM trade-offs.
 - Azure Databricks engineering for batch, CDC, and streaming ingestion into a medallion lakehouse on ADLS Gen2 and Delta Lake.
@@ -164,7 +164,7 @@ Milestone 16 includes:
 - Final capability inventory, architecture traceability, service ownership, security/identity assurance, governance/data-product assurance, resilience/failure-mode assurance, observability, FinOps, AI/API assurance, CI/CD assurance, implementation truth matrix, production gap register, final risk register, runbook catalog, release readiness, and release manifest.
 - Repository-wide no-secret check, deterministic generated-output assurance, final report, and portfolio release documentation.
 
-## Planned Roadmap
+## Roadmap
 
 Milestones 1-16 are implemented as a local, deterministic portfolio reference. Future work is optional live environment validation and deployment, not another planned repository milestone. The full milestone roadmap is maintained in [docs/roadmap.md](docs/roadmap.md).
 
@@ -184,16 +184,16 @@ This platform deliberately separates workload responsibilities:
 | --- | --- |
 | `infra/` | Bicep infrastructure modules, environment parameter placeholders, deployment scripts |
 | `src/azure_sql/` | SQL schema, migration, operations, performance, database project, and release automation assets |
-| `src/databricks/` | Databricks Unity Catalog foundation assets plus future jobs, Lakeflow, and notebooks |
-| `src/data_engineering/` | Secondary source schemas plus future ingestion, CDC, streaming, modelling, and data-quality code |
-| `src/ai/` | Future SQL AI, embeddings, search, and RAG components |
-| `src/security_governance/` | Future RBAC, policies, lineage, masking, and audit automation |
-| `src/observability/` | Future monitoring, SLO, logging, and FinOps assets |
+| `src/databricks/` | Databricks Unity Catalog, ingestion, medallion processing, Lakeflow orchestration, operations, and supporting assets |
+| `src/data_engineering/` | Secondary source schemas and supporting data-engineering assets |
+| `src/ai/` | AI-enabled data, embeddings, retrieval, search, and RAG supporting assets |
+| `src/security_governance/` | RBAC, governance, lineage, masking, security, and audit supporting assets |
+| `src/observability/` | Monitoring, SLO, logging, operational assurance, and FinOps supporting assets |
 | `docs/` | Architecture, roadmap, ADRs, runbooks, and operating model |
 | `data/` | Synthetic data strategy, source contracts, sample fixtures, and ignored local generated data zones |
-| `outputs/` | Generated estate-assessment CSV outputs |
-| `reports/` | Generated assessment, architecture, migration, and operations reports |
-| `tests/` | Deterministic validation for repository foundation and synthetic legacy estate |
+| `outputs/` | Deterministic generated evidence across architecture, SQL, Databricks, AI, APIs, Fabric integration, and final assurance |
+| `reports/` | Generated assessment, architecture, migration, operations, integration, and final-assurance reports |
+| `tests/` | Deterministic validation across the complete platform implementation |
 
 ## Local Validation
 
